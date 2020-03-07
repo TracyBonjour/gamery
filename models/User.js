@@ -4,17 +4,12 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  // 👇
-  campus: {
-    type: String,
-    enum: ['Madrid', 'Barcelona', 'Miami', 'Paris', 'Berlin', 'Amsterdam', 'México', 'Sao', 'Paulo']
-  },
-  course: {
-    type: String,
-    enum: ['WebDev', 'UX/UI', 'Data Analytics']
-  },
-  image: String
-  // 👆
+  //department: Number,
+  email: String,
+  //googleID: String,
+  imageUrl: String,
+  //bosser la partie image
+  collections:[ { type: Schema.Types.ObjectId, ref: 'Collection' } ]
 }, {
   timestamps: {
     createdAt: 'created_at',

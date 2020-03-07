@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {Link} from 'react-router-dom';
 
-import Popin from '../Popin.js';
+
 import authService from './auth-service.js';
 
-export default class extends React.Component {
+class Signup extends Component {
   state = {
     username: "",
+    //email: "",
     password: "",
-    campus: "",
-    course: "",
 
     error: ""
   }
@@ -24,14 +23,16 @@ export default class extends React.Component {
         this.setState({error: ""});
 
         // 2. then, update with user infos
-        authService.edit(this.state.username, this.state.campus, this.state.course)
+        authService.edit(this.state.username)
           .then(response => {
             this.setState({error: ""});
             
             this.props.updateUser(response);
             this.props.history.push('/');
           })
-          .catch(err => this.setState({error: err.response.data.message}))
+          .catch(err => {
+            console.log(err)
+            this.setState({error: err.response.data.message})})
       })
       .catch(err => this.setState({error: err.response.data.message}))
     ;
@@ -44,7 +45,6 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Popin one={(
         <>
           <h1>Sign up</h1>
           
@@ -62,6 +62,14 @@ export default class extends React.Component {
               
             </p>
 
+            {/* <p>
+              <label>
+                <em>Email</em>
+                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+              </label>
+              
+            </p> */}
+
             <p>
               <label>
                 <em>Password</em>
@@ -69,55 +77,19 @@ export default class extends React.Component {
               </label>
             </p>
 
-            <p>
-              <label>
-                <em>Campus</em>
-                <select name="campus" value={this.state.campus} onChange={this.handleChange}>
-                  <option value=""></option>
-                  <option value="Madrid">Madrid</option>
-                  <option value="Barcelona">Barcelona</option>
-                  <option value="Miami">Miami</option>
-                  <option value="Paris">Paris</option>
-                  <option value="Berlin">Berlin</option>
-                  <option value="Amsterdam">Amsterdam</option>
-                  <option value="México">México</option>
-                  <option value="Sao Paulo">Sao Paulo</option>
-                </select>
-              </label>
-            </p>
-
-            <p>
-              <label>
-                <em>Course</em>
-                <select name="course" value={this.state.course} onChange={this.handleChange}>
-                  <option value=""></option>
-                  <option value="WebDev">WebDev</option>
-                  <option value="UX/UI">UX/UI</option>
-                  <option value="Data Analytics">Data Analytics</option>
-                </select>
-              </label>
-            </p>
+            <button className="btn" onClick={this.handleSubmit}>Create the account</button>
 
           </form>
 
           <p>
             <small>If you already have an account, you can login from <Link to="/login">here</Link></small>
+           
           </p>
 
         </>
-      )} two={(
-        <>
-          <p>
-            <strong>Hello!!</strong>
-            Welcome to IronProfile!
-          </p>
-          
-          <p>
-            <small>If you signup, you agree with all our terms and conditions where we can do whatever we want with the data!</small>
-            <button className="btn" onClick={this.handleSubmit}>Create the account</button>
-          </p>
-        </>
-      )} />
-    );
+      );
   }
 }
+
+
+export default Signup;

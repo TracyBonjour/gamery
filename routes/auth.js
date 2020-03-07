@@ -3,11 +3,12 @@ const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
 
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-router.post("/login", (req, res, next) => {
+router.post("/sessions", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
       res.status(500).json({message: 'Something went wrong authenticating user'});
@@ -32,9 +33,10 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.post("/signup", (req, res, next) => {
+router.post("/users", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
+  const email = req.body.email;
 
   if (!username || !password) {
     res.status(400).json({message: "Indicate username and password"});
@@ -52,6 +54,7 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
+      email,
       password: hashPass
     });
 
@@ -77,7 +80,7 @@ router.get("/logout", (req, res) => {
   res.status(204).send();
 });
 
-router.get("/loggedin", (req, res, next) => {
+router.get("/session", (req, res, next) => {
   if (req.user) {
     res.status(200).json(req.user);
     return;
@@ -86,7 +89,7 @@ router.get("/loggedin", (req, res, next) => {
   res.status(403).json({message: 'Unauthorized'});
 });
 
-router.post("/edit", (req, res, next) => {
+router.put("/user", (req, res, next) => {
   // Check user is logged in
   if (!req.user) {
     res.status(401).json({message: "You need to be logged in to edit your profile"});
@@ -118,5 +121,7 @@ router.post("/edit", (req, res, next) => {
     })
   });
 });
+
+
 
 module.exports = router;

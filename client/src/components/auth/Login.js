@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import {Link} from 'react-router-dom';
 
-import Popin from '../Popin.js';
 import authService from './auth-service.js';
 
-export default class extends React.Component {
+class Login extends Component {
   state = {
     username: "",
+    email: "",
     password: "",
 
     error: ""
@@ -34,7 +34,6 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Popin one={(
         <>
           <h1>Log in</h1>
           
@@ -58,25 +57,17 @@ export default class extends React.Component {
               </label>
             </p>
 
+            <button className="btn" onClick={this.handleSubmit}>Login</button>
+
           </form>
 
           <p>
             <small>If you don't have an account yet, you can create your account <Link to="/signup">here</Link></small>
           </p>
         </>
-      )} two={(
-        <>
-          <p>
-            <strong>Hello!!</strong>
-            Awesome to have at IronProfile again!
-          </p>
-          
-          <p>
-            <small>If you login, you agree with all our terms and conditions where we can do whatever we want with the data!</small>
-            <button className="btn" onClick={this.handleSubmit}>Log in</button>
-          </p>
-        </>
-      )} />
+
     );
   }
 }
+
+export default Login;

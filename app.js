@@ -45,7 +45,9 @@ app.use(session({
 require('./passport')(app);
 
 const authRoutes = require('./routes/auth');
-app.use('/auth', authRoutes);
+app.use('/api', authRoutes);
+
+app.use('/api', require('./routes/file-upload-routes'));
 
 //
 // After routes: static server || React SPA
