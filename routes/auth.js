@@ -8,6 +8,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
+//User authentifié
 router.post("/sessions", (req, res, next) => {
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
@@ -33,6 +34,7 @@ router.post("/sessions", (req, res, next) => {
   })(req, res, next);
 });
 
+//User créé / enregistré
 router.post("/users", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -75,11 +77,13 @@ router.post("/users", (req, res, next) => {
   });
 });
 
-router.get("/logout", (req, res) => {
+//User déconnecté
+router.delete("/session", (req, res) => {
   req.logout();
   res.status(204).send();
 });
 
+//User connecté
 router.get("/session", (req, res, next) => {
   if (req.user) {
     res.status(200).json(req.user);
@@ -89,6 +93,7 @@ router.get("/session", (req, res, next) => {
   res.status(403).json({message: 'Unauthorized'});
 });
 
+//updated / edit username, email et password
 router.put("/user", (req, res, next) => {
   // Check user is logged in
   if (!req.user) {
@@ -122,6 +127,37 @@ router.put("/user", (req, res, next) => {
   });
 });
 
+//afficher les infos du user
+router.get("/user", (req, res, next) => {
+  if (!req.user) {
+    res.status(401).json({message: "You need to be logged in to show your profile"});
+    return;
+  }
 
+  
+  User.findOne({_id: req.params.id})
+    .then(user => {
+      res.status(200).json(req.user);
+      return;
+    })
+    .catch(next)
+  ;
+});
+
+//supprimer un user
+router.delete("/user", (req, res, next) => {
+  if (!req.user) {
+    res.status(401).json({message: "You need to be logged in to delete your profile"});
+    return;
+  }
+
+  User.findByIdAndRemove(req.params.id)
+    .then(user => {
+      res.status(200).json(req.user);
+      return;
+    })
+    .catch(next)
+  ;
+});
 
 module.exports = router;
