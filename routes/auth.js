@@ -134,10 +134,10 @@ router.get("/user", (req, res, next) => {
     return;
   }
 
-  
-  User.findOne({_id: req.params.id})
+  User.findById(req.user.id)
+  // User.findOne({_id: req.params.id})
     .then(user => {
-      res.status(200).json(req.user);
+      res.status(200).json(user);
       return;
     })
     .catch(next)
@@ -151,7 +151,7 @@ router.delete("/user", (req, res, next) => {
     return;
   }
 
-  User.findByIdAndRemove(req.params.id)
+  User.findByIdAndRemove(req.user.id)
     .then(user => {
       res.status(200).json(req.user);
       return;
