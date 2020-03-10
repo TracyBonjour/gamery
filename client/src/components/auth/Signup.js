@@ -8,7 +8,7 @@ import authService from './auth-service.js';
 class Signup extends Component {
   state = {
     username: "",
-    //email: "",
+    email: "",
     password: "",
 
     error: ""
@@ -45,7 +45,7 @@ class Signup extends Component {
 
   render() {
     return (
-        <>
+        <div className="Signup">
           <h1>Sign up</h1>
           
           <form onSubmit={this.handleSubmit}>
@@ -54,39 +54,46 @@ class Signup extends Component {
               <p className="error">{this.state.error}</p>
             )}
 
-            <p>
+            <p className="chp">
               <label>
-                <em>Username</em>
+                username
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
               </label>
               
             </p>
 
-            {/* <p>
+            <p className="chp">
               <label>
-                <em>Email</em>
+                email
                 <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
               </label>
               
-            </p> */}
+            </p>
 
-            <p>
+            <p className="chp">
               <label>
-                <em>Password</em>
+                password
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
               </label>
             </p>
 
-            <button className="btn" onClick={this.handleSubmit}>Create the account</button>
+            {/* <p>
+              <label>
+                <em>confirm password</em>
+                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+              </label>
+            </p> */}
+
+            <button className="btn" onClick={this.handleSubmit}>Create account</button>
 
           </form>
 
           <p>
-            <small>If you already have an account, you can login from <Link to="/login">here</Link></small>
+            <small><Link to="/login">Already a user? Log in</Link></small>
            
           </p>
 
-        </>
+        </div>
       );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import {Link} from 'react-router-dom';
+import Button from '../Button';
 
 import authService from './auth-service.js';
 
@@ -34,7 +35,7 @@ class Login extends Component {
 
   render() {
     return (
-        <>
+        <div className="Login">
           <h1>Log in</h1>
           
           <form onSubmit={this.handleSubmit}>
@@ -43,28 +44,43 @@ class Login extends Component {
               <p className="error">{this.state.error}</p>
             )}
 
-            <p>
+            <p className="chp">
               <label>
-                <em>Username</em>
+                username
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
               </label>
             </p>
 
-            <p>
+            <p className="chp">
               <label>
-                <em>Password</em>
+                email
+                <input type="text" name="email" value={this.state.username} onChange={this.handleChange} />
+              </label>
+            </p>
+
+            <p className="chp">
+              <label>
+                password
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
               </label>
             </p>
 
-            <button className="btn" onClick={this.handleSubmit}>Login</button>
+            <p>
+              <label>
+                <input type="checkbox" id="remember" name="xxxxx" value="remember"/>
+                Remember me
+             </label>
+            </p>
+
+            {/* <button className="btn" onClick={this.handleSubmit}>Login</button> */}
+            <Button></Button>
 
           </form>
 
           <p>
-            <small>If you don't have an account yet, you can create your account <Link to="/signup">here</Link></small>
+            <small><Link to="/signup">New here ? Create account</Link></small>
           </p>
-        </>
+        </div>
 
     );
   }
