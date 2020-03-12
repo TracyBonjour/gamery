@@ -6,6 +6,7 @@ import {Switch, Route} from 'react-router-dom';
 import Homepage from './components/Homepage.js';
 import Signup from './components/auth/Signup.js';
 import Login from './components/auth/Login.js';
+import Profileedit from './components/auth/Profileedit.js';
 import Profile from './components/auth/Profile.js';
 
 import authService from './components/auth/auth-service.js';
@@ -54,6 +55,10 @@ class App extends Component {
 
             <Route exact path="/profile" render={(props) => (
               <Profile user={this.state.user} updateUser={this.updateUser} history={props.history} />
+            )} />
+
+            <Route exact path="/profileedit" render={(props) => (
+              <Profileedit user={this.state.user} updateUser={this.updateUser} history={props.history} />
             )} />
 
             {/* last route, ie: 404 */}

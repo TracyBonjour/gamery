@@ -18,7 +18,7 @@ class Signup extends Component {
     event.preventDefault();
 
     // 1. Signup
-    authService.signup(this.state.username, this.state.password)
+    authService.signup(this.state.username, this.state.email, this.state.password)
       .then(() => {
         this.setState({error: ""});
 
