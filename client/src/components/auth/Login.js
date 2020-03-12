@@ -7,7 +7,6 @@ import authService from './auth-service.js';
 
 class Login extends Component {
   state = {
-    username: "",
     email: "",
     password: "",
 
@@ -17,7 +16,7 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    authService.login(this.state.username, this.state.password)
+    authService.login(this.state.email, this.state.password)
       .then(response => {
         this.setState({error: ""});
 
@@ -46,15 +45,8 @@ class Login extends Component {
 
             <p className="chp">
               <label>
-                username
-                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-              </label>
-            </p>
-
-            <p className="chp">
-              <label>
                 email
-                <input type="text" name="email" value={this.state.username} onChange={this.handleChange} />
+                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
               </label>
             </p>
 
@@ -73,7 +65,7 @@ class Login extends Component {
             </p>
 
             {/* <button className="btn" onClick={this.handleSubmit}>Login</button> */}
-            <Button></Button>
+            <Button>login</Button>
 
           </form>
 

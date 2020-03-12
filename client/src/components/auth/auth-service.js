@@ -4,39 +4,56 @@ import axios from 'axios';
 
 export default {
   service: axios.create({
-    baseURL: `${process.env.REACT_APP_APIURL || ""}/auth`,
+    baseURL: `${process.env.REACT_APP_APIURL || ""}/api`,
     withCredentials: true
   }),
 
-  login(username, password) {
-    return this.service.post('/login', {username, password})
+  login(email, password) {
+    return this.service.post('/sessions', {email, password})
       .then(response => response.data)
   },
 
-  signup(username, password) {
-    return this.service.post('/signup', {
+  signup(username, email, password) {
+    return this.service.post('/users', {
       username,
+      email,
       password
     })
       .then(response => response.data)
   },
 
   loggedin() {
-    return this.service.get('/loggedin')
+    return this.service.get('/session')
       .then(response => response.data)
   },
 
   logout() {
-    return this.service.get('/logout', {})
+    return this.service.delete('/session', {})
       .then(response => response.data)
   },
 
-  edit(username, campus, course) {
-    return this.service.post('/edit', {
+  edit(username, email, password) {
+    return this.service.put('/user', {
       username,
-      campus,
-      course
+      email,
+      password
     })
       .then(response => response.data)
-  }
+  },
+
+  profile(username, email, password, departement) {
+    return this.service.get('/user', {
+      username,
+      email,
+      password,
+      departement
+    })
+      .then(response => response.data)
+  },
+
+  removeuser() {
+    return this.service.delete('/user', {})
+    .then(response => response.data)
+  },
+
 };
