@@ -63,6 +63,7 @@ display:flex
 }
 
 .carousel-container {
+	min-height:100%;
 	display:flex;
 	overflow: auto;
 	scroll-snap-type: y mandatory;
