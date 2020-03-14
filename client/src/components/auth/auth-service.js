@@ -51,6 +51,11 @@ export default {
       .then(response => response.data)
   },
 
+  upload(formdata) {
+    return this.service.post('/upload', formdata)
+      .then(response => response.data)
+  },
+
   removeuser() {
     return this.service.delete('/user', {})
     .then(response => response.data)

@@ -4,10 +4,10 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  //department: Number,
+  department: String,
   email: String,
   //googleID: String,
-  imageUrl: String,
+  image: String,
   //bosser la partie image
   collections:[ { type: Schema.Types.ObjectId, ref: 'Collection' } ]
 }, {

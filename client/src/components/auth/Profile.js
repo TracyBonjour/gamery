@@ -26,7 +26,7 @@ class Profile extends Component {
     return (
       <div className="Profile">
 
-        <p className="chp">
+        <p className="titre">
           username 
           <span>{this.props.user.username}</span>
         </p>
@@ -41,14 +41,14 @@ class Profile extends Component {
         </p>
 
         <p>
-        <h1><Link to="/profileedit">Personal informations</Link></h1>
+        <h3><Link to="/profileedit">Personal informations</Link></h3>
         </p>
 
-        <h1>My collections</h1>
-        <h1>Games reviewed</h1>
+        <h3>My collections</h3>
+        <h3>Games reviewed</h3>
 
         <div className="cta">
-          <button className="btnwith" onClick={this.logout}>
+          <button className="btn" onClick={this.logout}>
             logout
           </button>
         </div>

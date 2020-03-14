@@ -1,14 +1,14 @@
+.link {	
+	text-decoration: none;
+}
 
+.flex {
+display:flex
+}
 
-
-/*
-  _     _         
- | |   | |        
- | |__ | |_ _ __  
- | '_ \| __| '_ \ 
- | |_) | |_| | | |
- |_.__/ \__|_| |_|
-*/
+.button {
+	text-align: center;
+}
 
 .btnwith {
 	width:250px;
@@ -32,7 +32,6 @@
 	color:#000000;
 }
 
-
 .chp {
 	width:250px;
   border:none;
@@ -44,17 +43,88 @@
   text-align: center;
 }
 
+/* Homepage */
 
+.logo {
+	width:250px;
+}
 
-/*
-  _             _           __  _                         
- | |           (_)         / / (_)                        
- | | ___   __ _ _ _ __    / /__ _  __ _ _ __  _   _ _ __  
- | |/ _ \ / _` | | '_ \  / / __| |/ _` | '_ \| | | | '_ \ 
- | | (_) | (_| | | | | |/ /\__ \ | (_| | | | | |_| | |_) |
- |_|\___/ \__, |_|_| |_/_/ |___/_|\__, |_| |_|\__,_| .__/ 
-           __/ |                   __/ |           | |    
-          |___/                   |___/            |_|    
-*/
+.header {
+	text-align: center;
+	width:250px;
+	display:block;
+	margin: 0 auto;
+}
 
+.container {
+	height:400px;
+}
 
+.carousel-container {
+	display:flex;
+	overflow: auto;
+	scroll-snap-type: y mandatory;
+	scroll-padding: 50%;
+}
+
+.game-small {
+	flex-direction: column;
+	margin: 0 5px 0 10px;
+	scroll-snap-align: center;
+}
+
+.game-small-img {
+	max-height:100%;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.game-small-row-1 {
+	width: 150px;
+	height: 150px;
+	text-align:center;
+}
+
+.game-small-row-2 {
+	width: 150px;
+	height: 50px;
+	text-align:center;
+}
+
+.game-small {
+	flex-direction: column;
+	margin: 0 5px 0 10px;
+	scroll-snap-align: center;
+}
+
+.collection-small {
+	flex-direction: column;
+	margin: 0 5px 0 10px;
+	width: 90vw;
+}
+
+.collection-small-img {
+	max-height:100%;
+	max-width: 100%;
+	margin: 0 auto;
+}
+
+.collection-small-row-1 {
+	width: 90vw;
+	height: 150px;
+	text-align:center;
+}
+
+.collection-small-row-2 {
+	width: 90vw;
+	height: 50px;
+	text-align:center;
+}
+/*Profile*/
+
+img.avatar {
+    width:13em;height:13em;border-radius:100%; object-fit:contain; margin:0 auto;
+    background:#e1e1e1;
+    margin-bottom:1em;
+    object-fit: cover;
+}

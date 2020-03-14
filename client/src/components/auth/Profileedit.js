@@ -1,13 +1,10 @@
 import React, { Component } from "react";
+import Button from '../Button';
 
 import authService from "./auth-service.js";
 
 class Profileedit extends Component {
-  logout = event => {
-    authService.logout().then(response => {
-      this.props.updateUser(false);
-    });
-  };
+
 
   handleUpload = (event) => {
     let formData = new FormData();
@@ -29,13 +26,24 @@ class Profileedit extends Component {
           username 
           <span>{this.props.user.username}</span>
         </p>
+      <p>
+      <form>
+        {/* <p className="chp">
+              <label>
+                username
+                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+              </label>
+   
+        </p> */}
         
-        <p>
-        <form>
+        
           <label>
             <img className="avatar" src={this.props.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
             <input type="file" name="image" onChange={this.handleUpload} />
           </label>
+
+          <Button>save</Button>
+
         </form>
         </p>
 
@@ -157,13 +165,6 @@ class Profileedit extends Component {
             <option value="976">(976) Mayotte </option>
           </select>
         </p>
-
-        {/* <div className="cta">
-          <button className="btnwith" onClick={this.logout}>
-            save my information
-          </button>
-        </div> */}
-
 
       </div>
     );
