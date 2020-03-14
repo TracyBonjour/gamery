@@ -3,13 +3,15 @@ import './App.scss';
 
 import {Switch, Route} from 'react-router-dom';
 
-import Homepage from './components/auth/Homepage.js';
+import Homepage from './components/Homepage.js';
 import Signup from './components/auth/Signup.js';
 import Login from './components/auth/Login.js';
 import Profileedit from './components/auth/Profileedit.js';
 import Profile from './components/auth/Profile.js';
 
 import authService from './components/auth/auth-service.js';
+import CollectionListing from './components/catalogue/CollectionListing';
+import GameDetailed from './components/catalogue/GameDetailed';
 
 class App extends Component {
   state = {
@@ -60,6 +62,19 @@ class App extends Component {
             <Route exact path="/profileedit" render={(props) => (
               <Profileedit user={this.state.user} updateUser={this.updateUser} history={props.history} />
             )} />
+
+            <Route exact path="/collections" component={CollectionListing}/>
+            )} /> 
+
+            <Route exact path="/collections/:id" component={CollectionListing}/>
+            )} /> 
+
+            <Route exact path="/games/:id" render={props => {
+                return (
+                  <GameDetailed gameId={props.match.params.id}/>
+                );
+              }} />
+
 
             {/* last route, ie: 404 */}
             <Route render={() => (<h1>Not Found</h1>)} />
