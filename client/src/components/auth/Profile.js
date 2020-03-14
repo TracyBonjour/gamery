@@ -8,8 +8,10 @@ class Profile extends Component {
   logout = event => {
     authService.logout().then(response => {
       this.props.updateUser(false);
+      this.props.history.push('/');
     });
   };
+
 
   handleUpload = (event) => {
     let formData = new FormData();
@@ -27,8 +29,7 @@ class Profile extends Component {
       <div className="Profile">
 
         <p className="titre">
-          username 
-          <span>{this.props.user.username}</span>
+          <h1>{this.props.user.username}</h1>
         </p>
         
         <p>

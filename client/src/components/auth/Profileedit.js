@@ -4,7 +4,48 @@ import Button from '../Button';
 import authService from "./auth-service.js";
 
 class Profileedit extends Component {
+  state = {
+    username: this.props.user.username, // undefined
+    email: this.props.user.email,
+    password: this.props.user.password,
 
+    error: ""
+  }
+
+  componentDidUpdate(prevProps) {
+    // 
+    if (prevProps.user !== this.props.user) {
+      this.setState({
+        username: this.props.user.username,
+        email: this.props.user.email,
+        password: this.props.user.password
+      })
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    // update with user infos
+    authService.edit(this.state.username, this.state.email, this.state.password)
+      .then((response) => {
+            this.setState({error: ""});
+            
+            this.props.updateUser(response);
+            this.props.history.push('/profile');
+      })
+      .catch(err => {
+        console.log(err)
+        this.setState({error: err.response.data.message})
+      })
+      .catch(err => this.setState({error: err.response.data.message}))
+    ;
+  }
+
+  handleChange = (event) => {
+    const {name, value} = event.target;
+    this.setState({[name]: value});
+  } 
 
   handleUpload = (event) => {
     let formData = new FormData();
@@ -17,44 +58,44 @@ class Profileedit extends Component {
     ;
   }
 
+  deleteUser = (event) => {
+
+    // delete user 
+    authService.removeuser()
+      .then((response) => {
+            this.setState({
+              username: "",
+              email: "",
+              password: ""
+            })
+            this.props.updateUser(false);
+            this.props.history.push('/');
+      });
+  };
+
   render() {
     return (
       <div className="Profile">
         <h1>Personal informations</h1>
 
-        <p className="chp">
-          username 
-          <span>{this.props.user.username}</span>
-        </p>
       <p>
-      <form>
-        {/* <p className="chp">
-              <label>
-                username
-                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-              </label>
-   
-        </p> */}
-        
-        
-          <label>
+      <form onSubmit={this.handleSubmit}>
+      
+        <label>
             <img className="avatar" src={this.props.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
             <input type="file" name="image" onChange={this.handleUpload} />
-          </label>
+        </label>
 
-          <Button>save</Button>
-
-        </form>
+        <p>
+          <input className="chp" type="text" name="username" value={this.state.username} onChange={this.handleChange} />
         </p>
 
-        <p className="chp">
-          email
-          <span>{this.props.user.email}</span>
+        <p>
+          <input className="chp" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
         </p>
 
-        <p className="chp">
-          password 
-          <span>{this.props.user.password}</span>
+        <p>
+          <input className="chp" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
         </p>
 
         <p>
@@ -164,6 +205,18 @@ class Profileedit extends Component {
             <option value="975">(975) Saint Pierre et Miquelon </option>
             <option value="976">(976) Mayotte </option>
           </select>
+        </p>
+
+        <p>
+        {/* <Button>save my information</Button> */}
+        <button className="btn" onClick={this.handleSubmit}>save my information</button>
+        </p>
+        
+        <div className="cta">
+        <button className="btn" onClick={this.deleteUser}>delete my account</button>
+        </div>
+
+        </form>
         </p>
 
       </div>
