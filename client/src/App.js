@@ -12,6 +12,7 @@ import Profile from './components/auth/Profile.js';
 import authService from './components/auth/auth-service.js';
 import CollectionListing from './components/catalogue/CollectionListing';
 import GameDetailed from './components/catalogue/GameDetailed';
+import CollectionDetailed from './components/catalogue/CollectionDetailed'
 
 class App extends Component {
   state = {
@@ -63,11 +64,15 @@ class App extends Component {
               <Profileedit user={this.state.user} updateUser={this.updateUser} history={props.history} />
             )} />
 
-            <Route exact path="/collections" component={CollectionListing}/>
+            <Route exact path="/categories" component={CollectionListing}/>
             )} /> 
 
-            <Route exact path="/collections/:id" component={CollectionListing}/>
-            )} /> 
+            <Route exact path="/categories/:id/:name" render={props => {
+                return (
+                  <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name}/>
+                );
+              }} />
+
 
             <Route exact path="/games/:id" render={props => {
                 return (
