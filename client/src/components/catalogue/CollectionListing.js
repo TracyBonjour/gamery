@@ -2,43 +2,16 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
 import CollectionSmall from './CollectionSmall'
+import images from '../../images'
 
 class CollectionListing extends Component {
     state = { 
         categories: []
      }
 
-    images=[
-        "../../../images/categories/abstract.jpg",
-        "../../../images/categories/adventure.jpg",
-        "../../../images/categories/animals.jpg",
-        "../../../images/categories/bluffing.jpg",
-        "../../../images/categories/cardgame.jpg",
-        "../../../images/categories/citybuilding1.jpg",
-        "../../../images/categories/cooperativegames1.jpg",
-        "../../../images/categories/deduction2.jpg",
-        "../../../images/categories/dice.jpg",
-        "../../../images/categories/educational1.jpg",
-        "../../../images/categories/family2.jpg",
-        "../../../images/categories/farming.png",
-        "../../../images/categories/horror.jpg",
-        "../../../images/categories/humor.jpg",
-        "../../../images/categories/medieval.jpg",
-        "../../../images/categories/memory2.jpg",
-        "../../../images/categories/mythology2.jpg",
-        "../../../images/categories/party2.jpg",
-        "../../../images/categories/puzzle.jpg",
-        "../../../images/categories/rpg.jpg",
-        "../../../images/categories/scifi2.jpg",
-        "../../../images/categories/strategy.jpg",
-        "../../../images/categories/wargame.jpg",
-        "../../../images/categories/western.jpg",
-        "../../../images/categories/zombies.jpg",
-    ]
-
     img = () => {
         var state2=[...this.state.categories];
-        state2.forEach((cat,i) => cat.image= this.images[i])
+        state2.forEach((cat,i) => cat.image= images[i].src)
         this.setState({categories:state2})
     }
 
