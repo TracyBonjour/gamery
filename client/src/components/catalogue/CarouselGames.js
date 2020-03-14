@@ -9,7 +9,7 @@ class CarouselGames extends Component {
      }
 
     componentDidMount() {
-        axios.get('https://www.boardgameatlas.com/api/search?name=Catan&pretty=true&client_id=FWG6FKSO4N')
+        axios.get(this.props.route)
           .then(response=> response.data)
           .then(data => this.setState({blocks: data.games}))
       }
@@ -20,11 +20,11 @@ class CarouselGames extends Component {
                 <h3>{this.props.header}</h3>
                 <div className="carousel-container">
                     {this.state.blocks.map(block => {return(
-                        <GameSmall title={block.name} age={block.min_age} img={block.images.small}/>
+                        <GameSmall title={block.name} img={block.images.small} id={block.id} />
                      )})}
                 </div>
             </div>
-         );
+         ); 
     }
 }
  
