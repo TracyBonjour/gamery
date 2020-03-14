@@ -107,9 +107,8 @@ display:flex
 }
 
 .collection-small-img {
-	max-height:100%;
-	max-width: 100%;
-	margin: 0 auto;
+	width: 100%;
+	object-fit: cover;
 }
 
 .collection-small-row-1 {
