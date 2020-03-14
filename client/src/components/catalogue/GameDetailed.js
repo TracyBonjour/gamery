@@ -2,31 +2,27 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class GameDetailed extends Component {
-   
+    
     state = { 
         game: {},
         user: {}
      };
 
      componentDidMount() {
-        console.log(this.props)
-
         let route;
         if (this.props.gameId) {
-          route = `https://www.boardgameatlas.com/api/search?id=${this.props.gameId}&client_id=FWG6FKSO4N `
+          route = `https://www.boardgameatlas.com/api/search?ids=${this.props.gameId}&client_id=FWG6FKSO4N `
         }
         axios.get(route)
-          .then(response => console.log(response.data))
           .then(response => response.data)
-          .then(data => this.setState({game: data.games}))
+          .then(data => this.setState({game: data.games[0]}))
       }
 
     render() { 
         return ( 
             <div>
-                <p>test</p>
-                <h1>Title: {this.state.game.title}</h1>
-                {/* <img src={this.state.images.medium} alt=""/> */}
+                <h1>Title: {this.state.game.name}</h1>
+                <img src={this.state.game.image_url} alt={this.state.game.name}/>
                 </div>
 
          );

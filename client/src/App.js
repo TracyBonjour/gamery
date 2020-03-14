@@ -69,10 +69,6 @@ class App extends Component {
             <Route exact path="/collections/:id" component={CollectionListing}/>
             )} /> 
 
-            <Route exact path="/games/:id" render={(props) => (
-              <GameDetailed user={this.state.user} game={this.props.game} />
-            )} />
-
             <Route exact path="/games/:id" render={props => {
                 return (
                   <GameDetailed gameId={props.match.params.id}/>
