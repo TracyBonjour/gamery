@@ -18,12 +18,11 @@ class Homepage extends Component {
                 <CarouselGames header='Latest releases' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&year_published=2020'/>
                 <CarouselGames header='Best rated' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&order_by=average_user_rating'/>
                 
-                <h3>Browse categories</h3>
-                <CollectionSmall route='/categories/family-games' colTitle="Family games" src="https://www.logodesignlove.com/wp-content/uploads/2019/04/extinction-symbol-01.jpg"/>
-                <CollectionSmall route= 'categories/complex-games' colTitle="Complex games" src="https://www.logodesignlove.com/wp-content/uploads/2019/04/extinction-symbol-01.jpg"/>
-                <CollectionSmall route= 'categories/cooperative-games' colTitle="Cooperative games" src="https://www.logodesignlove.com/wp-content/uploads/2019/04/extinction-symbol-01.jpg"/>
+                <h3>Browse recommended categories</h3>
+                <CollectionSmall link="7rV11PKqME" colTitle="Family games" src="https://www.logodesignlove.com/wp-content/uploads/2019/04/extinction-symbol-01.jpg"/>
+                <CollectionSmall link="ge8pIhEUGE" colTitle="Cooperative games" src="https://www.logodesignlove.com/wp-content/uploads/2019/04/extinction-symbol-01.jpg"/>
                 <Link to='/categories'>
-                <Button>See all categories</Button>
+                <Button>See more recommended categories</Button>
                 </Link>
             </div>
          );

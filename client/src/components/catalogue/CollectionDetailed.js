@@ -11,6 +11,11 @@ class CollectionDetailed extends Component {
 
      componentDidMount() {
         let route;
+
+        if (this.props.category==='family-games') {
+           route='https://www.boardgameatlas.com/search/?lt_min_age=8'
+          }
+
         if (this.props.collectionId) {
           route = `https://www.boardgameatlas.com/api/search?categories=${this.props.collectionId}&client_id=FWG6FKSO4N `
         }
