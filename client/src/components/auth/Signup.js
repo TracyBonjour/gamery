@@ -54,26 +54,23 @@ class Signup extends Component {
               <p className="error">{this.state.error}</p>
             )}
 
-            <p className="chp">
+            <p>
               <label>
-                username
-                <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
+                <input className="chp" type="text" name="username" placeholder="username" value={this.state.username} onChange={this.handleChange} />
               </label>
               
             </p>
 
-            <p className="chp">
+            <p>
               <label>
-                email
-                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                <input className="chp" type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
               </label>
               
             </p>
 
-            <p className="chp">
+            <p>
               <label>
-                password
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                <input className="chp"  type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
               </label>
             </p>
 

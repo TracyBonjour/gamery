@@ -43,17 +43,15 @@ class Login extends Component {
               <p className="error">{this.state.error}</p>
             )}
 
-            <p className="chp">
+            <p>
               <label>
-                email
-                <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
+                <input className="chp" type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
               </label>
             </p>
 
-            <p className="chp">
+            <p>
               <label>
-                password
-                <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                <input className="chp" type="password" name="password" placeholder="password" value={this.state.password} onChange={this.handleChange} />
               </label>
             </p>
 
@@ -64,8 +62,8 @@ class Login extends Component {
              </label>
             </p>
 
-            {/* <button className="btn" onClick={this.handleSubmit}>Login</button> */}
-            <Button>login</Button>
+            <button className="btn" onClick={this.handleSubmit}>login</button>
+            {/* <Button>login</Button> */}
 
           </form>
 
