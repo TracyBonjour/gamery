@@ -3,6 +3,11 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import CollectionSmall from './CollectionSmall'
 
+const imgsMap = {
+    'abstract': 'https:///img.ur/s/asdlfkasjh.png',
+    'adventure': ''
+}
+
 class CollectionListing extends Component {
     state = { 
         categories: []
@@ -48,6 +53,9 @@ class CollectionListing extends Component {
     render() { 
         return ( 
             <div className = "clp">
+
+            <img src={imgsMap[catname]} />
+
                 <h1>All categories</h1>
                 <div className="listing">
                     {this.state.categories.map(cat => {return(

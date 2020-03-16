@@ -107,7 +107,12 @@ router.put("/user", (req, res, next) => {
   // Updating `req.user` with each `req.body` field (excluding some internal fields `cannotUpdateFields`)
   const cannotUpdateFields = ['_id', 'password'];
   Object.keys(req.body).filter(key => cannotUpdateFields.indexOf(key) === -1).forEach(key => {
-    req.user[key] = req.body[key];
+    if (key === 'password') {
+      req.user[key] = bcrypt.hashSync(req.body[key])
+    } else {
+      req.user[key] = req.body[key];
+    }
+    
   });
 
   // Validating user with its new values (see: https://mongoosejs.com/docs/validation.html#async-custom-validators)
