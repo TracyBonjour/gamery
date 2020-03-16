@@ -107,9 +107,8 @@ display:flex
 }
 
 .collection-small-img {
-	max-height:100%;
-	max-width: 100%;
-	margin: 0 auto;
+	width: 100%;
+	object-fit: cover;
 }
 
 .collection-small-row-1 {
@@ -158,6 +157,11 @@ display:flex
 	width: 90vw;
 	height: 50px;
 	text-align:center;
+}
+
+.hero-banner {
+	height: 30vh;
+	background-size: cover;
 }
 /*Profile*/
 
