@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import {Link} from 'react-router-dom';
+import Nav from '../Nav.js';
 
 import authService from "./auth-service.js";
 
@@ -53,7 +54,8 @@ class Profile extends Component {
             logout
           </button>
         </div>
-
+          
+          <Nav></Nav>
 
       </div>
     );
