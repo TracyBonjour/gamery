@@ -14,9 +14,9 @@ class CollectionSmall extends Component {
                 <div className="collection-small-row-1">
                     <img className="collection-small-img" src={this.props.src} alt=""/>
                 </div>
-                <div className="collection-small-row-2">
+                <h4 className="collection-small-row-2 title">
                     {this.props.colTitle}
-                </div>
+                </h4>
              </div>
             </Link>
          );
