@@ -105,10 +105,13 @@ router.put("/user", (req, res, next) => {
   }
 
   // Updating `req.user` with each `req.body` field (excluding some internal fields `cannotUpdateFields`)
-  const cannotUpdateFields = ['_id', 'password'];
+  const cannotUpdateFields = ['_id'];
+  const salt = bcrypt.genSaltSync(bcryptSalt);
+  const hashPass = bcrypt.hashSync(password, salt);
+
   Object.keys(req.body).filter(key => cannotUpdateFields.indexOf(key) === -1).forEach(key => {
     if (key === 'password') {
-      req.user[key] = bcrypt.hashSync(req.body[key])
+      req.user[key] = hashPass(req.body[key], salt)
     } else {
       req.user[key] = req.body[key];
     }
