@@ -8,25 +8,33 @@ class Nav extends Component {
     return (
         <div className="navbar">
 
+        <div className="picto">
             <Link to="/">
                 {/* <img className="home" src="../../imagenav/baseline_home_black_48dp.png" width="40" height="40" alt="home" /> */}
-                <img className="home" src="../../imagenav/baseline_home_white_48dp.png" width="40" height="40" alt="home" />
+                <img className="home" src="../../imagenav/baseline_home_white_48dp.png" width="45" height="45" alt="home" />
             </Link>
+        </div>
 
+        <div className="picto">
             <Link to="/">
                 {/* <img className="search" src="../../imagenav/baseline_search_black_48dp.png" width="40" height="40" alt="search" /> */}
-                <img className="search" src="../../imagenav/baseline_search_white_48dp.png" width="40" height="40" alt="search" />
+                <img className="search" src="../../imagenav/baseline_search_white_48dp.png" width="45" height="45" alt="search" />
             </Link>
+        </div>
 
+        <div className="picto">
             <Link to="/">
                 {/* <img className="fav" src="../../imagenav/baseline_star_border_black_48dp.png" width="40" height="40" alt="fav" /> */}
-                <img className="fav" src="../../imagenav/baseline_star_white_48dp.png" width="40" height="40" alt="fav" />
+                <img className="fav" src="../../imagenav/baseline_star_white_48dp.png" width="45" height="45" alt="fav" />
             </Link>
+        </div>
 
+        <div className="picto">
             <Link to="/profile">
                 {/* <img className="profile" src="../../imagenav/baseline_account_circle_black_48dp.png" width="40" height="40" alt="profile" /> */}
-                <img className="profile" src="../../imagenav/baseline_account_circle_white_48dp.png" width="40" height="40" alt="profile" />
+                <img className="profile" src="../../imagenav/baseline_account_circle_white_48dp.png" width="45" height="45" alt="profile" />
             </Link>
+        </div>
 
         </div>
 

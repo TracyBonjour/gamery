@@ -3,6 +3,7 @@ import CarouselGames from './catalogue/CarouselGames';
 import CollectionSmall from './catalogue/CollectionSmall';
 import Button from './Button'
 import {Link} from 'react-router-dom'
+import Nav from './Nav';
 
 class Homepage extends Component {
     state = {  }
@@ -24,6 +25,8 @@ class Homepage extends Component {
                 <Link to='/categories'>
                 <Button>See more recommended categories</Button>
                 </Link>
+
+                <Nav></Nav>
             </div>
          );
     }
