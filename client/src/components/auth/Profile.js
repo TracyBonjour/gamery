@@ -50,7 +50,7 @@ class Profile extends Component {
         <h3>Games reviewed</h3>
 
         <div className="cta">
-          <button className="btn" onClick={this.logout}>
+          <button className="btnwith" onClick={this.logout}>
             logout
           </button>
         </div>
