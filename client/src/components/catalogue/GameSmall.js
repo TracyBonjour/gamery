@@ -25,9 +25,9 @@ class GameSmall extends Component {
                 <div className="game-small-row-1">
                     <img className="game-small-img" src={this.props.img} alt=""/>
                 </div>
-                <div className="game-small-row-2">
+                <h4 className="game-small-row-2">
                     {this.title_short(this.props.title)}
-                </div>
+                </h4>
              </div>
             </Link>
          );

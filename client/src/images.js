@@ -9,7 +9,7 @@ let images=[
     {category:"Deduction", src:"../../../images/categories/deduction2.jpg"},
     {category:"Dice", src:"../../../images/categories/dice.jpg"},
     {category:"Educational", src:"../../../images/categories/educational1.jpg"},
-    {category:"Family Games", src:"../../../images/categories/family2.jpg"},
+    {category:"Family Game", src:"../../../images/categories/family2.jpg"},
     {category:"Farming", src:"../../../images/categories/farming.png"},
     {category:"Horror", src:"../../../images/categories/horror.jpg"},
     {category:"Humor", src:"../../../images/categories/humor.jpg"},

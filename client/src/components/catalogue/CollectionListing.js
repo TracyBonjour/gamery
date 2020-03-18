@@ -65,7 +65,7 @@ class CollectionListing extends Component {
                 <h1>All recommended categories</h1>
                 <div className="listing">
                     {this.state.categories.map(cat => {return(
-                        <CollectionSmall type="category" link={cat.id} colTitle={cat.name} src={cat.image} />
+                        <CollectionSmall link={cat.id} colTitle={cat.name} src={cat.image} />
                      )})}
                 </div>
                 </div>
