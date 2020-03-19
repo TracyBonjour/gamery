@@ -16,7 +16,7 @@ class SearchGame extends Component {
         let route;
 
         if (this.state.query) {
-          route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&client_id=FWG6FKSO4N `
+          route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&fuzzy_match=true&client_id=FWG6FKSO4N `
         }
         axios.get(route)
           .then(response => response.data)
