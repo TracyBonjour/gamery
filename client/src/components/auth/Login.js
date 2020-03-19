@@ -71,11 +71,6 @@ class Login extends Component {
           <p>
             <small><Link className="link" to="/signup">New here ? Create account</Link></small>
           </p>
-<<<<<<< HEAD
-         
-=======
-
->>>>>>> 72012f417326707f91275d933676a259ac4f82d4
         </div>
 
     );
