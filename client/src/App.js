@@ -8,6 +8,8 @@ import Signup from './components/auth/Signup.js';
 import Login from './components/auth/Login.js';
 import Profileedit from './components/auth/Profileedit.js';
 import Profile from './components/auth/Profile.js';
+import Nav from './components/Nav.js';
+import SearchGame from './components/catalogue/SearchGame.js';
 
 import authService from './components/auth/auth-service.js';
 import CollectionListing from './components/catalogue/CollectionListing';
@@ -80,10 +82,16 @@ class App extends Component {
                 );
               }} />
 
+            <Route exact path="/search" component={SearchGame}/>
+            )} /> 
+
 
             {/* last route, ie: 404 */}
             <Route render={() => (<h1>Not Found</h1>)} />
           </Switch>
+
+          <Nav></Nav>
+
         </div>
       )} />
     );

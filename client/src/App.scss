@@ -197,9 +197,10 @@ img.avatar {
 }
 
 .navbar {
-	overflow: hidden;
-	background-color: rgba(105, 105, 105, 0.377);
-	position: fixed;
+	//overflow: hidden;
+	background-color: rgb(5, 5, 5);
+	//position: sticky;
+	position : fixed;
 	bottom: 0; 
 	width: 100%; 
 	padding: 3%;

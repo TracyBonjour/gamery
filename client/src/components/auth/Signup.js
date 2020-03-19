@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import {Link} from 'react-router-dom';
-import Nav from '../Nav.js';
 
 import authService from './auth-service.js';
 
@@ -89,7 +88,7 @@ class Signup extends Component {
             <small><Link className="link" to="/login">Already a user? Log in</Link></small>
            
           </p>
-          <Nav></Nav>
+
         </div>
       );
   }

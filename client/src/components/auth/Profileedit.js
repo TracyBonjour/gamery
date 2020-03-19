@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from '../Button';
-import Nav from '../Nav.js';
+
 
 import authService from "./auth-service.js";
 
@@ -219,7 +219,7 @@ class Profileedit extends Component {
 
         </form>
         </p>
-        <Nav></Nav>
+
       </div>
     );
   }
