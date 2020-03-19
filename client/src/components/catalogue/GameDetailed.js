@@ -22,11 +22,14 @@ class GameDetailed extends Component {
           .then(data => this.setState({game: data.games[0]}))
       }
 
-      age="Age: " +  (typeof this.state.game.min_age === 'number' ? this.state.game.min_age + "+" : "Not mentioned");
-      rating="Rating: " + (this.state.game.average_user_rating ? Math.round(this.state.game.average_user_rating*100)/100 +"/5":"No rating yet");
-      players= this.state.game.min_players && this.state.game.max_players ? (this.state.game.min_players + " - " + this.state.game.max_players + " players") : "No players info"
+
 
     render() { 
+
+        var age="Age: " +  (typeof this.state.game.min_age === 'number' ? this.state.game.min_age + "+" : "Not mentioned");
+        var rating="Rating: " + (this.state.game.average_user_rating ? Math.round(this.state.game.average_user_rating*100)/100 +"/5":"No rating yet");
+        var players= this.state.game.min_players && this.state.game.max_players ? (this.state.game.min_players + " - " + this.state.game.max_players + " players") : "No players info"
+
         return ( 
             <div>
                 <h1>{this.state.game.name}</h1>
@@ -36,13 +39,13 @@ class GameDetailed extends Component {
                 </div>
                 <div className="game-medium-row-4 flex">
                 <div className="game-medium-column-1">
-                    {this.rating}
+                    {rating}
                 </div>
                 <div className="game-medium-column-2">
-                {this.age}
+                {age}
                 </div>
                 <div className="game-medium-column-3">
-                    {this.players}
+                    {players}
                 </div>
              </div>
                 </div>

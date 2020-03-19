@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import Nav from './components/Nav';
 
 import {Switch, Route} from 'react-router-dom';
 
@@ -84,6 +85,7 @@ class App extends Component {
             {/* last route, ie: 404 */}
             <Route render={() => (<h1>Not Found</h1>)} />
           </Switch>
+          <Nav></Nav>
         </div>
       )} />
     );

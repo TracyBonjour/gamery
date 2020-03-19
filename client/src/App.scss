@@ -5,6 +5,19 @@ body  {
 	background: linear-gradient(rgba(27, 24, 68,1) 0%, rgba(121,14,9,1) 100%, rgba(0,212,255,1) 100%); 
 	color:white;
 	min-height: 100vh;
+	padding-bottom:100px;
+}
+
+.navbar {
+	background-color: rgba(105, 105, 105, 0.377);
+	position: fixed;
+	top: calc(100vh - 75px);
+	bottom: 0; 
+	width: 100%; 
+	padding: 3%;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
 }
 
 .link {	
@@ -96,6 +109,7 @@ h1, h2, h3 {
 	color:  rgb(27, 24, 68);
 	border-radius: 15px;
 	overflow:hidden;
+	position: relative;
 }
 
 .game-small-img {
@@ -112,6 +126,7 @@ h1, h2, h3 {
 	text-align:center;
 	margin-top:10px;
 	padding-top:10px;
+	position: relative;
 }
 
 .game-small-row-2 {
@@ -187,6 +202,15 @@ margin:10px;
 	height: 30vh;
 	background-size: cover;
 }
+
+.favicon {
+	position: absolute;
+	top: 0;
+	right: 0;
+	// width: 100%;
+	// height: 100px;
+	// text-align: end;
+}
 /*Profile*/
 
 img.avatar {
@@ -196,15 +220,5 @@ img.avatar {
     object-fit: cover;
 }
 
-.navbar {
-	overflow: hidden;
-	background-color: rgba(105, 105, 105, 0.377);
-	position: fixed;
-	bottom: 0; 
-	width: 100%; 
-	padding: 3%;
-	display: flex;
-	justify-content: space-around;
-	flex-direction: row;
-}
+
 
