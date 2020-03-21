@@ -88,7 +88,7 @@ class App extends Component {
             )} /> 
 
             <Route exact path="/:id/collections" render={(props) => (
-              <MyCollections history={props.history} />
+              <MyCollections history={props.history} user={this.state.user} />
             )} />
 
             <Route exact path="/:id/collections/edit" render={(props) => (
