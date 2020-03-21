@@ -2,10 +2,9 @@ import React, { Component } from "react";
 
 import {Link} from 'react-router-dom';
 
-
 import authService from "./auth-service.js";
 
-class Profile extends Component {
+class Profile extends Component {  
   logout = event => {
     authService.logout().then(response => {
       this.props.updateUser(false);
@@ -27,6 +26,7 @@ class Profile extends Component {
 
   render() {
     return (
+
       <div className="Profile">
 
         <p className="titre">
@@ -55,7 +55,8 @@ class Profile extends Component {
           </button>
         </div>
 
-      </div>
+      </div> 
+
     );
   }
 }

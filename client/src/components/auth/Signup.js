@@ -20,18 +20,8 @@ class Signup extends Component {
     authService.signup(this.state.username, this.state.email, this.state.password)
       .then(() => {
         this.setState({error: ""});
+        this.props.history.push('/');
 
-        // 2. then, update with user infos
-        authService.edit(this.state.username)
-          .then(response => {
-            this.setState({error: ""});
-            
-            this.props.updateUser(response);
-            this.props.history.push('/');
-          })
-          .catch(err => {
-            console.log(err)
-            this.setState({error: err.response.data.message})})
       })
       .catch(err => this.setState({error: err.response.data.message}))
     ;

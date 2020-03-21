@@ -95,6 +95,15 @@ router.get("/session", (req, res, next) => {
   res.status(403).json({message: 'Unauthorized'});
 });
 
+//Loggedin pour vérifier si déjà loggué
+// router.get('/session', (req, res, next) => {
+//   // req.isAuthenticated() is defined by passport
+//   if (req.isAuthenticated()) {
+//       res.status(200).json(req.user);
+//       return;
+//   }
+//   res.status(403).json({ message: 'Unauthorized' });
+// });
 
 //updated / edit username, email et password
 router.put("/user", (req, res, next) => {
@@ -105,18 +114,23 @@ router.put("/user", (req, res, next) => {
   }
 
   // Updating `req.user` with each `req.body` field (excluding some internal fields `cannotUpdateFields`)
-  const cannotUpdateFields = ['_id'];
-  const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(password, salt);
-
+  const cannotUpdateFields = ['_id', 'password'];
   Object.keys(req.body).filter(key => cannotUpdateFields.indexOf(key) === -1).forEach(key => {
-    if (key === 'password') {
-      req.user[key] = hashPass(req.body[key], salt)
-    } else {
-      req.user[key] = req.body[key];
-    }
-    
+    req.user[key] = req.body[key];
   });
+
+  // const cannotUpdateFields = ['_id'];
+  // const salt = bcrypt.genSaltSync(bcryptSalt);
+  // const hashPass = bcrypt.hashSync(password, salt);
+
+  // Object.keys(req.body).filter(key => cannotUpdateFields.indexOf(key) === -1).forEach(key => {
+  //   if (key === 'password') {
+  //     req.user[key] = hashPass(req.body[key], salt)
+  //   } else {
+  //     req.user[key] = req.body[key];
+  //   }
+    
+  // });
 
   // Validating user with its new values (see: https://mongoosejs.com/docs/validation.html#async-custom-validators)
   req.user.validate(function (error) {
