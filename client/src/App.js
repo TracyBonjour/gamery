@@ -15,6 +15,9 @@ import CollectionListing from './components/catalogue/CollectionListing';
 import GameDetailed from './components/catalogue/GameDetailed';
 import CollectionDetailed from './components/catalogue/CollectionDetailed'
 
+import MyCollections from './components/collections/MyCollections'
+import EditCollections from './components/collections/EditCollections'
+
 class App extends Component {
   state = {
     user: {}
@@ -83,6 +86,14 @@ class App extends Component {
 
             <Route exact path="/search" component={SearchGame}/>
             )} /> 
+
+            <Route exact path="/:id/collections" render={(props) => (
+              <MyCollections history={props.history} />
+            )} />
+
+            <Route exact path="/:id/collections/edit" render={(props) => (
+              <EditCollections history={props.history} />
+            )} />
 
 
             {/* last route, ie: 404 */}

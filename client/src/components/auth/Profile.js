@@ -43,10 +43,10 @@ class Profile extends Component {
         </p>
 
         <p>
-        <h3><Link to="/profileedit">Personal informations</Link></h3>
+        <h3><Link className='link' to="/profileedit">Personal informations</Link></h3>
         </p>
 
-        <h3>My collections</h3>
+        <h3><Link to={`/${this.props.user.username}/collections`} className="link">My Collections</Link></h3>
         <h3>Games reviewed</h3>
 
         <div className="cta">
