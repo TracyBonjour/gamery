@@ -9,7 +9,8 @@ class SearchGame extends Component {
     state = {  
         //dans games la donnée de l api
         games: [],
-        query: ''
+        query: '',
+        minplayers: ''
     }
     
     componentDidUpdate = () => {
@@ -21,12 +22,25 @@ class SearchGame extends Component {
         axios.get(route)
           .then(response => response.data)
           .then(data => this.setState({games: data.games}));
+
+        if (this.state.query) {
+           route = `https://www.boardgameatlas.com/api/search?min_players=${this.state.minplayers}&fuzzy_match=true&client_id=FWG6FKSO4N `
+        }
+        axios.get(route)
+          .then(response => response.data)
+          .then(data => this.setState({minplayers: data.minplayers}));
     }
 
 
     handleQuery = (ev) => {
         this.setState({
           query: ev.target.value
+        })
+    }
+
+    addToMinplayers = () => {
+        this.setState({
+            minplayers: this.state.minplayers
         })
     }
 
@@ -55,7 +69,18 @@ class SearchGame extends Component {
                         players={game.min_players && game.max_players ? (game.min_players + " - " + game.max_players + " players") : "No players info"}
                         />
                      )})) : 'Staping to see result'}
-                
+                <ul>
+                    <strong>Minimun Players</strong>
+                </ul>
+                <ul>
+                <li>
+                  <label>
+                    <input className="mr" type="checkbox" value={this.state.minplayers} onChange={this.addToMinplayers} />
+                    <span>1</span>
+                  </label>
+                </li>
+                </ul>
+
 
 
             </div>

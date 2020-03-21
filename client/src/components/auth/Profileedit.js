@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from '../Button';
-
+import { Redirect } from 'react-router-dom';
 
 import authService from "./auth-service.js";
 
@@ -76,6 +76,10 @@ class Profileedit extends Component {
 
   render() {
     return (
+      <>
+      {!this.props.user._id ? (
+        <Redirect to="/login" />
+      ) : (
       <div className="Profile">
         <h1>Personal informations</h1>
 
@@ -221,6 +225,8 @@ class Profileedit extends Component {
         </p>
 
       </div>
+      )}
+      </>
     );
   }
 }
