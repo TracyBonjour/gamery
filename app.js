@@ -44,6 +44,17 @@ app.use(session({
 }))
 require('./passport')(app);
 
+
+// Routeurs
+
+const authRoutes = require('./routes/auth');
+app.use('/api', authRoutes);
+
+app.use('/api', require('./routes/file-upload-routes'));
+app.use('/api/user/collections', require('./routes/collections'));
+
+
+
 //
 // After routes: static server || React SPA
 //
@@ -90,12 +101,5 @@ app.use((err, req, res, next) => {
   res.json(err);
 });
 
-// Routeurs
-
-const authRoutes = require('./routes/auth');
-app.use('/api', authRoutes);
-
-app.use('/api', require('./routes/file-upload-routes'));
-app.use('/api/user/collections', require('./routes/collections'));
 
 module.exports = app;
