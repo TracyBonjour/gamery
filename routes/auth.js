@@ -80,10 +80,10 @@ router.post("/users", (req, res, next) => {
 });
 
 //User déconnecté
-router.delete("/session", (req, res) => {
-  req.logout();
-  res.status(204).send();
-});
+// router.delete("/session", (req, res) => {
+//   req.logout();
+//   res.status(204).send();
+// });
 
 //User connecté
 router.get("/session", (req, res, next) => {
@@ -214,6 +214,7 @@ router.delete("/user", (req, res, next) => {
 
   User.findByIdAndRemove(req.user.id)
     .then(user => {
+      req.logout();
       res.status(200).json(req.user);
       return;
     })

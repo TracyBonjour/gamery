@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Button from '../Button';
-import { Redirect } from 'react-router-dom';
+//import Button from '../Button';
+//import { Redirect } from 'react-router-dom';
+import Loader from '../Loader.js';
 
 import authService from "./auth-service.js";
 
@@ -21,6 +22,10 @@ class Profileedit extends Component {
         email: this.props.user.email,
         password: this.props.user.password
       })
+      if (!this.props.user._id) {
+        // alert("✋You need to be logged in to edit your profile");
+        this.props.history.push('/login');
+      }
     }
   }
 
@@ -75,11 +80,10 @@ class Profileedit extends Component {
   };
 
   render() {
+
+    if (!this.props.user._id) return <Loader></Loader>
+
     return (
-      <>
-      {!this.props.user._id ? (
-        <Redirect to="/login" />
-      ) : (
       <div className="Profile">
         <h1>Personal informations</h1>
 
@@ -225,8 +229,7 @@ class Profileedit extends Component {
         </p>
 
       </div>
-      )}
-      </>
+    
     );
   }
 }

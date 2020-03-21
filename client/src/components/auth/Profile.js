@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import {Link} from 'react-router-dom';
+import Loader from '../Loader.js';
 
 import authService from "./auth-service.js";
 
@@ -11,6 +12,21 @@ class Profile extends Component {
       this.props.history.push('/');
     });
   };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.user !== this.props.user) {
+      console.log(
+        "props user has changes value: from",
+        prevProps.user,
+        "to",
+        this.props.user
+      );
+      if (!this.props.user._id) {
+        //alert("✋You need to be logged in to show your profile");
+        this.props.history.push("/login");
+      }
+    }
+  }
 
 
   handleUpload = (event) => {
@@ -25,6 +41,7 @@ class Profile extends Component {
   }
 
   render() {
+    if (!this.props.user._id) return <Loader></Loader>
     return (
 
       <div className="Profile">

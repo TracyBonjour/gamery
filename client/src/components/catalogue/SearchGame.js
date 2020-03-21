@@ -10,7 +10,11 @@ class SearchGame extends Component {
         //dans games la donnée de l api
         games: [],
         query: '',
-        minplayers: ''
+        minage: null,
+        maxage: null,
+        players: null,
+        time: null,
+        rating: null // info non presente dans search api
     }
     
     componentDidUpdate = () => {
@@ -23,12 +27,40 @@ class SearchGame extends Component {
           .then(response => response.data)
           .then(data => this.setState({games: data.games}));
 
-        if (this.state.query) {
-           route = `https://www.boardgameatlas.com/api/search?min_players=${this.state.minplayers}&fuzzy_match=true&client_id=FWG6FKSO4N `
+        if (this.state.minage) {
+            route = `https://www.boardgameatlas.com/api/search?lt_min_age=${this.state.minage}&fuzzy_match=true&client_id=FWG6FKSO4N `
+        }
+        axios.get(route)
+           .then(response => response.data)
+           .then(data => this.setState({games: data.games}));
+
+        if (this.state.maxage) {
+            route = `https://www.boardgameatlas.com/api/search?gt_min_age=${this.state.maxage}&fuzzy_match=true&client_id=FWG6FKSO4N `
+        }
+        axios.get(route)
+           .then(response => response.data)
+           .then(data => this.setState({games: data.games}));
+
+        if (this.state.players) {
+           route = `https://www.boardgameatlas.com/api/search?lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&fuzzy_match=true&client_id=FWG6FKSO4N `
         }
         axios.get(route)
           .then(response => response.data)
-          .then(data => this.setState({minplayers: data.minplayers}));
+          .then(data => this.setState({games: data.games}));
+
+        if (this.state.time) {
+            route = `https://www.boardgameatlas.com/api/search?lt_max_playtime=${this.state.time}&fuzzy_match=true&client_id=FWG6FKSO4N `
+        }
+        axios.get(route)
+           .then(response => response.data)
+           .then(data => this.setState({games: data.games}));
+        
+        if (this.state.rating) {
+            route = `https://www.boardgameatlas.com/api/search?gt_average_user_rating=${this.state.rating}=true&client_id=FWG6FKSO4N `
+        }
+        axios.get(route)
+           .then(response => response.data)
+           .then(data => this.setState({games: data.games}));
     }
 
 
@@ -38,11 +70,11 @@ class SearchGame extends Component {
         })
     }
 
-    addToMinplayers = () => {
-        this.setState({
-            minplayers: this.state.minplayers
-        })
-    }
+
+    handleChange = (event) => {
+        const {name, value} = event.target;
+        this.setState({[name]: value});
+      } 
 
     render() { 
 
@@ -69,17 +101,23 @@ class SearchGame extends Component {
                         players={game.min_players && game.max_players ? (game.min_players + " - " + game.max_players + " players") : "No players info"}
                         />
                      )})) : 'Staping to see result'}
-                <ul>
-                    <strong>Minimun Players</strong>
-                </ul>
-                <ul>
-                <li>
-                  <label>
-                    <input className="mr" type="checkbox" value={this.state.minplayers} onChange={this.addToMinplayers} />
-                    <span>1</span>
-                  </label>
-                </li>
-                </ul>
+
+                <h3>Age, - de :</h3>
+                    <input className="mr" name="minage" type="number" value={this.state.minage} onChange={this.handleChange} />
+
+                <h3>Age, + de :</h3>
+                    <input className="mr" name="maxage" type="number" value={this.state.maxage} onChange={this.handleChange} />
+
+                <h3>Players</h3>
+                    <input className="mr" name="players" type="number" value={this.state.players} onChange={this.handleChange} />
+
+                <h3>Play time, - de :</h3>
+                    <input className="mr" name="time" type="number" value={this.state.time} onChange={this.handleChange} />
+
+                <h3>Rating :</h3>
+                    <input className="mr" name="rating" type="number" value={this.state.time} onChange={this.handleChange} />
+
+   
 
 
 
