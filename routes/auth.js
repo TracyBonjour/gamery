@@ -80,10 +80,10 @@ router.post("/users", (req, res, next) => {
 });
 
 //User déconnecté
-// router.delete("/session", (req, res) => {
-//   req.logout();
-//   res.status(204).send();
-// });
+router.delete("/session", (req, res) => {
+  req.logout();
+  res.status(204).send();
+});
 
 //User connecté
 router.get("/session", (req, res, next) => {

@@ -27,7 +27,7 @@ class App extends Component {
     if (!this.state.user._id) {
       authService.loggedin()
         .then(data => this.setState({user: data}))
-        .catch(err => this.setState({user: {}}))
+        .catch(err => this.setState({user: false}))
       ;
     } else {
       console.log('user already in the state')
@@ -61,11 +61,11 @@ class App extends Component {
             )} />
 
             <Route exact path="/profile" render={(props) => (
-              <Profile user={this.state.user} updateUser={this.updateUser} history={props.history} />
+              <Profile user={this.state.user} fetchUser={this.fetchUser} updateUser={this.updateUser} history={props.history} />
             )} />
 
             <Route exact path="/profileedit" render={(props) => (
-              <Profileedit user={this.state.user} updateUser={this.updateUser} history={props.history} />
+              <Profileedit user={this.state.user} fetchUser={this.fetchUser} updateUser={this.updateUser} history={props.history} />
             )} />
 
             <Route exact path="/categories" component={CollectionListing}/>

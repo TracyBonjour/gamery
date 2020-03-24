@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import ColTitle from "./ColTitle";
 import { Link } from "react-router-dom";
 import Button from "../Button";
-import axios from 'axios'
+import axios from 'axios';
+// import authService from "../auth/auth-service.js";
 
 class MyCollections extends Component {
   state = {
@@ -20,6 +21,7 @@ class MyCollections extends Component {
     this.setState({ modalOpened: !this.state.modalOpened });
   
   };
+  
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -34,6 +36,15 @@ class MyCollections extends Component {
     .catch(function (error) {
       console.log(error);
     });
+   
+      // test Tracy
+      // authService.addcollection(this.state.colTitle)
+      //   .then(() => {
+      //     this.setState({error: ""});  
+      //   })
+      //   .catch(err => this.setState({error: err.response.data.message}))
+      // ;
+    
     //2. Display message
     this.setState({confirmationMsg:"Collection created!"});
     //3. Close modal
@@ -106,6 +117,7 @@ class MyCollections extends Component {
               type="text"
             />
             <Button> Confirm new collection</Button>
+            {/* <button className="btn" onClick={this.handleSubmit}>Confirm new collection</button> */}
             {this.state.confirmationMsg}
           </form>
           

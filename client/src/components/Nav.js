@@ -16,7 +16,7 @@ class Nav extends Component {
         </div>
 
         <div className="picto">
-            <Link to="/">
+            <Link to="/search">
                 {/* <img className="search" src="../../images/imagenav/baseline_search_black_48dp.png" width="40" height="40" alt="search" /> */}
                 <img className="search" src="../../images/imagenav/baseline_search_white_48dp.png" width="45" height="45" alt="search" />
             </Link>
