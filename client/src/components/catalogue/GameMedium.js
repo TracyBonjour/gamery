@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import Favorite from './Favorite';
 
 class GameMedium extends Component {
     state = {  }
@@ -34,7 +35,9 @@ class GameMedium extends Component {
     render() { 
         
         return ( 
-            <Link to={`/games/${this.props.id}`} className="link">
+          <div className="block-container">
+            <Favorite />
+            <Link to={`/games/${this.props.id}`} className="link ">
              <div className="game-medium flex">
                 <div className="game-medium-row-1">
                     <img className="game-medium-img" src={this.props.img} alt=""/>
@@ -58,6 +61,7 @@ class GameMedium extends Component {
                 </div>
              </div>
             </Link>
+            </div>
          );
     }
 }

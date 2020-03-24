@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import Favorite from './Favorite'
 
 class GameSmall extends Component {
-    state = { 
-      favorite : false,
-     }
-
-     updateFav = () => {
-       this.setState({
-        favorite : !this.state.favorite
-       })
-     }
-
+   state ={
+     user: this.props.user
+   }
     title_short = function(title, length, ending) {
         if (length == null) {
           length = 30;
@@ -30,8 +24,7 @@ class GameSmall extends Component {
         
         return ( 
           <div className="block-container">
-            <img className='favicon' src={this.state.favorite? "/images/imagenav/baseline_star_black_48dp.png" : "/images/imagenav/baseline_star_border_black_48dp.png" } alt="" onClick={this.updateFav} />
-
+            <Favorite/>
             <Link to={`/games/${this.props.id}`} className="link">
              <div className="game-small flex">
                 <div className="game-small-row-1">
