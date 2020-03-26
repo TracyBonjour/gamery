@@ -61,11 +61,4 @@ export default {
     .then(response => response.data)
   },
 
-  // addcollection(colTitle) {
-  //   return this.service.post(`/${this.user.username}/collections`, {
-  //     colTitle
-  //   })
-  //   .then(response => response.data)
-  // },
-
 };

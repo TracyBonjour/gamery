@@ -5,10 +5,7 @@ const Collection = require("../models/Collection");
 
 
 router.get("/", (req, res, next) => {
-  if (err) {
-    res.status(500).json({ message: "Error displaying collections." });
-    return;
-  }
+
   // Check user is logged in
   if (!req.user) {
     res
@@ -19,8 +16,8 @@ router.get("/", (req, res, next) => {
   res.status(200).json(req.user.collections);
 
   // afficher les collections de l'user
-  // test dans postman : 500 err is not defined
-  Collection.find({_id: {$in: req.user.collection}})
+  // test dans postman : 200 OK
+  Collection.find({_id: {$in: req.user.collections}})
     .then(collection => {
       res.status(200).json(collection);
       return;
@@ -59,16 +56,16 @@ router.post("/", (req, res, next) => {
 });
 
 //supprimer une collection
-//test dans postman : 500 Cannot read property 'id' of undefined
+//test dans postman : 200 OK mais réponse null / ne supprime pas dans bdd
 router.delete("/", (req, res, next) => {
   if (!req.user) {
     res.status(401).json({message: "You need to be logged in to delete your collection"});
     return;
   }
 
-  Collection.findByIdAndRemove(req.collection.id)
+  Collection.findByIdAndRemove(req.params.id)
     .then(collection => {
-      res.status(200).json(req.collection);
+      res.status(200).json(collection);
       return;
     })
     .catch(next);
@@ -96,37 +93,6 @@ router.put("/", (req, res, next) => {
     .catch(next);
 });
 
-//option 2 : updated / edit collection
-//test dans postman : KO
-// router.put("/", (req, res, next) => {
-//   if (!req.user) {
-//     res.status(401).json({message: "You need to be logged in to edit your collection"});
-//     return;
-//   }
-
-//   // Updating `req.user` with each `req.body` field (excluding some internal fields `cannotUpdateFields`)
-//   const cannotUpdateFields = ['_id'];
-//   Object.keys(req.body).filter(key => cannotUpdateFields.indexOf(key) === -1).forEach(key => {
-//     req.collection[key] = req.body[key];
-//   });
-
-//   req.collection.validate(function (error) {
-//     if (error) {
-//       res.status(400).json({message: error.errors});
-//       return;
-//     }
-
-//     // Validation ok, let save it
-//     req.user.save(function (err) {
-//       if (err) {
-//         res.status(500).json({message: 'Error while saving user into DB.'});
-//         return;
-//       }
-
-//       res.status(200).json(req.user);
-//     })
-//   });
-// });
 
 
 module.exports = router;
