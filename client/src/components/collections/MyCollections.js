@@ -25,7 +25,7 @@ class MyCollections extends Component {
     event.preventDefault();
     //1. Create new collection
     axios.post(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
-      colTitle: this.state.ColTitle
+      colTitle: this.state.colTitle
     })
     .then(function (response) {
       console.log(response)
