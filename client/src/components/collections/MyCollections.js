@@ -32,7 +32,7 @@ class MyCollections extends Component {
     })
     createCol
       .post(  `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
-        colTitle: this.state.ColTitle
+        colTitle: this.state.colTitle
         
       })
       .then(res => res.data)
