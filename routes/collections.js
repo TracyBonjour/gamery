@@ -46,7 +46,7 @@ router.post("/", (req, res, next) => {
         { new: true }
       )
         .then(() => {
-          res.status(200).json(req.user.collections);
+          res.status(200).json(newCollection.colTitle);
         })
         .catch(error => {
           next(error);
