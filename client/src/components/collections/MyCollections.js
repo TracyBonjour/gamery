@@ -52,13 +52,6 @@ class MyCollections extends Component {
     //   console.log(error);
     // });
    
-      // test Tracy
-      // authService.addcollection(this.state.colTitle)
-      //   .then(() => {
-      //     this.setState({error: ""});  
-      //   })
-      //   .catch(err => this.setState({error: err.response.data.message}))
-      // ;
     
     //2. Display message
     this.setState({confirmationMsg:"Collection created!"});

@@ -94,15 +94,6 @@ router.get("/session", (req, res, next) => {
   res.status(403).json({message: 'Unauthorized'});
 });
 
-//Loggedin pour vérifier si déjà loggué
-// router.get('/session', (req, res, next) => {
-//   // req.isAuthenticated() is defined by passport
-//   if (req.isAuthenticated()) {
-//       res.status(200).json(req.user);
-//       return;
-//   }
-//   res.status(403).json({ message: 'Unauthorized' });
-// });
 
 //updated / edit username, email et password
 router.put("/user", (req, res, next) => {
