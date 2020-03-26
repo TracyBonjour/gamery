@@ -46,7 +46,7 @@ class Login extends Component {
 
             <p>
               <label>
-                <input className="chp" type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
+                <input className="chp" type="email" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
               </label>
             </p>
 

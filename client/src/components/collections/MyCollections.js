@@ -3,19 +3,19 @@ import ColTitle from "./ColTitle";
 import { Link } from "react-router-dom";
 import Button from "../Button";
 import axios from 'axios';
+import { MyContext } from '../MyContext'
 // import authService from "../auth/auth-service.js";
 
 class MyCollections extends Component {
   state = {
-    user: {},
     modalOpened: false,
     colTitle:"",
     confirmationMsg:""
   };
 
-  componentDidMount = () => {
-   this.setState({user:this.props.user})
-  }
+  // componentDidMount = () => {
+  //  this.setState({user:this.props.user})
+  // }
 
   modalToggle = () => {
     this.setState({ modalOpened: !this.state.modalOpened });
@@ -88,10 +88,10 @@ class MyCollections extends Component {
       : "modal-container";
     return (
       <div>
-        {this.props.user.collections === [] ? (
+        {this.context.user.collections ? (
           <div className="listing">
-            {this.props.user.collections.map(col => {
-              return <ColTitle colTitle={col.colTitle} />;
+            {this.context.user.collections.map(col => {
+              return <ColTitle id={col}/>;
             })}
           </div>
         ) : (
@@ -106,7 +106,7 @@ class MyCollections extends Component {
             src="/images/icons/plus_icon_white.png"
             alt=""
           />
-          <Link to={`/${this.props.user.username}/collections/edit`}>
+          <Link to={`/${this.context.user.username}/collections/edit`}>
             <img
               className="icon"
               src="/images/icons/edit_icon_white.png"
@@ -142,5 +142,5 @@ class MyCollections extends Component {
     );
   }
 }
-
+MyCollections.contextType = MyContext;
 export default MyCollections;

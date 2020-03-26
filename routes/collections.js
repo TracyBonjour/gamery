@@ -5,10 +5,6 @@ const Collection = require("../models/Collection");
 
 
 router.get("/", (req, res, next) => {
-  if (err) {
-    res.status(500).json({ message: "Error displaying collections." });
-    return;
-  }
   // Check user is logged in
   if (!req.user) {
     res
@@ -20,7 +16,8 @@ router.get("/", (req, res, next) => {
 
   // afficher les collections de l'user
   // test dans postman : 500 err is not defined
-  Collection.find({_id: {$in: req.user.collection}})
+  Collection.find({_id: {$in: req.user.collections}})
+  .populate('User')
     .then(collection => {
       res.status(200).json(collection);
       return;
@@ -46,6 +43,7 @@ router.post("/", (req, res, next) => {
         { $push: { collections: collection } },
         { new: true }
       )
+      .populate('user')
         .then(() => {
           res.status(200).json(newCollection.colTitle);
         })

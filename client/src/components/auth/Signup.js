@@ -18,9 +18,10 @@ class Signup extends Component {
 
     // 1. Signup
     authService.signup(this.state.username, this.state.email, this.state.password)
-      .then(() => {
+      .then((response) => {
         this.setState({error: ""});
-        this.props.history.push('/');
+        this.props.updateUser(response)
+        this.props.history.push('/profile');
 
       })
       .catch(err => this.setState({error: err.response.data.message}))
@@ -52,7 +53,7 @@ class Signup extends Component {
 
             <p>
               <label>
-                <input className="chp" type="email" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
+                <input className="chp" type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
               </label>
               
             </p>
