@@ -81,7 +81,7 @@ router.put("/", (req, res, next) => {
 
   Collection.findOne({_id: req.params.id})
   .then(collection => {
-    res.status(200).json(req.collection);
+    res.status(200).json(collection);
     return;
   })
   .catch(next);
@@ -89,7 +89,7 @@ router.put("/", (req, res, next) => {
   Collection.update({ _id: req.params.id }, { $set : {
     colTitle: req.body.colTitle,
   }})
-    .then((collections) => res.status(200).json(req.collection))
+    .then((collection) => res.status(200).json(collection))
     .catch(next);
 });
 
