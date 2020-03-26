@@ -32,6 +32,7 @@ router.get("/", (req, res, next) => {
 //ajouter une collection
 //test dans postman : OK et OK dans BDD
 router.post("/", (req, res, next) => {
+  // console.log("coucou:"+req.body.colTitle);
   if (!req.user) {
     res.status(401).json({message: "Login to create and manage collections"});
     return;
@@ -39,10 +40,10 @@ router.post("/", (req, res, next) => {
   const newCollection = new Collection({ colTitle: req.body.colTitle });
   newCollection
     .save()
-    .then(() => {
+    .then((collection) => {
       User.findByIdAndUpdate(
         req.user.id,
-        { $push: { collections: newCollection } },
+        { $push: { collections: collection } },
         { new: true }
       )
         .then(() => {
