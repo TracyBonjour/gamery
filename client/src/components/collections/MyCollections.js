@@ -26,16 +26,31 @@ class MyCollections extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     //1. Create new collection
-    axios.post(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
-      colTitle: this.state.colTitle
+
+    const createCol = axios.create({
+      withCredentials: true
     })
-    .then(function (response) {
-      console.log(response)
-      this.setState({user:this.props.user})
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+    createCol
+      .post(  `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
+        colTitle: this.state.ColTitle
+        
+      })
+      .then(res => res.data)
+      .catch(err => { /* not hit since no 401 */ })
+
+    // axios.post(
+    //   `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
+    //   withCredentials: true,
+    //   data: {colTitle: this.state.ColTitle}
+      
+    // })
+    // .then(function (response) {
+    //   console.log(response)
+    //   this.setState({user:this.props.user})
+    // })
+    // .catch(function (error) {
+    //   console.log(error);
+    // });
    
       // test Tracy
       // authService.addcollection(this.state.colTitle)
