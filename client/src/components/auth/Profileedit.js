@@ -2,32 +2,43 @@ import React, { Component } from "react";
 //import Button from '../Button';
 //import { Redirect } from 'react-router-dom';
 import Loader from '../Loader.js';
-
+import { MyContext } from '../MyContext'
 import authService from "./auth-service.js";
 
 class Profileedit extends Component {
   state = {
-    username: this.props.user.username, // undefined
-    email: this.props.user.email,
-    password: this.props.user.password,
+    // username: this.context.user.username, 
+    // email: this.context.user.email,
+    // password: this.context.user.password,
 
-    error: ""
+    // error: ""
   }
 
-  componentDidUpdate(prevProps) {
-    // 
-    if (prevProps.user !== this.props.user) {
-      this.setState({
-        username: this.props.user.username,
-        email: this.props.user.email,
-        password: this.props.user.password
-      })
-      if (!this.props.user._id) {
-        // alert("✋You need to be logged in to edit your profile");
-        this.props.history.push('/login');
-      }
-    }
+  componentDidMount = () => {
+    this.setState({
+      username: this.context.user.username, 
+      email: this.context.user.email,
+      password: this.context.user.password,
+  
+      error: ""
+    })
   }
+
+
+  // componentDidUpdate(prevProps) {
+  //   // 
+  //   if (prevProps.user !== this.props.user) {
+  //     this.setState({
+  //       username: this.props.user.username,
+  //       email: this.props.user.email,
+  //       password: this.props.user.password
+  //     })
+  //     if (!this.props.user._id) {
+  //       // alert("✋You need to be logged in to edit your profile");
+  //       this.props.history.push('/login');
+  //     }
+  //   }
+  // }
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -81,7 +92,7 @@ class Profileedit extends Component {
 
   render() {
 
-    if (!this.props.user._id) return <Loader></Loader>
+    if (!this.context.user._id) return <Loader></Loader>
 
     return (
       <div className="Profile">
@@ -91,7 +102,7 @@ class Profileedit extends Component {
       <form onSubmit={this.handleSubmit}>
       
         <label>
-            <img className="avatar" src={this.props.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
+            <img className="avatar" src={this.context.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
             <input type="file" name="image" onChange={this.handleUpload} />
         </label>
 
@@ -104,7 +115,7 @@ class Profileedit extends Component {
         </p>
 
         <p>
-          <input className="chp" type="text" name="password" value={this.state.password} onChange={this.handleChange} />
+          <input className="chp" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
         </p>
 
         <p>
@@ -233,5 +244,8 @@ class Profileedit extends Component {
     );
   }
 }
+
+Profileedit.contextType = MyContext;
+
 
 export default Profileedit;

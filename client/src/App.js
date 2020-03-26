@@ -18,6 +18,9 @@ import CollectionDetailed from './components/catalogue/CollectionDetailed'
 import MyCollections from './components/collections/MyCollections'
 import EditCollections from './components/collections/EditCollections'
 
+import { MyContext } from './components/MyContext.js'
+
+
 class App extends Component {
   state = {
     user: {}
@@ -44,12 +47,13 @@ class App extends Component {
 
   render() {
     return (
+      <MyContext.Provider value={{ user: this.state.user }}>
       <Route render={props => (
         <div className="App" data-route={props.location.pathname}> {/* data-route="/" allow us to style pages */}
 
           <Switch>
             <Route exact path="/" render={(props) => (
-              <Homepage user={this.state.user} />
+              <Homepage />
             )} />
 
             <Route exact path="/signup" render={(props) => (
@@ -61,11 +65,11 @@ class App extends Component {
             )} />
 
             <Route exact path="/profile" render={(props) => (
-              <Profile user={this.state.user} fetchUser={this.fetchUser} updateUser={this.updateUser} history={props.history} />
+              <Profile updateUser={this.updateUser} history={props.history} />
             )} />
 
             <Route exact path="/profileedit" render={(props) => (
-              <Profileedit user={this.state.user} fetchUser={this.fetchUser} updateUser={this.updateUser} history={props.history} />
+              <Profileedit updateUser={this.updateUser} history={props.history} />
             )} />
 
             <Route exact path="/categories" component={CollectionListing}/>
@@ -102,8 +106,12 @@ class App extends Component {
           <Nav></Nav>
         </div>
       )} />
-    );
+    </MyContext.Provider>);
   }
 }
 
 export default App;
+
+
+
+

@@ -26,7 +26,7 @@ class MyCollections extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     //1. Create new collection
-    axios.post(`/${this.props.user.username}/collections`, {
+    axios.post(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
       colTitle: this.state.ColTitle
     })
     .then(function (response) {
