@@ -37,7 +37,7 @@ router.post("/", (req, res, next) => {
     res.status(401).json({message: "Login to create and manage collections"});
     return;
   }
-  const newCollection = new Collection({ colTitle: req.body.colTitle });
+  const newCollection = new Collection(data);
   newCollection
     .save()
     .then((collection) => {
