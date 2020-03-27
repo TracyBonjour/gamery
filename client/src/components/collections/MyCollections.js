@@ -10,18 +10,33 @@ class MyCollections extends Component {
   state = {
     modalOpened: false,
     colTitle:"",
-    confirmationMsg:""
+    confirmationMsg:"",
+    collections: []
   };
 
-  // componentDidMount = () => {
-  //  this.setState({user:this.props.user})
+
+componentDidMount = () => {
+  axios.create({
+    withCredentials: true
+  }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+  .then(response => response.data)
+ //.then(data => data.map(col => col.colTitle))
+     .then(data => this.setState({collections: data}))
+  }
+
+  // componentDidUpdate() {
+  //   axios.create({
+  //     withCredentials: true
+  //   }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+  //     .then(response=> response.data)
+  //     .then(data => this.setState({collections: data}))
   // }
+
 
   modalToggle = () => {
     this.setState({ modalOpened: !this.state.modalOpened });
   
   };
-  
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -36,23 +51,9 @@ class MyCollections extends Component {
         
       })
       .then(res => res.data)
+      .then(this.componentDidMount)
       .catch(err => { /* not hit since no 401 */ })
 
-    // axios.post(
-    //   `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
-    //   withCredentials: true,
-    //   data: {colTitle: this.state.ColTitle}
-      
-    // })
-    // .then(function (response) {
-    //   console.log(response)
-    //   this.setState({user:this.props.user})
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
-   
-    
     //2. Display message
     this.setState({confirmationMsg:"Collection created!"});
     //3. Close modal
@@ -62,9 +63,6 @@ class MyCollections extends Component {
         colTitle:"",
         confirmationMsg:""})
     }, 2000);
-
-    
-    
   }
 
   handleChange = (event) => {
@@ -81,10 +79,10 @@ class MyCollections extends Component {
       : "modal-container";
     return (
       <div>
-        {this.context.user.collections ? (
+        {this.state.collections !== [] ? (
           <div className="listing">
-            {this.context.user.collections.map(col => {
-              return <ColTitle id={col}/>;
+            {this.state.collections.map(col => {
+              return <ColTitle colTitle={col.colTitle} id={col._id}/>;
             })}
           </div>
         ) : (

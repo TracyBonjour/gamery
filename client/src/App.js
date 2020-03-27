@@ -92,11 +92,15 @@ class App extends Component {
             )} /> 
 
             <Route exact path="/:id/collections" render={(props) => (
-              <MyCollections history={props.history} user={this.state.user} />
+              <MyCollections updateUser={this.updateUser} history={props.history} user={this.state.user} />
             )} />
 
             <Route exact path="/:id/collections/edit" render={(props) => (
               <EditCollections history={props.history} />
+            )} />
+
+            <Route exact path="/:userid/collections/:id/:name" render={(props) => (
+              <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name} />
             )} />
 
 

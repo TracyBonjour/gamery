@@ -24,7 +24,7 @@ class GameSmall extends Component {
         
         return ( 
           <div className="block-container">
-            <Favorite/>
+            <Favorite game_id={this.props.id}/>
             <Link to={`/games/${this.props.id}`} className="link">
              <div className="game-small flex">
                 <div className="game-small-row-1">

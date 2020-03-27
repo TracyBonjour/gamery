@@ -22,7 +22,7 @@ class Login extends Component {
         this.setState({error: ""});
 
         this.props.updateUser(response);
-        this.props.history.push('/');
+        this.props.history.push('/profile');
       })
       .catch(err => this.setState({error: err.response.data.message}))
     ;

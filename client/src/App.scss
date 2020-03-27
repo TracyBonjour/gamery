@@ -33,6 +33,11 @@ body  {
 display:flex
 }
 
+.flex-column {
+	display:flex;
+	flex-direction: column;
+	}
+
 .button {
 	text-align: center;
 }

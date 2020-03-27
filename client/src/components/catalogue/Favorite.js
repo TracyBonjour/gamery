@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MyContext } from "../MyContext";
 import Button from "../Button"
+import axios from 'axios'
 
 class Favorite extends Component {
   state = {
@@ -8,12 +9,21 @@ class Favorite extends Component {
     modalOpened: false,
     colTitle: "",
     confirmationMsg: "",
-    favorite: false
+    favorite: false,
+    collections: [],
+    col_id:""
   };
 
-  //   componentDidMount = () => {
-  //     this.setState({ user: this.context.user });
-  //   };
+  componentDidMount = () => {
+    axios.create({
+      withCredentials: true
+    }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+    .then(response => response.data)
+   //.then(data => data.map(col => col.colTitle))
+       .then(data => this.setState({collections: data}))
+    }
+
+
 
   modalToggle = () => {
     this.setState({ modalOpened: !this.state.modalOpened });
@@ -24,6 +34,61 @@ class Favorite extends Component {
       favorite: !this.state.favorite
     });
   };
+
+
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    
+
+    const update = axios.create({
+      withCredentials: true
+    })
+
+    //1. Create new collection if needed
+
+    // if (this.state.colTitle){
+    // update
+    //   .post(  `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
+    //     colTitle: this.state.colTitle 
+        
+    //   })
+    //   .then(res => res.data)
+    //   .then(this.componentDidMount)
+    //   .catch(err => { /* not hit since no 401 */ })}
+
+      //2. Add game to collection
+      update
+      .get(`https://www.boardgameatlas.com/api/search?ids=${this.props.game_id}&client_id=FWG6FKSO4N `)
+      .then(response => response.games)
+      // 2A create game in back (ref needed to add to collection)
+      .then( games =>
+        update.post(`${process.env.REACT_APP_APIURL || ""}/api/user/collections/${this.state.col_id}`, {
+          games:games[0]
+        })
+        .then(this.componentDidMount)
+        .catch(err => { /* not hit since no 401 */ })
+      )
+      //2B update collection
+      .then( data =>
+        update.put(`${process.env.REACT_APP_APIURL || ""}/api/user/collections/${this.state.col_id}`, {
+          games:{data}
+        })
+        .then(this.componentDidMount)
+        .catch(err => { /* not hit since no 401 */ })
+      )
+      
+
+    //3. Display message
+    this.setState({confirmationMsg:"Game added to collection!"});
+    //4. Close modal
+    setTimeout(() => {
+      //this.modalToggle() // close
+      this.setState({modalOpened: false,
+        colTitle:"",
+        confirmationMsg:""})
+    }, 2000);
+  }
 
   handleChange = (event) => {
     const {name, value} = event.target;
@@ -56,27 +121,21 @@ class Favorite extends Component {
             <p className="">Add to collection</p>
             <hr />
           </div>
-          <form className="modal-body dark-text center" onSubmit={this.handleSubmit}>
-            <select name="colList" id="">
-              {this.context.user.collections === [] ? (
-            this.context.user.collections.map(col => {
-              return <option>{col}</option>;
-            })
-        ) : (
-          <div>
-            <h2>No collections yet, click below to start a new collection</h2>
-          </div>
-        )}
+          <form className="modal-body dark-text center flex-column" onSubmit={this.handleSubmit}>
+            <select name="col_id" id="colList" onChange={this.handleChange}>
+            {this.state.collections.map(col => {
+              return <option value={col._id}>{col.colTitle}</option>;
+            })}
             </select>
-            <label htmlFor="colTitle">Name your new collection</label>
+            {/* <label htmlFor="colTitle">Or add to new collection:</label>
             <input
               name="colTitle"
               value={this.state.colTitle}
-              onChange={this.handleChange}
-              className="chp-modal"
+              onSelect={this.handleChange}
+              className="chp-modal center"
               type="text"
-            />
-            <Button> Confirm new collection</Button>
+            /> */}
+            <Button> Add to collection</Button>
             {/* <button className="btn" onClick={this.handleSubmit}>Confirm new collection</button> */}
             {this.state.confirmationMsg}
           </form>
