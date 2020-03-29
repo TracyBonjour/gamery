@@ -26,14 +26,12 @@ class CollectionDetailed extends Component {
         //         .then(data => this.setState({games:[...this.state.games].push(data)}))))
         }
 
-          componentDidUpdate = () => {
-              let games2 = [...this.state.games]
-            this.state.collection.map(game_id => 
-            axios.get(`https://www.boardgameatlas.com/api/search?ids=${game_id}&client_id=FWG6FKSO4N `)
+          componentDidUpdate = () => { // ne marche pas car la collection vaut un tableau et il faut juste l'intérieur du tableau
+          //eg qui fonctionne : https://www.boardgameatlas.com/api/search?ids=SVQRjsXrhj,OIXt3DmJU0&client_id=FWG6FKSO4N
+            axios.get(`https://www.boardgameatlas.com/api/search?ids=${this.state.collection}&client_id=FWG6FKSO4N `)
             .then(response => response.data)
-            .then(data => games2.push(data))
-            .then (this.setState({games:games2}))
-            )}
+            .then(data => this.setState({games:data}))
+            }
     //     let route;
     //     route = `https://www.boardgameatlas.com/api/search?ids=${this.props.gameId}&client_id=FWG6FKSO4N `
 
