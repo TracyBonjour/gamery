@@ -14,7 +14,7 @@ import authService from './components/auth/auth-service.js';
 import CollectionListing from './components/catalogue/CollectionListing';
 import GameDetailed from './components/catalogue/GameDetailed';
 import CollectionDetailed from './components/catalogue/CollectionDetailed'
-
+import axios from 'axios'
 import MyCollections from './components/collections/MyCollections'
 import EditCollections from './components/collections/EditCollections'
 
@@ -23,13 +23,15 @@ import { MyContext } from './components/MyContext.js'
 
 class App extends Component {
   state = {
-    user: {}
+    user: {},
+    collections: []
   }
 
   fetchUser = () => {
     if (!this.state.user._id) {
       authService.loggedin()
-        .then(data => this.setState({user: data}))
+        .then(
+          data => this.setState({user: data}))
         .catch(err => this.setState({user: false}))
       ;
     } else {
@@ -39,15 +41,27 @@ class App extends Component {
 
   updateUser = (data) => {
     this.setState({user: data});
-  };
+    axios.create({
+      withCredentials: true
+    }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+    .then(response => response.data)
+   //.then(data => data.map(col => col.colTitle))
+       .then(data => this.setState({collections: data}))
+    }
 
   componentDidMount() {
     this.fetchUser();
+    axios.create({
+      withCredentials: true
+    }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+    .then(response => response.data)
+   //.then(data => data.map(col => col.colTitle))
+       .then(data => this.setState({collections: data}))
   }
 
   render() {
     return (
-      <MyContext.Provider value={{ user: this.state.user }}>
+      <MyContext.Provider value={{ user: this.state.user, collections:this.state.collections }}>
       <Route render={props => (
         <div className="App" data-route={props.location.pathname}> {/* data-route="/" allow us to style pages */}
 
