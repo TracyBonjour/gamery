@@ -32,10 +32,12 @@ class Favorite extends Component {
     const updateCol = axios.create({
       withCredentials: true
     })
-    //1. Get game to add game to collection - can be done with props only?
+    //Get game to add game to collection - can be done with props only, not needed
     // updateCol
     //   .get(`https://www.boardgameatlas.com/api/search?ids=${this.props.game_id}&client_id=FWG6FKSO4N `)
     //   .then(response => response.games)
+
+    //1a create new collection if any
     if (this.state.colTitle){
     updateCol
       .post(  `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
@@ -44,7 +46,7 @@ class Favorite extends Component {
       .catch(err => { /* not hit since no 401 */ })} else{
 
 
-      // 2A create game in back (ref needed to add to collection)
+      // create game in back (ref needed to add to collection)
       // .then( games =>
       //   update.put(`${process.env.REACT_APP_APIURL || ""}/api/user/collections/${this.state.col_id}`, {
       //     games:games[0]
@@ -52,8 +54,9 @@ class Favorite extends Component {
       //   .then(this.componentDidMount)
       //   .catch(err => { /* not hit since no 401 */ })
       // )
-      //2B update collection
       //.then( games =>
+
+      //1b else update existing collection with new game
         updateCol.put(`${process.env.REACT_APP_APIURL || ""}/api/user/collections/${this.state.col_id}`, {
           games:this.props.game_id
         })
@@ -61,9 +64,9 @@ class Favorite extends Component {
       //)
       
 
-    //3. Display message
+    //2. Display message
     this.setState({confirmationMsg:"Game added to collection!"});
-    //4. Close modal
+    //3. Close modal
     setTimeout(() => {
       //this.modalToggle() // close
       this.setState({modalOpened: false,
