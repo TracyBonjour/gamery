@@ -3,7 +3,7 @@ import axios from 'axios';
 import GameMedium from './GameMedium'
 import images from '../../images'
 
-class CollectionDetailed extends Component {
+class CategoryDetailed extends Component {
     
     state = { 
         collection: []
@@ -49,4 +49,4 @@ class CollectionDetailed extends Component {
     }
 }
  
-export default CollectionDetailed;
+export default CategoryDetailed;

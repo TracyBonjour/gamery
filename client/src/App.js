@@ -11,9 +11,10 @@ import Nav from './components/Nav.js';
 import SearchGame from './components/catalogue/SearchGame.js';
 
 import authService from './components/auth/auth-service.js';
-import CollectionListing from './components/catalogue/CollectionListing';
+import CategoryListing from './components/catalogue/CategoryListing';
 import GameDetailed from './components/catalogue/GameDetailed';
-import CollectionDetailed from './components/catalogue/CollectionDetailed'
+import CategoryDetailed from './components/catalogue/CategoryDetailed'
+import CollectionDetailed from './components/collections/CollectionDetailed'
 import axios from 'axios'
 import MyCollections from './components/collections/MyCollections'
 import EditCollections from './components/collections/EditCollections'
@@ -86,12 +87,12 @@ class App extends Component {
               <Profileedit updateUser={this.updateUser} history={props.history} />
             )} />
 
-            <Route exact path="/categories" component={CollectionListing}/>
+            <Route exact path="/categories" component={CategoryListing}/>
             )} /> 
 
             <Route exact path="/categories/:id/:name" render={props => {
                 return (
-                  <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name}/>
+                  <CategoryDetailed collectionId={props.match.params.id} colTitle={props.match.params.name}/>
                 );
               }} />
 
