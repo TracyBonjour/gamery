@@ -36,7 +36,7 @@ class GameMedium extends Component {
         
         return ( 
           <div className="block-container">
-            <Favorite game_id={this.props.id} />
+            {this.props.fav? <Favorite game_id={this.props.id} />:""}
             <Link to={`/games/${this.props.id}`} className="link ">
              <div className="game-medium flex">
                 <div className="game-medium-row-1">

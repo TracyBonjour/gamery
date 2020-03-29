@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import ColTitle from "./ColTitle";
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 import Button from "../Button";
 import axios from 'axios';
 import { MyContext } from '../MyContext'
+import Signup from '../auth/Signup'
 // import authService from "../auth/auth-service.js";
 
 class MyCollections extends Component {
@@ -71,6 +72,7 @@ componentDidMount = () => {
   } 
 
   render() {
+    if (!this.context.user._id) return <div><h1>Create an account to start collecting your favorite games !</h1><Signup h1={false}/></div>
     const coverClass = this.state.modalOpened
       ? "modal-cover modal-cover-active"
       : "modal-cover";
@@ -78,6 +80,7 @@ componentDidMount = () => {
       ? "modal-container modal-container-active"
       : "modal-container";
     return (
+      
       <div>
         {this.state.collections !== [] ? (
           <div className="listing">

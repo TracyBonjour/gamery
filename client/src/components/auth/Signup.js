@@ -36,7 +36,7 @@ class Signup extends Component {
   render() {
     return (
         <div className="Signup">
-          <h1>Sign up</h1>
+         {this.props.h1!==false? <h1>Sign up</h1> :""}
           
           <form onSubmit={this.handleSubmit}>
 
@@ -75,9 +75,9 @@ class Signup extends Component {
 
           </form>
 
-          <p>
-            <small><Link className="link" to="/login">Already a user? Log in</Link></small>
-           
+          <p>            {this.props.black?
+            <small><Link className="link-black" to="/login">Already a user? Log in</Link></small> :
+            <small><Link className="link" to="/login">Already a user? Log in</Link></small>}
           </p>
 
         </div>

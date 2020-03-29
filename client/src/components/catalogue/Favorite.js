@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MyContext } from "../MyContext";
 import Button from "../Button"
 import axios from 'axios'
+import Signup from "../auth/Signup";
 
 class Favorite extends Component {
   state = {
@@ -102,8 +103,10 @@ class Favorite extends Component {
               {/* modal */}
 
               <div className={containerClass}>
+              {this.context.user?
+              <div>
           <div className="modal-header dark-text">
-            <p className="">Add to collection</p>
+             <p className="">Add to collection</p>
             <hr />
           </div>
           <form className="modal-body dark-text center flex-column" onSubmit={this.handleSubmit}>
@@ -124,7 +127,9 @@ class Favorite extends Component {
             {/* <button className="btn" onClick={this.handleSubmit}>Confirm new collection</button> */}
             {this.state.confirmationMsg}
           </form>
-          
+          </div>
+          : <div className='center'> <h3 style={{color:'black'}}>Create an account to start saving your favorite games!</h3><Signup h1={false} black={true}/></div>}
+
         </div>
         <div className={coverClass} onClick={this.modalToggle}></div>
       </div>
