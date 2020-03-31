@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
+import { MyContext } from '../MyContext'
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
 class ColTitle extends Component {
-    state = {  }
+
+    state = {
+        collection: {}
+    }
+
+    componentDidMount() {
+        axios.get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections/${this.props.id}`, )
+          .then(response=> response.data)
+          .then(data => this.setState({collection: data}))
+      }
+
     render() { 
         return ( 
-            <div>
-            req.user.collections?
-            <div className='flex'>
+
+            <Link to={`/${this.context.user.username}/collections/${this.state.collection._id}/${this.state.collection.colTitle}`} className='flex'>
                 <div>
                     <h2>{this.props.colTitle}</h2>
                 </div>
                 <div>
                 <p>❯</p>
                 </div>
-            </div>
-            :
-            <div><h2>No collections yet, click below to start a new collection</h2></div>
-           <div className="flex">
-               <img src="" alt=""/>
-               <img src="" alt=""/>
-           </div>
-            </div>
+            </Link>
             );
     }
 }
- 
+ColTitle.contextType = MyContext;
 export default ColTitle;

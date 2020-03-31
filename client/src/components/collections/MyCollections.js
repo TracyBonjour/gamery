@@ -1,29 +1,43 @@
 import React, { Component } from "react";
 import ColTitle from "./ColTitle";
-import { Link } from "react-router-dom";
+import { Link,Redirect } from "react-router-dom";
 import Button from "../Button";
 import axios from 'axios';
+import { MyContext } from '../MyContext'
+import Signup from '../auth/Signup'
 // import authService from "../auth/auth-service.js";
 
 class MyCollections extends Component {
   state = {
-    user: {},
     modalOpened: false,
     colTitle:"",
-    confirmationMsg:""
+    confirmationMsg:"",
+    collections: []
   };
 
-  componentDidMount = () => {
-   this.setState({
-     user:this.props.user
-    })
+
+componentDidMount = () => {
+  axios.create({
+    withCredentials: true
+  }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+  .then(response => response.data)
+ //.then(data => data.map(col => col.colTitle))
+     .then(data => this.setState({collections: data}))
   }
+
+  // componentDidUpdate() {
+  //   axios.create({
+  //     withCredentials: true
+  //   }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+  //     .then(response=> response.data)
+  //     .then(data => this.setState({collections: data}))
+  // }
+
 
   modalToggle = () => {
     this.setState({ modalOpened: !this.state.modalOpened });
   
   };
-  
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -38,23 +52,9 @@ class MyCollections extends Component {
         
       })
       .then(res => res.data)
+      .then(this.componentDidMount)
       .catch(err => { /* not hit since no 401 */ })
 
-    // axios.post(
-    //   `${process.env.REACT_APP_APIURL || ""}/api/user/collections`, {
-    //   withCredentials: true,
-    //   data: {colTitle: this.state.ColTitle}
-      
-    // })
-    // .then(function (response) {
-    //   console.log(response)
-    //   this.setState({user:this.props.user})
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
-   
-    
     //2. Display message
     this.setState({confirmationMsg:"Collection created!"});
     //3. Close modal
@@ -64,9 +64,6 @@ class MyCollections extends Component {
         colTitle:"",
         confirmationMsg:""})
     }, 2000);
-
-    
-    
   }
 
   handleChange = (event) => {
@@ -75,6 +72,7 @@ class MyCollections extends Component {
   } 
 
   render() {
+    if (!this.context.user._id) return <div><h1>Create an account to start collecting your favorite games !</h1><Signup h1={false}/></div>
     const coverClass = this.state.modalOpened
       ? "modal-cover modal-cover-active"
       : "modal-cover";
@@ -82,11 +80,12 @@ class MyCollections extends Component {
       ? "modal-container modal-container-active"
       : "modal-container";
     return (
+      
       <div>
-        {this.props.user.collections === [] ? (
+        {this.state.collections !== [] ? (
           <div className="listing">
-            {this.props.user.collections.map(col => {
-              return <ColTitle colTitle={col.colTitle} />;
+            {this.state.collections.map(col => {
+              return <ColTitle colTitle={col.colTitle} id={col._id}/>;
             })}
           </div>
         ) : (
@@ -101,7 +100,7 @@ class MyCollections extends Component {
             src="/images/icons/plus_icon_white.png"
             alt=""
           />
-          <Link to={`/${this.props.user.username}/collections/edit`}>
+          <Link to={`/${this.context.user.username}/collections/edit`}>
             <img
               className="icon"
               src="/images/icons/edit_icon_white.png"
@@ -137,5 +136,5 @@ class MyCollections extends Component {
     );
   }
 }
-
+MyCollections.contextType = MyContext;
 export default MyCollections;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import {Link, Redirect} from 'react-router-dom';
-import Loader from '../Loader.js';
+// import Loader from '../Loader.js';
 
 import authService from "./auth-service.js";
 

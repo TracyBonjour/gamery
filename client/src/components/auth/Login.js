@@ -22,7 +22,7 @@ class Login extends Component {
         this.setState({error: ""});
 
         this.props.updateUser(response);
-        this.props.history.push('/');
+        this.props.history.push('/profile');
       })
       .catch(err => this.setState({error: err.response.data.message}))
     ;
@@ -46,7 +46,7 @@ class Login extends Component {
 
             <p>
               <label>
-                <input className="chp" type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
+                <input className="chp" type="email" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
               </label>
             </p>
 

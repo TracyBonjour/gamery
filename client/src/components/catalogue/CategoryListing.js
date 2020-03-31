@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom'
-import CollectionSmall from './CollectionSmall'
+import CategorySmall from './CategorySmall'
 import images from '../../images'
 
 const imgsMap = {
@@ -9,7 +9,7 @@ const imgsMap = {
     'adventure': ''
 }
 
-class CollectionListing extends Component {
+class CategoryListing extends Component {
     state = { 
         categories: []
      }
@@ -65,7 +65,7 @@ class CollectionListing extends Component {
                 <h1>All recommended categories</h1>
                 <div className="listing">
                     {this.state.categories.map(cat => {return(
-                        <CollectionSmall link={cat.id} colTitle={cat.name} src={cat.image} />
+                        <CategorySmall id={cat.id} colTitle={cat.name} src={cat.image} />
                      )})}
                 </div>
                 </div>
@@ -73,4 +73,4 @@ class CollectionListing extends Component {
     }
 }
  
-export default CollectionListing;
+export default CategoryListing;

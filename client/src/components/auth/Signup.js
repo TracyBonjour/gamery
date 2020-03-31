@@ -18,9 +18,10 @@ class Signup extends Component {
 
     // 1. Signup
     authService.signup(this.state.username, this.state.email, this.state.password)
-      .then(() => {
+      .then((response) => {
         this.setState({error: ""});
-        this.props.history.push('/');
+        this.props.updateUser(response)
+        this.props.history.push('/profile');
 
       })
       .catch(err => this.setState({error: err.response.data.message}))
@@ -35,7 +36,7 @@ class Signup extends Component {
   render() {
     return (
         <div className="Signup">
-          <h1>Sign up</h1>
+         {this.props.h1!==false? <h1>Sign up</h1> :""}
           
           <form onSubmit={this.handleSubmit}>
 
@@ -52,7 +53,7 @@ class Signup extends Component {
 
             <p>
               <label>
-                <input className="chp" type="email" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
+                <input className="chp" type="text" name="email" placeholder="email" value={this.state.email} onChange={this.handleChange} />
               </label>
               
             </p>
@@ -74,9 +75,9 @@ class Signup extends Component {
 
           </form>
 
-          <p>
-            <small><Link className="link" to="/login">Already a user? Log in</Link></small>
-           
+          <p>            {this.props.black?
+            <small><Link className="link-black" to="/login">Already a user? Log in</Link></small> :
+            <small><Link className="link" to="/login">Already a user? Log in</Link></small>}
           </p>
 
         </div>

@@ -11,10 +11,11 @@ import Nav from './components/Nav.js';
 import SearchGame from './components/catalogue/SearchGame.js';
 
 import authService from './components/auth/auth-service.js';
-import CollectionListing from './components/catalogue/CollectionListing';
+import CategoryListing from './components/catalogue/CategoryListing';
 import GameDetailed from './components/catalogue/GameDetailed';
-import CollectionDetailed from './components/catalogue/CollectionDetailed'
-
+import CategoryDetailed from './components/catalogue/CategoryDetailed'
+import CollectionDetailed from './components/collections/CollectionDetailed'
+import axios from 'axios'
 import MyCollections from './components/collections/MyCollections'
 import EditCollections from './components/collections/EditCollections'
 
@@ -23,13 +24,15 @@ import { MyContext } from './components/MyContext.js'
 
 class App extends Component {
   state = {
-    user: {}
+    user: {},
+    collections: []
   }
 
   fetchUser = () => {
     if (!this.state.user._id) {
       authService.loggedin()
-        .then(data => this.setState({user: data}))
+        .then(
+          data => this.setState({user: data}))
         .catch(err => this.setState({user: false}))
       ;
     } else {
@@ -39,15 +42,27 @@ class App extends Component {
 
   updateUser = (data) => {
     this.setState({user: data});
-  };
+    axios.create({
+      withCredentials: true
+    }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+    .then(response => response.data)
+   //.then(data => data.map(col => col.colTitle))
+       .then(data => this.setState({collections: data}))
+    }
 
   componentDidMount() {
     this.fetchUser();
+    axios.create({
+      withCredentials: true
+    }).get(`${process.env.REACT_APP_APIURL || ""}/api/user/collections`)
+    .then(response => response.data)
+   //.then(data => data.map(col => col.colTitle))
+       .then(data => this.setState({collections: data}))
   }
 
   render() {
     return (
-      <MyContext.Provider value={{ user: this.state.user }}>
+      <MyContext.Provider value={{ user: this.state.user, collections:this.state.collections }}>
       <Route render={props => (
         <div className="App" data-route={props.location.pathname}> {/* data-route="/" allow us to style pages */}
 
@@ -72,12 +87,12 @@ class App extends Component {
               <Profileedit updateUser={this.updateUser} history={props.history} />
             )} />
 
-            <Route exact path="/categories" component={CollectionListing}/>
+            <Route exact path="/categories" component={CategoryListing}/>
             )} /> 
 
             <Route exact path="/categories/:id/:name" render={props => {
                 return (
-                  <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name}/>
+                  <CategoryDetailed collectionId={props.match.params.id} colTitle={props.match.params.name}/>
                 );
               }} />
 
@@ -92,11 +107,15 @@ class App extends Component {
             )} /> 
 
             <Route exact path="/:id/collections" render={(props) => (
-              <MyCollections history={props.history} user={this.state.user} />
+              <MyCollections updateUser={this.updateUser} history={props.history} user={this.state.user} />
             )} />
 
             <Route exact path="/:id/collections/edit" render={(props) => (
               <EditCollections history={props.history} />
+            )} />
+
+            <Route exact path="/:userid/collections/:id/:name" render={(props) => (
+              <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name} />
             )} />
 
 

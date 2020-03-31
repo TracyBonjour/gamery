@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Favorite from './Favorite'
 
 class GameDetailed extends Component {
     
@@ -31,9 +32,13 @@ class GameDetailed extends Component {
         var players= this.state.game.min_players && this.state.game.max_players ? (this.state.game.min_players + " - " + this.state.game.max_players + " players") : "No players info"
 
         return ( 
-            <div>
+            <div >
                 <h1>{this.state.game.name}</h1>
-                <img className="game-medium-img" src={this.state.game.image_url} alt={this.state.game.name}/>
+                <div className='block-container'>   
+                    <Favorite game_id={this.props.gameId} />
+             
+                    <img className="game-medium-img" src={this.state.game.image_url} alt={this.state.game.name}/>
+</div>
                 <div className="game-medium-row-3">
                     {this.state.game.description_preview}
                 </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CarouselGames from './catalogue/CarouselGames';
-import CollectionSmall from './catalogue/CollectionSmall';
+import CategorySmall from './catalogue/CategorySmall';
 import Button from './Button'
 import {Link} from 'react-router-dom'
 
@@ -19,10 +19,12 @@ class Homepage extends Component {
                 <CarouselGames header='Best rated' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&order_by=average_user_rating'/>
                 
                 <h3>Browse recommended categories</h3>
-                <CollectionSmall link="7rV11PKqME" colTitle="Family Game" src="../../images/categories/family2.jpg"/>
-                <CollectionSmall link="ge8pIhEUGE" colTitle="Cooperative" src="../../images/categories/cooperativegames1.jpg"/>
+                <CategorySmall id="O0ogzwLUe8" colTitle="Strategy" src="../../images/categories/strategy.jpg"/>
+                <CategorySmall id="X8J7RM6dxX" colTitle="Party Game" src="../../images/categories/party2.jpg"/>
+                <CategorySmall id="7rV11PKqME" colTitle="Family Game" src="../../images/categories/family2.jpg"/>
+                <CategorySmall id="ge8pIhEUGE" colTitle="Cooperative" src="../../images/categories/cooperativegames1.jpg"/>
                 <Link to='/categories'>
-                <Button>See more recommended categories</Button>
+                <Button>See all recommended categories</Button>
                 </Link>
             </div>
          );
