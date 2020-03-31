@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import CarouselGames from './catalogue/CarouselGames';
 import CategorySmall from './catalogue/CategorySmall';
-import Button from './Button'
-import {Link} from 'react-router-dom'
+import Button from './Button';
+import {Link} from 'react-router-dom';
+import {MyContext} from './MyContext';
 
 class Homepage extends Component {
     state = {  }
@@ -30,5 +31,6 @@ class Homepage extends Component {
          );
     }
 }
- 
+
+Homepage.contextType = MyContext;
 export default Homepage;
