@@ -67,6 +67,7 @@ class Favorite extends Component {
 
     //2. Display message
     this.setState({confirmationMsg:"Game added to collection!"});
+    this.updateFav();
     //3. Close modal
     setTimeout(() => {
       //this.modalToggle() // close

@@ -34,6 +34,7 @@ class CategoryDetailed extends Component {
                 <div>
                     {this.state.collection.map(game => {return(
                         <GameMedium 
+                        fav={true}
                         title={game.name} 
                         img={game.images.small} 
                         id={game.id} 
