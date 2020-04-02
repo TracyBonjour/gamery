@@ -114,9 +114,9 @@ class Profileedit extends Component {
           <input className="chp" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
         </p>
 
-        <p>
+        {/* <p>
           <input className="chp" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-        </p>
+        </p> */}
 
         <p>
           <select name="dep">

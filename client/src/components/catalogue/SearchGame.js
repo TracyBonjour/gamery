@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GameMedium from './GameMedium.js';
 import axios from 'axios';
+import CategorySmall from './CategorySmall'
 
 // import Button from './Button'
 // import {Link} from 'react-router-dom'
@@ -14,7 +15,8 @@ class SearchGame extends Component {
         maxage: null,
         players: null,
         time: null,
-        rating: null // info non presente dans search api
+        rating: null, // info non presente dans search api
+        categories: []
     }
     
     componentDidUpdate = () => {
@@ -61,7 +63,49 @@ class SearchGame extends Component {
         axios.get(route)
            .then(response => response.data)
            .then(data => this.setState({games: data.games}));
+
+        // if (this.state.categories) {
+        //     // route = `https://www.boardgameatlas.com/api/search?categories=${this.state.categories}=true&client_id=FWG6FKSO4N `
+        //     route = `https://www.boardgameatlas.com/api/game/categories?client_id=FWG6FKSO4N`
+        // }
+        // axios.get(route)
+        //    .then(response => response.data)
+        //    .then(data => this.setState({games: data.games}));
     }
+
+    componentDidMount = () => {
+        axios.get('https://www.boardgameatlas.com/api/game/categories?client_id=FWG6FKSO4N')
+          .then(response=> response.data.categories.filter(function(cat) {
+            return (
+                cat.name === "Abstract" || 
+                cat.name === "Adventure" ||
+                cat.name === "Animals" ||
+                cat.name === "Bluffing" ||
+                cat.name === "Card Game" ||
+                cat.name === "City Building" ||
+                cat.name === "Cooperative" ||
+                cat.name === "Deduction" ||
+                cat.name === "Dice" ||
+                cat.name === "Educational" ||
+                cat.name === "Family Game" ||
+                cat.name === "Farming" || 
+                cat.name === "Horror" ||
+                cat.name === "Humor" ||
+                cat.name === "Medieval" ||
+                cat.name === "Memory" ||
+                cat.name === "Mythology" ||
+                cat.name === "Party Game" ||
+                cat.name === "Puzzle" ||
+                cat.name === "RPG" ||
+                cat.name === "Sci-Fi" ||
+                cat.name === "Strategy" ||
+                cat.name === "Wargame" ||
+                cat.name === "Western" ||
+                cat.name === "Zombies"
+            );
+        }))
+        .then(filter => this.setState({categories: filter}))
+      };
 
 
     handleQuery = (ev) => {
@@ -113,11 +157,54 @@ class SearchGame extends Component {
 
                 <h3>Play time, - de :</h3>
                     <input className="mr" name="time" type="number" value={this.state.time} onChange={this.handleChange} />
+                    
+                    <div id="time-range">
+                        <p>xxxxxx <span class="slider-time">5min</span> and <span class="slider-time2">11.00pm</span>
+    </p>
+    <div class="sliders_step1">
+        <div class="flat-slider" id="slider-range"></div>
+    </div>
+</div>
+
+<div class="box" data-start-time="55">1</div>
+<div class="box" data-start-time="58" >2</div>
+<div class="box" data-start-time="59" >3</div>
+<div class="box" data-start-time="7.00" >4</div>
+<div class="box" data-start-time="6.00" >5</div>
 
                 <h3>Rating :</h3>
-                    <input className="mr" name="rating" type="number" value={this.state.time} onChange={this.handleChange} />
+                    <input className="mr" name="rating" type="number" value={this.state.rating} onChange={this.handleChange} />
 
-   
+                <h3>Category :</h3>
+
+                <p>
+                    {/* <select name="categories">
+                        
+
+                        <option value={this.state.categories} > {this.state.categories.map(cat => {return(
+                        <CategorySmall id={cat.id} colTitle={cat.name}/>
+                        )})}</option>
+
+                    </select> */}
+                    <select name="categories" onChange={this.handleChange}>
+                        <option value="categories">--Please choose an category--</option>
+                        {this.state.categories.map(cat => {
+                        return(
+                        <option value={cat.id} >{cat.name}</option>
+                        
+                        ) 
+                        })}
+                    
+                    </select>
+                </p>
+
+                {/* <div className="listing">
+                        {this.state.categories.map(cat => {return(
+                        <CategorySmall id={cat.id} colTitle={cat.name}/>
+                        )})}
+                    </div> */}
+
+
 
 
 
