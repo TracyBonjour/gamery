@@ -82,7 +82,7 @@ componentDidMount = () => {
     return (
       
       <div>
-        {this.state.collections !== [] ? (
+        {this.state.collections.length>=1 ? (
           <div className="listing">
             {this.state.collections.map(col => {
               return <ColTitle colTitle={col.colTitle} id={col._id}/>;
