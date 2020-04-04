@@ -263,6 +263,12 @@ img.avatar {
     object-fit: cover;
 }
 
+.profile {
+	margin: 0 auto;
+	text-align: center;
+}
+
+
 /* modal */
 
   .modal-cover {
@@ -312,4 +318,36 @@ img.avatar {
 	font:bold 13px Roboto;
 	color:  rgb(27, 24, 68);
 	text-align: center;
+}
+
+/*SEARCH*/
+
+.slider {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 10px;
+	border-radius: 5px;  
+	background: #d3d3d3;
+	outline: none;
+	//opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+  
+.slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%; 
+	background: #ffc804;
+	cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	background:#ffc804;
+	cursor: pointer;
 }

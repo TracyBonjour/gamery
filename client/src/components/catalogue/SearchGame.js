@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GameMedium from './GameMedium.js';
 import axios from 'axios';
-import CategorySmall from './CategorySmall'
+import CategorySmall from './CategorySmall';
 
 // import Button from './Button'
 // import {Link} from 'react-router-dom'
@@ -15,7 +15,7 @@ class SearchGame extends Component {
         maxage: null,
         players: null,
         time: null,
-        rating: null, // info non presente dans search api
+        rating: null, 
         categories: []
     }
     
@@ -157,20 +157,14 @@ class SearchGame extends Component {
 
                 <h3>Play time, - de :</h3>
                     <input className="mr" name="time" type="number" value={this.state.time} onChange={this.handleChange} />
-                    
-                    <div id="time-range">
-                        <p>xxxxxx <span class="slider-time">5min</span> and <span class="slider-time2">11.00pm</span>
-    </p>
-    <div class="sliders_step1">
-        <div class="flat-slider" id="slider-range"></div>
-    </div>
-</div>
+                
+                <div className="slidecontainer">
+                    <input className="slider" name="time" type="number" min="1" max="300" id="myRange" value={this.state.time} onChange={this.handleChange} />
+                </div>
 
-<div class="box" data-start-time="55">1</div>
-<div class="box" data-start-time="58" >2</div>
-<div class="box" data-start-time="59" >3</div>
-<div class="box" data-start-time="7.00" >4</div>
-<div class="box" data-start-time="6.00" >5</div>
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+                </div>
 
                 <h3>Rating :</h3>
                     <input className="mr" name="rating" type="number" value={this.state.rating} onChange={this.handleChange} />
@@ -194,6 +188,7 @@ class SearchGame extends Component {
                         
                         ) 
                         })}
+                        {/* {return(<CategorySmall id={cat.id} colTitle={cat.name}/>)} */}
                     
                     </select>
                 </p>
@@ -203,9 +198,6 @@ class SearchGame extends Component {
                         <CategorySmall id={cat.id} colTitle={cat.name}/>
                         )})}
                     </div> */}
-
-
-
 
 
             </div>
