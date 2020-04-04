@@ -21,7 +21,7 @@ class SearchDetail extends Component {
   };
 
   handleSubmit = () => {
-    //event.preventDefault();
+    event.preventDefault();
     let route;
 
     // if (this.state.query) {
