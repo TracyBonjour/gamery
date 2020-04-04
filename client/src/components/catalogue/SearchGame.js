@@ -159,11 +159,11 @@ class SearchGame extends Component {
                     <input className="mr" name="time" type="number" value={this.state.time} onChange={this.handleChange} />
                 
                 <div className="slidecontainer">
-                    <input className="slider" name="time" type="number" min="1" max="300" id="myRange" value={this.state.time} onChange={this.handleChange} />
+                    <input className="slider" name="time" type="range" min="1" max="300" id="myRange" value={this.state.time} onChange={this.handleChange} />
                 </div>
 
                 <div class="slidecontainer">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange"/>
+                    <input type="range" min="1" max="100" value="50" className="slider mr" id="myRange"/>
                 </div>
 
                 <h3>Rating :</h3>
