@@ -16,22 +16,22 @@ class SearchDetail extends Component {
     players: "",
     time: "",
     rating: "",
-    categories: [],
+    categories: []
    // collection: []
   };
+
 
   handleSubmit = (event) => {
     event.preventDefault();
     let route;
 
     //if ((this.state.minage) || (this.state.maxage) || (this.state.players) || (this.state.time) || (this.state.rating) ) {
-      route = `https://www.boardgameatlas.com/api/search?q=""&limit=3&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&client_id=FWG6FKSO4N `;
+      route = `https://www.boardgameatlas.com/api/search?q=""&limit=30&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&client_id=FWG6FKSO4N `;
    // }
     axios
       .get(route)
-      .then(response => response.data.games)
-      .then (data => console.log(data))
-      .then(data => this.setState({ games: data }));
+      .then(response => response.data)
+      .then(data => this.setState({games:data.games}))
 
 
   };
@@ -88,7 +88,21 @@ class SearchDetail extends Component {
     this.setState({ [name]: value });
   };
 
-
+  resetState = () => {
+    this.setState(
+    {
+        //dans games la donnée de l api
+        games: [],
+       // query: "",
+        minage: "",
+        maxage: "",
+        players: "",
+        time: "",
+        rating: "",
+        categories: []
+       // collection: []
+      });
+    }
 
   render() {
     // let games = this.state.games;
@@ -101,36 +115,8 @@ class SearchDetail extends Component {
     return (
       <div className="Searchdetail">
         <h1>Search game</h1>
-
+      {this.state.games.length===0?
         <form onSubmit={this.handleSubmit}>
-
-        {this.state.games
-          ? this.state.games.map(game => {
-              return (
-                <GameMedium
-                  title={game.name}
-                  img={game.images.small}
-                  id={game.id}
-                  description={game.description_preview}
-                  age={
-                    "Age: " +
-                    (game.min_age ? game.min_age + "+" : "Not mentioned")
-                  }
-                  rating={
-                    "Rating: " +
-                    (game.average_user_rating
-                      ? Math.round(game.average_user_rating * 100) / 100 + "/5"
-                      : "No rating yet")
-                  }
-                  players={
-                    game.min_players && game.max_players
-                      ? game.min_players + " - " + game.max_players + " players"
-                      : "No players info"
-                  }
-                />
-              );
-            })
-          : "Staping to see result"}
 
         <h3>Age, - de :</h3>
         <input
@@ -211,10 +197,39 @@ class SearchDetail extends Component {
         </p> */}
         <p></p>
 
-          <button className="btn">
+          <button className="btn" onClick={this.handleSubmit.bind(this)}>
             Search games
           </button>
         </form>
+        : <button className="btn" onClick={this.resetState}>Start new search</button>
+      }
+        {this.state.games
+          ? this.state.games.map(game => {
+              return (
+                <GameMedium
+                  title={game.name}
+                  img={game.images.small}
+                  id={game.id}
+                  description={game.description_preview}
+                  age={
+                    "Age: " +
+                    (game.min_age ? game.min_age + "+" : "Not mentioned")
+                  }
+                  rating={
+                    "Rating: " +
+                    (game.average_user_rating
+                      ? Math.round(game.average_user_rating * 100) / 100 + "/5"
+                      : "No rating yet")
+                  }
+                  players={
+                    game.min_players && game.max_players
+                      ? game.min_players + " - " + game.max_players + " players"
+                      : "No players info"
+                  }
+                />
+              );
+            })
+          : "Staping to see result"}
       </div>
     );
   }
