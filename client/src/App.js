@@ -19,7 +19,7 @@ import CollectionDetailed from './components/collections/CollectionDetailed'
 import axios from 'axios'
 import MyCollections from './components/collections/MyCollections'
 import EditCollections from './components/collections/EditCollections'
-
+import Foursquare from './components/Foursquare'
 import { MyContext } from './components/MyContext.js'
 
 
@@ -120,6 +120,10 @@ class App extends Component {
 
             <Route exact path="/:userid/collections/:id/:name" render={(props) => (
               <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name} />
+            )} />
+
+            <Route exact path="/map" render={(props) => (
+              <Foursquare />
             )} />
 
 

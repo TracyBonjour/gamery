@@ -10,84 +10,32 @@ class SearchDetail extends Component {
   state = {
     //dans games la donnée de l api
     games: [],
-    query: "",
-    minage: null,
-    maxage: null,
-    players: null,
-    time: null,
-    rating: null,
+   // query: "",
+    minage: "",
+    maxage: "",
+    players: "",
+    time: "",
+    rating: "",
     categories: [],
-    collection: []
+   // collection: []
   };
 
-  handleSubmit = () => {
+  handleSubmit = (event) => {
     event.preventDefault();
     let route;
 
-    // if (this.state.query) {
-    //   route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&fuzzy_match=true&client_id=FWG6FKSO4N `;
-    // }
-    // axios
-    //   .get(route)
-    //   .then(response => response.data)
-    //   .then(data => this.setState({ games: data.games }));
-
-    if ((this.state.minage) || (this.state.maxage) || (this.state.players) || (this.state.time) || (this.state.rating) ) {
-      route = `https://www.boardgameatlas.com/api/search?q=""&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&client_id=FWG6FKSO4N `;
-    }
+    //if ((this.state.minage) || (this.state.maxage) || (this.state.players) || (this.state.time) || (this.state.rating) ) {
+      route = `https://www.boardgameatlas.com/api/search?q=""&limit=3&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&client_id=FWG6FKSO4N `;
+   // }
     axios
       .get(route)
-      .then(response => response.data)
-      .then(data => this.setState({ games: data.games }));
+      .then(response => response.data.games)
+      .then (data => console.log(data))
+      .then(data => this.setState({ games: data }));
 
-    // if (this.state.maxage) {
-    //   route = `https://www.boardgameatlas.com/api/search?gt_min_age=${this.state.maxage}&fuzzy_match=true&client_id=FWG6FKSO4N `;
-    // }
-    // axios
-    //   .get(route)
-    //   .then(response => response.data)
-    //   .then(data => this.setState({ games: data.games }));
 
-    // if (this.state.players) {
-    //   route = `https://www.boardgameatlas.com/api/search?lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&fuzzy_match=true&client_id=FWG6FKSO4N `;
-    // }
-    // axios
-    //   .get(route)
-    //   .then(response => response.data)
-    //   .then(data => this.setState({ games: data.games }));
-
-    // if (this.state.time) {
-    //   route = `https://www.boardgameatlas.com/api/search?lt_max_playtime=${this.state.time}&fuzzy_match=true&client_id=FWG6FKSO4N `;
-    // }
-    // axios
-    //   .get(route)
-    //   .then(response => response.data)
-    //   .then(data => this.setState({ games: data.games }));
-
-    // if (this.state.rating) {
-    //   route = `https://www.boardgameatlas.com/api/search?gt_average_user_rating=${this.state.rating}=true&client_id=FWG6FKSO4N `;
-    // }
-    // axios
-    //   .get(route)
-    //   .then(response => response.data)
-    //   .then(data => this.setState({ games: data.games }));
-
-    // if (this.state.categories) {
-    //     // route = `https://www.boardgameatlas.com/api/search?categories=${this.state.categories}=true&client_id=FWG6FKSO4N `
-    //     route = `https://www.boardgameatlas.com/api/game/categories?client_id=FWG6FKSO4N`
-    // }
-    // axios.get(route)
-    //    .then(response => response.data)
-    //    .then(data => this.setState({games: data.games}));
-
-    // if (this.state.collectionId) {
-    //   route = `https://www.boardgameatlas.com/api/search?categories=${this.state.collectionId}&client_id=FWG6FKSO4N `;
-    // }
-    // axios
-    //   .get(route)
-    //   .then(response => response.data)
-    //   .then(data => this.setState({ collection: data.games }));
   };
+
 
 
   // componentDidMount = () => {
@@ -129,11 +77,11 @@ class SearchDetail extends Component {
   //     .then(filter => this.setState({ categories: filter }));
   // };
 
-  handleQuery = ev => {
-    this.setState({
-      query: ev.target.value
-    });
-  };
+  // handleQuery = ev => {
+  //   this.setState({
+  //     query: ev.target.value
+  //   });
+  // };
 
   handleChange = event => {
     const { name, value } = event.target;
@@ -156,11 +104,6 @@ class SearchDetail extends Component {
 
         <form onSubmit={this.handleSubmit}>
 
-        <input
-          type="search"
-          value={this.state.query}
-          onChange={this.handleQuery}
-        />
         {this.state.games
           ? this.state.games.map(game => {
               return (
@@ -268,7 +211,7 @@ class SearchDetail extends Component {
         </p> */}
         <p></p>
 
-          <button className="btn" onClick={this.handleSubmit}>
+          <button className="btn">
             Search games
           </button>
         </form>
