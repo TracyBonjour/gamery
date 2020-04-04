@@ -28,7 +28,7 @@ class Foursquare extends Component {
                 <ReactMapGL
         {...this.state.viewport}
         onViewportChange={(viewport) => this.setState({viewport})}
-        mapboxApiAccessToken='sk.eyJ1IjoiZW5lbHlhaCIsImEiOiJjazhsZ2N0MDQwMjJ4M25uODlzdjM3d2NwIn0.cG8XRp9MnDgJdhPTi_4TOw'
+        mapboxApiAccessToken='pk.eyJ1IjoiZW5lbHlhaCIsImEiOiJjazhsZ2N0MDQwMjJ4M25uODlzdjM3d2NwIn0.cG8XRp9MnDgJdhPTi_4TOw'
       />
             </div>
          );
