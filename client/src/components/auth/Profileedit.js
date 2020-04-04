@@ -95,7 +95,7 @@ class Profileedit extends Component {
     if (!this.context.user._id) return <Loader></Loader>
 
     return (
-      <div className="Profile">
+      <div className="profile">
         <h1>Personal informations</h1>
 
       <p>

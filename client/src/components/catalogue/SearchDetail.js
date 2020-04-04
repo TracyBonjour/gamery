@@ -113,62 +113,124 @@ class SearchDetail extends Component {
     // }
 
     return (
-      <div className="Searchdetail">
+      <div className="searchdetail">
         <h1>Search game</h1>
       {this.state.games.length===0?
         <form onSubmit={this.handleSubmit}>
 
-        <h3>Age, - de :</h3>
-        <input
-          className="mr"
-          name="minage"
-          type="number"
-          value={this.state.minage}
-          onChange={this.handleChange}
-        />
+        <h3>Less than : {this.state.minage} years </h3>
 
-        <h3>Age, + de :</h3>
-        <input
-          className="mr"
-          name="maxage"
-          type="number"
-          value={this.state.maxage}
-          onChange={this.handleChange}
-        />
+        <div className="slidecontainer">
+          <input
+            className="slider"
+            name="minage"
+            type="range"
+            min="4"
+            max="100"
+            id="myRange"
+            value={this.state.minage}
+            onChange={this.handleChange}
+          />
+        </div>
 
-        <h3>Players</h3>
-        <input
-          className="mr"
-          name="players"
-          type="number"
-          value={this.state.players}
-          onChange={this.handleChange}
-        />
+        <h3>Over : {this.state.maxage} years </h3>
 
-        <h3>Play time, - de :</h3>
-        {/* <input className="mr" name="time" type="number" value={this.state.time} onChange={this.handleChange} /> */}
+        <div className="slidecontainer">
+          <input
+            className="slider"
+            name="maxage"
+            type="range"
+            min="2"
+            max="100"
+            id="myRange"
+            value={this.state.maxage}
+            onChange={this.handleChange}
+          />
+        </div>
+
+        <h3>Players : {this.state.players} </h3>
+
+        <div className="slidecontainer">
+          <input
+            className="slider"
+            name="players"
+            type="range"
+            min="2"
+            max="100"
+            id="myRange"
+            value={this.state.players}
+            onChange={this.handleChange}
+          />
+        </div>
+        {/* <li>
+          <labe>
+            <input
+            className="mr"
+            name="players"
+            type="checkbox"
+            min="1"
+            value={this.state.players}
+            onChange={this.handleChange}
+            />
+            <span>1</span>
+          </labe>
+        </li>
+        <li>
+          <labe>
+            <input
+            className="mr"
+            name="players"
+            type="checkbox"
+            min="2"
+            value={this.state.players}
+            onChange={this.handleChange}
+            />
+            <span>2</span>
+          </labe>
+        </li>
+        <li>
+          <labe>
+            <input
+            className="mr"
+            name="players"
+            type="checkbox"
+            min="3"
+            value={this.state.players}
+            onChange={this.handleChange}
+            />
+            <span>3</span>
+          </labe>
+        </li> */}
+
+        <h3>Play time, less than : {this.state.time} min</h3>
 
         <div className="slidecontainer">
           <input
             className="slider"
             name="time"
             type="range"
-            min="1"
-            max="300"
+            min="15"
+            max="360"
             id="myRange"
             value={this.state.time}
             onChange={this.handleChange}
           />
         </div>
 
-        <h3>Rating :</h3>
-        <input
-          className="mr"
-          name="rating"
-          type="number"
-          value={this.state.rating}
-          onChange={this.handleChange}
-        />
+        <h3>Rating : {this.state.rating} <img className="fav" src="/images/imagenav/baseline_star_white_48dp.png" width="45" height="45" alt="fav" /> </h3>
+
+        <div className="slidecontainer">
+          <input
+            className="slider"
+            name="rating"
+            type="range"
+            min="0"
+            max="4"
+            id="myRange"
+            value={this.state.rating}
+            onChange={this.handleChange}
+          />
+        </div>
 
         {/* <h3>Category :</h3>
         <input
@@ -201,7 +263,7 @@ class SearchDetail extends Component {
             Search games
           </button>
         </form>
-        : <button className="btn" onClick={this.resetState}>Start new search</button>
+        : <button className="btnfixed" onClick={this.resetState}>Start new search</button> 
       }
         {this.state.games
           ? this.state.games.map(game => {
