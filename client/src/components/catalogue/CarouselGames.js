@@ -19,7 +19,7 @@ class CarouselGames extends Component {
         return ( 
            <div className="carousel">
                 <h3 className="center padding-bottom">{this.props.header}</h3>
-                <div className="carousel-container load-more"> 
+                <div className="carousel-container"> 
                 <Loadmore className="flex center load-more-container" visible={8} increment={8} >
                     {this.state.blocks.map(block => {return(
                         <GameSmall title={block.name} img={block.images.small} id={block.id} />
