@@ -135,6 +135,24 @@ button {
 	margin:auto;
 }
 
+.btn:hover {
+	background: rgb(27, 24, 68);
+	color:white;
+}
+
+.loadmore-btn-container {
+	display: inline;
+	margin: 0 auto;
+}
+
+.loadmore-btn {
+	margin-bottom: 25px;
+}
+
+.load-more {
+	display:none;
+}
+
 .chp {
 	width:250px;
 	border:none;
@@ -166,7 +184,8 @@ h1 {
 }
 
 h1, h2, h3 {
-	margin: 10px;
+	display: block;
+	margin: 25px 15px 15px;
 	font-family: 'Amatic SC', cursive;
 }
 
@@ -495,3 +514,83 @@ img.avatar {
 	font-size: 25px;
 	margin-bottom: 20px;
 }
+
+
+
+
+
+
+
+
+
+
+/* DESKTOP */
+
+@media (min-width: 650px) { 
+
+.carousel-container .block-container {
+	display:inline-block;
+	width:auto;
+}
+
+.carousel-container, .load-more {
+	display:flex;
+	width:100%;
+	justify-content: center;
+	overflow: none;
+	margin: 0 auto;
+		}
+
+.game-small {
+display: inline-flex;
+}
+
+.block-container  {
+	position: relative;
+	
+}
+
+.load-more {
+	display:inline-block;
+}
+
+.no-load-more {
+	display:none;
+}
+
+.collection-small {
+	display: inline-flex;
+	flex-direction: column;
+	margin: 15px;
+	width: 40vw;
+	background-color: white;
+	color:  rgb(27, 24, 68);
+	border-radius: 30px;
+	overflow:hidden;
+}
+
+.collection-small-row-2 {
+	width: 40vw;
+	text-align:center;
+}
+.collection-small-row-1 {
+	width: 40vw;
+	height: 150px;
+	text-align:center;
+}
+
+.block {
+	display: block;
+}
+
+.align-cat {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 15px;;
+}
+
+.searchbar  {
+	width: 50vw;
+}
+ }
+

@@ -20,11 +20,15 @@ class Homepage extends Component {
                 <CarouselGames header='Latest releases' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&year_published=2020'/>
                 <CarouselGames header='Best rated' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&order_by=average_user_rating'/>
                 
-                <h3 className="center padding-bottom">Browse recommended categories</h3>
+                <h3 className="center padding-bottom block">Browse recommended categories</h3>
+                <div className="align-cat">
                 <CategorySmall id="O0ogzwLUe8" colTitle="Strategy" src="../../images/categories/strategy.jpg"/>
                 <CategorySmall id="X8J7RM6dxX" colTitle="Party Game" src="../../images/categories/party2.jpg"/>
+                </div>
+                <div className="align-cat">
                 <CategorySmall id="7rV11PKqME" colTitle="Family Game" src="../../images/categories/family2.jpg"/>
                 <CategorySmall id="ge8pIhEUGE" colTitle="Cooperative" src="../../images/categories/cooperativegames1.jpg"/>
+                </div>
                 <Link className="link-black" to='/categories'>
                 <Button>Browse all categories</Button>
                 </Link>
