@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import Favorite from './Favorite';
+import Rating from './Rating'
 
 class GameMedium extends Component {
     state = {  }
@@ -44,18 +45,16 @@ class GameMedium extends Component {
                 </div>
                 <div className="game-medium-row-2 title">
                     {this.title_short(this.props.title)}
+                    <Rating>{this.props.rating}</Rating>
                 </div>
                 <div className="game-medium-row-3">
                    <p> {this.desc_short(this.props.description)}</p>
                 </div>
                 <div className="game-medium-row-4 flex">
-                <div className="game-medium-column-1  center">
-                    {this.props.rating}
-                </div>
-                <div className="game-medium-column-2  center">
+                <div className="game-medium-column-1 center">
                 {this.props.age}
                 </div>
-                <div className="game-medium-column-3  center">
+                <div className="game-medium-column-2 center">
                     {this.props.players}
                 </div>
                 </div>

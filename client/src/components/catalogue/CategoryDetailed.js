@@ -42,7 +42,7 @@ class CategoryDetailed extends Component {
                         id={game.id} 
                         description={game.description_preview} 
                         age={ "Age: " +  (game.min_age ? game.min_age + "+" : "Not mentioned")}
-                        rating={"Rating: " + (game.average_user_rating ? Math.round(game.average_user_rating*100)/100 +"/5":"No rating yet") } 
+                        rating={game.average_user_rating ? Math.round(game.average_user_rating*100)/100:"No rating yet"} 
                         players={game.min_players && game.max_players ? (game.min_players + " - " + game.max_players + " players") : "No players info"}/>
                      )})}
                 </div>

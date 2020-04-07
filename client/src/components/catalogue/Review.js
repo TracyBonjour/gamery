@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import Rating from './Rating'
 class Review extends Component {
     state = {  }
     render() { 
@@ -10,7 +10,7 @@ class Review extends Component {
                     <p>By: {this.props.review_username}</p>
                 </div>
                 <div className="review-column-2">
-               <p>Rating:  {this.props.review_rating}</p> 
+                    <Rating>{this.props.review_rating}</Rating>
                 </div>
                 </div>
                 <div className="review-row-2">

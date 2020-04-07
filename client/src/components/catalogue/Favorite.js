@@ -107,21 +107,21 @@ class Favorite extends Component {
               {this.context.user?
               <div>
           <div className="modal-header dark-text">
-             <p className="">Add to collection</p>
+             <p className="modal-title">Add to collection</p>
             <hr />
           </div>
-          <form className="modal-body dark-text center flex-column" onSubmit={this.handleSubmit}>
-            <select className="custom-select" name="col_id" id="colList" onChange={this.handleChange}>
+          <form className="modal-body dark-text flex-column" onSubmit={this.handleSubmit}>
+            <select className="custom-select margin-bottom" name="col_id" id="colList" onChange={this.handleChange}>
             {this.context.collections.map(col => {
               return <option value={col._id}>{col.colTitle}</option>;
             })}
             </select>
-            <label htmlFor="colTitle">Or add to new collection:</label>
+            <label htmlFor="colTitle" className="modal-title">Or add to new collection:</label>
             <input
               name="colTitle"
               value={this.state.colTitle}
               onChange={this.handleChange}
-              className="chp-modal center"
+              className="chp-modal center custom-select "
               type="text"
             />
             <Button> Add to collection</Button>
