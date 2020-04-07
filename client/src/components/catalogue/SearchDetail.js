@@ -33,10 +33,17 @@ class SearchDetail extends Component {
       .get(route)
       .then(response => response.data)
       .then(data => this.setState({games:data.games}))
+      // .catch(err => this.setState({games: false}))
+      // ;
+
+    // if (!this.state.game) { // (this.state.game === undefined)
+    //     alert("Sorry, your search didn't return any result");
+    //     this.props.history.push('/');
+    // }
 
 
   };
-
+  
 
 
   componentDidMount = () => {
@@ -233,6 +240,10 @@ class SearchDetail extends Component {
               );
             })
           : "Staping to see result"}
+          {/* { this.state.games === [] ? (nosearch => {
+              return <button className="btnfixed" onClick={this.resetState}>Start new search</button>  
+            }) : "Sorry, your search didn't return any result." } */}
+          
       </div>
     );
   }
