@@ -48,7 +48,7 @@ class GameDetailed extends Component {
                     <img className="game-detailed-img" src={this.state.game.image_url} alt={this.state.game.name}/>
                 </div>
                 
-                <div className="game-detailed-text">
+                <div className="game-detailed-text center">
                 <Rating>{this.state.game.average_user_rating}</Rating>
                 <div className="game-medium-row-3 padding-top center">
                     <p>{this.state.game.description_preview}</p>

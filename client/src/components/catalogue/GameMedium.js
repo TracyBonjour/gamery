@@ -51,9 +51,6 @@ class GameMedium extends Component {
                    <p> {this.desc_short(this.props.description)}</p>
                 </div>
                 <div className="game-medium-row-4 flex">
-                <div className="game-medium-column-1  center">
-                    {this.props.rating}
-                </div>
                 <div className="game-medium-column-2  center">
                 {this.props.age}
                 </div>
