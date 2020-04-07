@@ -6,18 +6,70 @@ body  {
 	color:white;
 	min-height: 100vh;
 	padding-bottom:100px;
+	font-family: 'Rubik', sans-serif;
+	font-weight: 300;
+	font-size: larger;
+
+}
+
+.custom-select {
+		display: block;
+		font-size: 16px;
+		font-family: sans-serif;
+		font-weight: 700;
+		color: rgb(75, 52, 117);
+		line-height: 1.3;
+		padding: .6em 1.4em .5em .8em;
+		width: 60%;
+		box-sizing: border-box;
+		margin: 0 auto;
+		border: 1px solid rgb(75, 52, 117);
+		border-radius: 1.5em;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		background-color: #fff;
+		background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+		  linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+		background-repeat: no-repeat, repeat;
+		background-position: right .7em top 50%, 0 0;
+		background-size: .65em auto, 100%;
+	}
+	.custom-select::-ms-expand {
+		display: none;
+	}
+	.custom-select:hover {
+		border-color:orange
+	}
+	.custom-select:focus {
+		border-color: orange;
+
+		color:rgb(75, 52, 117);
+		outline: none;
+	}
+	.custom-select option {
+		font-weight:normal;
+	
+}
+
+.picto {
+	width: 40px;
+	height: 40px;
 }
 
 .navbar {
-	background-color: rgba(105, 105, 105, 0.377);
+	background-color: rgb(230, 190, 59);
 	position: fixed;
-	top: calc(100vh - 75px);
+	top: calc(100vh - 60px);
+	height:60px;
 	bottom: 0; 
 	width: 100%; 
 	padding: 3%;
 	display: flex;
 	justify-content: space-around;
 	flex-direction: row;
+	align-items: center;
+	z-index: 1111;
 }
 
 .link {	
@@ -43,7 +95,7 @@ display:flex
 	}
 
 .padding-bottom {
-		padding-bottom:25px;
+		padding-bottom:25px
 	}
 
 .padding-top {
@@ -54,6 +106,11 @@ display:flex
 	text-align: center;
 }
 
+button {
+	font-family: 'Rubik', sans-serif;
+	font-weight: 500;
+}
+
 .btnwith {
 	width:250px;
 	cursor:pointer;
@@ -61,7 +118,7 @@ display:flex
 	padding:6px 0 6px 0;
 	border-radius:15px;
 	background:white;
-	font:bold 13px Roboto;
+	font-size: 18px;
 	color:#000000;
 }
 
@@ -72,7 +129,7 @@ display:flex
 	padding:6px 0 6px 0;
 	border-radius:15px;
 	background:#ffc804;
-	font:bold 13px Roboto;
+	font-size: 18px;
 	color:#000000;
 	display: block;
 	margin:auto;
@@ -85,7 +142,7 @@ display:flex
 	border-radius:15px;
 	background:rgba(255, 255, 255, 0.185);
 	//opacity:0.2;
-	font:bold 13px Roboto;
+	font:bold 18px;
 	color:#fff;
 	text-align: center;
 }
@@ -99,21 +156,41 @@ display:flex
 	text-align: center;
 }
 
+p {
+	font-size: 18px;
+}
+
+h1 {
+	margin: 0 auto;
+	text-align: center;	
+}
+
 h1, h2, h3 {
 	margin: 10px;
+	font-family: 'Amatic SC', cursive;
+}
+
+h3 {
+	font-size: 150%;
+}
+
+h4 {
+	font-weight: 300;
+
 }
 
 /* Homepage/Catalogue */
 
-// .logo {
-// 	width:250px;
-// }
+.logo {
+	width:350px;
+}
 
 .header {
 	text-align: center;
 	//width:250px;
 	display:block;
 	margin: 0 auto;
+	padding: 30px 15px 40px 15px;
 }
 
 .block-container  {
@@ -131,6 +208,10 @@ h1, h2, h3 {
 	overflow: auto;
 	scroll-snap-type: y mandatory;
 	scroll-padding: 50%;
+}
+
+::-webkit-scrollbar {
+	display: none
 }
 
 .title {
@@ -202,6 +283,11 @@ h1, h2, h3 {
 	
 }
 
+.game-medium-row-4 {
+font-size: 15px;
+	
+}
+
 .game-medium-column {
 	width: 33%;
 	padding:25px 0px;
@@ -251,10 +337,12 @@ h1, h2, h3 {
 }
 
 .favicon {
+	width:30px;
+	height:30px;
 	position: absolute;
-	top: 0;
-	right: 0;
-	z-index:1;
+	bottom: 50px;
+	right: 15px;
+	z-index:3;
 }
 /*Profile*/
 
@@ -357,10 +445,16 @@ img.avatar {
 	cursor: pointer;
 }
 
-.searchdetail h1 {
+.searchdetail {
 	text-align: center;
+	position: fixed;
+	width:100%
 }
 
+.searchlist {
+	position: absolute;
+	top: 105px;
+}
 
 .btnfixed {
 	width:250px;
@@ -374,4 +468,30 @@ img.avatar {
 	position: fixed;
 	z-index:1;
 
+}
+
+.btnrelative {
+	width:250px;
+	cursor:pointer;
+	border:none;
+	padding:6px 0 6px 0;
+	border-radius:15px;
+	background:#ffc804;
+	font:bold 13px Roboto;
+	color:#000000;
+	position: relative;
+	bottom: 75px;
+	z-index:1;
+	margin: 0 auto;
+
+}
+
+.searchbar {
+	margin: 0 auto;
+	width: 80vw;
+	height: 35px;
+	position:relative;
+	border-radius: 15px;
+	font-size: 25px;
+	margin-bottom: 20px;
 }

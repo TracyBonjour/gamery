@@ -17,7 +17,7 @@ class CarouselGames extends Component {
     render() { 
         return ( 
             <div className="carousel">
-                <h3>{this.props.header}</h3>
+                <h3 className="center padding-bottom">{this.props.header}</h3>
                 <div className="carousel-container">
                     {this.state.blocks.map(block => {return(
                         <GameSmall title={block.name} img={block.images.small} id={block.id} />

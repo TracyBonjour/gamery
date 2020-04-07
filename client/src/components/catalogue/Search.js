@@ -15,7 +15,7 @@ class Search extends Component {
     let route;
 
     if (this.state.query) {
-      route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&fuzzy_match=true&client_id=FWG6FKSO4N `;
+      route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&fuzzy_match=true&limit=20&client_id=FWG6FKSO4N `;
     }
     axios
       .get(route)
@@ -30,21 +30,30 @@ class Search extends Component {
     });
   };
 
+  resetState = () => {
+    this.setState(
+    {
+      games: [],
+      query: ""
+      });
+    }
 
   render() {
 
     return (
-      <div className="Searchdetail">
-        <h1>Search game</h1>
+      <div className="flex-column">
+        <h1 className="center">Search game</h1>
 
-        <input
+        <input className = "searchbar"
           type="search"
           value={this.state.query}
           onChange={this.handleQuery}
         />
+        {this.state.games.length>=1 ? <button className="btn padding-bottom" onClick={this.resetState}>New search / Back to home </button>  : ""}  
         {this.state.games
           ? this.state.games.map(game => {
               return (
+                <div>
                 <GameMedium
                   title={game.name}
                   img={game.images.small}
@@ -66,9 +75,10 @@ class Search extends Component {
                       : "No players info"
                   }
                 />
+          </div>
               );
             })
-          : "Staping to see result"}
+          : "Start typing to see results"}
 
 
       </div>
