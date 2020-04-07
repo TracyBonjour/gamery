@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import GameMedium from './GameMedium'
 import images from '../../images'
+import Backtotop from '../Backtotop';
+
 
 class CategoryDetailed extends Component {
     
@@ -45,6 +47,7 @@ class CategoryDetailed extends Component {
                      )})}
                 </div>
                 </div>
+                <Backtotop/>
             </div>
 
          );

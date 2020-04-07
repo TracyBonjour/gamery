@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import GameMedium from "./GameMedium.js";
 import axios from "axios";
-
+import Back from "../Back.js";
+import backtotop from "../Backtotop.js";
+import Backtotop from "../Backtotop.js";
 
 // import Button from './Button'
 // import {Link} from 'react-router-dom'
@@ -123,7 +125,10 @@ class SearchDetail extends Component {
     return (
       <div className="flex-column block-container">
       <div className="searchdetail flex-column">
-        <h1 className="center">Search game</h1>
+      <div className="backto">
+      {/* <Back></Back> */}
+      <div><h1 className="center">Search game</h1></div>
+      </div>
       {this.state.games.length===0?
         <form className="flex-column center" onSubmit={this.handleSubmit}>
 
@@ -244,6 +249,7 @@ class SearchDetail extends Component {
             })
           : "Start typing to see results"}
       </div>
+      <Backtotop/>
       </div>
     );
   }

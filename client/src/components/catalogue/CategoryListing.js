@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import CategorySmall from './CategorySmall'
 import images from '../../images'
+import Backtotop from '../Backtotop';
 
 const imgsMap = {
     'abstract': 'https:///img.ur/s/asdlfkasjh.png',
@@ -68,7 +69,8 @@ class CategoryListing extends Component {
                         <CategorySmall id={cat.id} colTitle={cat.name} src={cat.image} />
                      )})}
                 </div>
-                </div>
+                <Backtotop/>
+            </div>
          );
     }
 }
