@@ -1,25 +1,7 @@
 
-
-###############################
-# Un-ignore the affected subdirectory
-!/libraries/
-# Ignore subdirectory and all including directories and files to match pattern as valid for the next pattern
-/libraries/**
-# This pattern only works with the two previous patterns
-# (i remember it was working alone on older git versions)
-!/libraries/myLibrary/
-###############################
-
-# Another example
-!/templates/
-/templates/**
-!/templates/myTemplate/
-
-
-
 # Dependency directory
 node_modules/*
-!/node_modules/react-loadmore-list
+!/node_modules/react-loadmore-list/**
 
 # Debug log from npm
 npm-debug.log
