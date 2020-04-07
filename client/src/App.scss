@@ -296,6 +296,13 @@ h4 {
 	object-fit: cover;
 }
 
+.game-detailed-img {
+	max-height:100%;
+	max-width: 100%;
+	margin: 0 auto;
+	object-fit: cover;
+}
+
 .white {
 	background-color: white;
 }
@@ -320,6 +327,11 @@ font-size: 15px;
 .game-medium-column-1, .game-medium-column-3 {
 	width: 40%;
 	text-align:center;
+}
+
+.btn-pdp {
+	display:"block";
+	width:"60vw"
 }
 
 .review-row-1, .review-row-2 {
@@ -372,6 +384,12 @@ font-size: 15px;
 	right: 15px;
 	z-index:3;
 }
+
+.game-title {
+	font-size: 300%;
+	padding-bottom: 15px;
+}
+
 /*Profile*/
 
 img.avatar {
@@ -668,5 +686,32 @@ display: inline-flex;
 }
 
 
+.game-detailed-block {
+	width: 80vw;
+	display:flex;
+	justify-content: space-evenly;
+	}
+
+.game-detailed-img-block {
+width: 30vw;
+text-align: center;
+}
+.game-detailed-img {
+
+	float:left;
+	}
+
+.game-medium-row-3 {
+	text-align:left;
+	padding-bottom: 10px;
+	}
+
+	.reviews, .game-medium-row-5, .review-row-1, .review-row-2 {
+		width: 80vw;
+	}
+
+	.reviews {
+		margin: 10px 10vw;
+	}
  }
 
