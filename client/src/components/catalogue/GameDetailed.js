@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Favorite from './Favorite'
 import Review from './Review'
+import Rating from './Rating'
 
 class GameDetailed extends Component {
     
@@ -38,25 +39,29 @@ class GameDetailed extends Component {
 
         return ( 
             <div >
+                <div className='game-header'>
                 <h1 className="game-title">{this.state.game.name}</h1>
+                </div>
                 <div className="game-detailed-block">
                 <div className='block-container margin-bottom center white game-detailed-img-block'>   
                     <Favorite game_id={this.props.gameId} />
-                    <img className="game-medium-img" src={this.state.game.image_url} alt={this.state.game.name}/>
+                    <img className="game-detailed-img" src={this.state.game.image_url} alt={this.state.game.name}/>
                 </div>
+                
                 <div className="game-detailed-text">
-                <div className="game-medium-row-3 padding-top">
-                    {this.state.game.description_preview}
+                <Rating>{this.state.game.average_user_rating}</Rating>
+                <div className="game-medium-row-3 padding-top center">
+                    <p>{this.state.game.description_preview}</p>
                 </div>
-                <div className="game-medium-row-4 flex">
+                <div className="game-medium-row-4 flex center">
                 <div className="game-medium-column">
-                    {rating}
-                </div>
-                <div className="game-medium-column">
-                {age}
+                <p>{rating}</p>
                 </div>
                 <div className="game-medium-column">
-                    {players}
+                <p>{age}</p>
+                </div>
+                <div className="game-medium-column">
+                   <p>{players}</p> 
                 </div>
                 
              </div>

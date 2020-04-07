@@ -27,7 +27,7 @@ class SearchDetail extends Component {
     let route;
 
     //if ((this.state.minage) || (this.state.maxage) || (this.state.players) || (this.state.time) || (this.state.rating) ) {
-      route = `https://www.boardgameatlas.com/api/search?q=""&limit=30&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&categories=${this.state.select_cat}&client_id=FWG6FKSO4N `;
+      route = `https://www.boardgameatlas.com/api/search?q=""&limit=30&gt_min_age=${this.state.minage}&lt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&categories=${this.state.select_cat}&client_id=FWG6FKSO4N `;
    // }
     axios
       .get(route)
@@ -121,13 +121,13 @@ class SearchDetail extends Component {
     // }
 
     return (
-      <div className="flex-column block-container">
+      <div className="flex-column block-container search-detailed">
       <div className="searchdetail flex-column">
         <h1 className="center">Search game</h1>
       {this.state.games.length===0?
         <form className="flex-column center" onSubmit={this.handleSubmit}>
 
-        <h3>Minimum age : {this.state.minage} </h3>
+        <h3>Minimum age over : {this.state.minage} </h3>
 
         <div className="slidecontainer">
           <input
@@ -141,7 +141,7 @@ class SearchDetail extends Component {
           />
         </div>
 
-        <h3> Maximum age : {this.state.maxage} </h3>
+        <h3> Minimum age below : {this.state.maxage} </h3>
 
         <div className="slidecontainer">
           <input
@@ -214,7 +214,7 @@ class SearchDetail extends Component {
         : <button className="btn" onClick={this.resetState}>Start new search</button> 
       }
       </div>
-      <div className = "searchlist">
+      <div className = "searchlist ">
         {this.state.games
           ? this.state.games.map(game => {
               return (
@@ -229,10 +229,9 @@ class SearchDetail extends Component {
                     (game.min_age ? game.min_age + "+" : "Not mentioned")
                   }
                   rating={
-                    "Rating: " +
-                    (game.average_user_rating
-                      ? Math.round(game.average_user_rating * 100) / 100 + "/5"
-                      : "No rating yet")
+                    game.average_user_rating
+                      ? Math.round(game.average_user_rating * 100) / 100
+                      : "No rating yet"
                   }
                   players={
                     game.min_players && game.max_players

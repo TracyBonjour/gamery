@@ -8,6 +8,7 @@ body  {
 	font-family: 'Rubik', sans-serif;
 	font-weight: 300;
 	font-size: larger;
+
 }
 .custom-select {
 		display: block;
@@ -88,6 +89,9 @@ display:flex
 .padding-top {
 		padding-top:25px;
 	}
+.margin-bottom {
+	margin-bottom:25px
+}
 .button {
 	text-align: center;
 }
@@ -253,6 +257,24 @@ h4 {
 	margin: 0 auto;
 	object-fit: cover;
 }
+
+.game-detailed-row-3 {
+	text-align: center;
+}
+
+.rating img {
+margin-top: 15px;;
+width: 35px;
+height: 35px;
+}
+
+.game-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 25px;
+}
 .white {
 	background-color: white;
 }
@@ -334,7 +356,16 @@ img.avatar {
 	margin: 0 auto;
 	text-align: center;
 }
+
+
 /* modal */
+
+.modal-body {
+	text-align: center;
+	align-items: center;
+	padding-bottom: 25px;
+}
+
   .modal-cover {
 	position: fixed;
 	top: 0;
@@ -366,6 +397,11 @@ img.avatar {
   .modal-header {
 	  padding: 20px;
   }
+
+  .modal-title {
+	  font-size: 20px ;
+	  font-weight: 500;
+  }
   .chp-modal {
 	width:250px;
 	border:1px solid rgb(27, 24, 68);
@@ -379,6 +415,8 @@ img.avatar {
 	text-align: center;
 }
 /*SEARCH*/
+
+
 .slider {
 	-webkit-appearance: none;
 	width: 100%;
@@ -453,7 +491,7 @@ img.avatar {
 	margin-bottom: 20px;
 }
 /* DESKTOP */
-@media (min-width: 650px) { 
+@media (min-width: 900px) { 
 .carousel-container .block-container {
 	display:inline-block;
 	width:auto;
@@ -566,12 +604,21 @@ display: inline-flex;
 	display:flex;
 	justify-content: space-evenly;
 	}
+
+	
 .game-detailed-img-block {
-width: 30vw;
+	display:flex;
+height: 500px;
+width: 500px;
 text-align: center;
+align-items: center;
+border-radius: 40px;
+overflow: hidden;
 }
 .game-detailed-img {
-	float:left;
+
+	max-width: 420px;
+	max-height: 420px;
 	}
 .game-medium-row-3 {
 	text-align:left;
@@ -595,6 +642,7 @@ text-align: center;
 	.load-more-btn {
 		margin-left:-20px;
 	}
+
 
 
  }
