@@ -95,8 +95,8 @@ class Favorite extends Component {
         className="favicon"
         src={
           this.state.favorite
-            ? "/images/imagenav/baseline_star_black_48dp.png"
-            : "/images/imagenav/baseline_star_border_black_48dp.png"
+            ? "https://img.icons8.com/ios-filled/50/000000/heart-plus.png"
+            : "https://img.icons8.com/ios/50/000000/heart-plus.png"
         }
         alt=""
         onClick={this.modalToggle}
@@ -111,7 +111,7 @@ class Favorite extends Component {
             <hr />
           </div>
           <form className="modal-body dark-text center flex-column" onSubmit={this.handleSubmit}>
-            <select name="col_id" id="colList" onChange={this.handleChange}>
+            <select className="custom-select" name="col_id" id="colList" onChange={this.handleChange}>
             {this.context.collections.map(col => {
               return <option value={col._id}>{col.colTitle}</option>;
             })}

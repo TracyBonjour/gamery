@@ -8,7 +8,7 @@ class GameSmall extends Component {
    }
     title_short = function(title, length, ending) {
         if (length == null) {
-          length = 30;
+          length = 25;
         }
         if (ending == null) {
           ending = '...';

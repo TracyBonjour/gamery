@@ -35,7 +35,7 @@ class GameMedium extends Component {
     render() { 
         
         return ( 
-          <div className="block-container">
+          <div className="block-container game-medium">
             {this.props.fav? <Favorite game_id={this.props.id} />:""}
             <Link to={`/games/${this.props.id}`} className="link ">
              <div className="game-medium flex">
@@ -46,16 +46,16 @@ class GameMedium extends Component {
                     {this.title_short(this.props.title)}
                 </div>
                 <div className="game-medium-row-3">
-                    {this.desc_short(this.props.description)}
+                   <p> {this.desc_short(this.props.description)}</p>
                 </div>
                 <div className="game-medium-row-4 flex">
-                <div className="game-medium-column-1">
+                <div className="game-medium-column-1  center">
                     {this.props.rating}
                 </div>
-                <div className="game-medium-column-2">
+                <div className="game-medium-column-2  center">
                 {this.props.age}
                 </div>
-                <div className="game-medium-column-3">
+                <div className="game-medium-column-3  center">
                     {this.props.players}
                 </div>
                 </div>

@@ -11,11 +11,11 @@ class Search extends Component {
     query: ""
   };
 
-  componentDidUpdate = () => {
+  handleSubmit = (event) => {
     let route;
-
+    event.preventDefault();
     if (this.state.query) {
-      route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&fuzzy_match=true&client_id=FWG6FKSO4N `;
+      route = `https://www.boardgameatlas.com/api/search?name=${this.state.query}&fuzzy_match=true&limit=20&client_id=FWG6FKSO4N `;
     }
     axios
       .get(route)
@@ -30,22 +30,34 @@ class Search extends Component {
     });
   };
 
+  resetState = () => {
+    this.setState(
+    {
+      games: [],
+      query: ""
+      });
+    }
 
   render() {
 
     return (
-      <div className="Searchdetail">
-        <h1>Search game</h1>
-
-        <input
+      <div className="flex-column">
+        <h1 className="center">Search game</h1>
+        <form className="flex-column padding-bottom" onSubmit={this.handleSubmit}>
+          <input className = "searchbar"
           type="search"
           value={this.state.query}
           onChange={this.handleQuery}
-        />
+          />
+          <button className="btn padding-bottom center">Search game</button>
+        </form>
+        {this.state.games.length>=1 ? <button className="btn padding-bottom" onClick={this.resetState}>New search</button>  : ""}  
         {this.state.games
           ? this.state.games.map(game => {
               return (
-                <GameMedium
+                <div className="search-results">
+                <GameMedium 
+                  fav={true}
                   title={game.name}
                   img={game.images.small}
                   id={game.id}
@@ -66,9 +78,10 @@ class Search extends Component {
                       : "No players info"
                   }
                 />
+          </div>
               );
             })
-          : "Staping to see result"}
+          : "Start typing to see results"}
 
 
       </div>

@@ -38,11 +38,13 @@ class GameDetailed extends Component {
 
         return ( 
             <div >
-                <h1>{this.state.game.name}</h1>
-                <div className='block-container margin-bottom center white'>   
+                <h1 className="game-title">{this.state.game.name}</h1>
+                <div className="game-detailed-block">
+                <div className='block-container margin-bottom center white game-detailed-img-block'>   
                     <Favorite game_id={this.props.gameId} />
                     <img className="game-medium-img" src={this.state.game.image_url} alt={this.state.game.name}/>
                 </div>
+                <div className="game-detailed-text">
                 <div className="game-medium-row-3 padding-top">
                     {this.state.game.description_preview}
                 </div>
@@ -56,13 +58,16 @@ class GameDetailed extends Component {
                 <div className="game-medium-column">
                     {players}
                 </div>
+                
              </div>
              <div className="padding-bottom">
-             <a href={`https://www.google.com/search?tbm=shop&q=${this.state.game.name}`} className="link btn center" style={{display:"block", width:"60vw"}}>Buy this game</a>
+             <a href={`https://www.google.com/search?tbm=shop&q=${this.state.game.name}`} className="link btn center btn-pdp" >Buy this game</a>
+             </div>
+             </div>
              </div>
              <div className="game-medium-row-5 flex-column">
                 {this.state.reviews.length>=1 && this.state.reviews ?
-                <div className = "center">
+                <div className = "center reviews">
                 <h3>User Reviews</h3>
                 {this.state.reviews.map(review => 
                         <Review 
@@ -75,9 +80,10 @@ class GameDetailed extends Component {
                 </div>
 
             : <p>No reviews for this game</p>}
-             </div>
+             
+             
                 </div>
-
+                </div>
          );
     }
 }

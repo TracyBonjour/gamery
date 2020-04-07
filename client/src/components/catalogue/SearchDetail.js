@@ -121,10 +121,11 @@ class SearchDetail extends Component {
     // }
 
     return (
-      <div className="searchdetail">
-        <h1>Search game</h1>
+      <div className="flex-column block-container">
+      <div className="searchdetail flex-column">
+        <h1 className="center">Search game</h1>
       {this.state.games.length===0?
-        <form onSubmit={this.handleSubmit}>
+        <form className="flex-column center" onSubmit={this.handleSubmit}>
 
         <h3>Minimum age : {this.state.minage} </h3>
 
@@ -210,8 +211,10 @@ class SearchDetail extends Component {
             Search games
           </button>
         </form>
-        : <button className="btnfixed" onClick={this.resetState}>Start new search</button> 
+        : <button className="btn" onClick={this.resetState}>Start new search</button> 
       }
+      </div>
+      <div className = "searchlist">
         {this.state.games
           ? this.state.games.map(game => {
               return (
@@ -239,11 +242,8 @@ class SearchDetail extends Component {
                 />
               );
             })
-          : "Staping to see result"}
-          {/* { this.state.games === [] ? (nosearch => {
-              return <button className="btnfixed" onClick={this.resetState}>Start new search</button>  
-            }) : "Sorry, your search didn't return any result." } */}
-          
+          : "Start typing to see results"}
+      </div>
       </div>
     );
   }

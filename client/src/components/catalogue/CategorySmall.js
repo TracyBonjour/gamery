@@ -10,7 +10,7 @@ class CategorySmall extends Component {
         return ( 
 
             <Link to={`/categories/${this.props.id}/${this.props.colTitle}`} className="link">
-             <div className="collection-small flex">
+             <div className="collection-small">
                 <div className="collection-small-row-1">
                     <img className="collection-small-img" src={this.props.src} alt=""/>
                 </div>
