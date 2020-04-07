@@ -16,7 +16,8 @@ class SearchDetail extends Component {
     players: "",
     time: "",
     rating: "",
-    categories: []
+    categories: [],
+    select_cat: ""
    // collection: []
   };
 
@@ -26,7 +27,7 @@ class SearchDetail extends Component {
     let route;
 
     //if ((this.state.minage) || (this.state.maxage) || (this.state.players) || (this.state.time) || (this.state.rating) ) {
-      route = `https://www.boardgameatlas.com/api/search?q=""&limit=30&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&client_id=FWG6FKSO4N `;
+      route = `https://www.boardgameatlas.com/api/search?q=""&limit=30&lt_min_age=${this.state.minage}&gt_min_age=${this.state.maxage}&lt_min_players=${this.state.players}&gt_max_players=${this.state.players}&lt_max_playtime=${this.state.time}&gt_average_user_rating=${this.state.rating}&categories=${this.state.select_cat}&client_id=FWG6FKSO4N `;
    // }
     axios
       .get(route)
@@ -38,44 +39,44 @@ class SearchDetail extends Component {
 
 
 
-  // componentDidMount = () => {
-  //   axios
-  //     .get(
-  //       "https://www.boardgameatlas.com/api/game/categories?client_id=FWG6FKSO4N"
-  //     )
-  //     .then(response =>
-  //       response.data.categories.filter(function(cat) {
-  //         return (
-  //           cat.name === "Abstract" ||
-  //           cat.name === "Adventure" ||
-  //           cat.name === "Animals" ||
-  //           cat.name === "Bluffing" ||
-  //           cat.name === "Card Game" ||
-  //           cat.name === "City Building" ||
-  //           cat.name === "Cooperative" ||
-  //           cat.name === "Deduction" ||
-  //           cat.name === "Dice" ||
-  //           cat.name === "Educational" ||
-  //           cat.name === "Family Game" ||
-  //           cat.name === "Farming" ||
-  //           cat.name === "Horror" ||
-  //           cat.name === "Humor" ||
-  //           cat.name === "Medieval" ||
-  //           cat.name === "Memory" ||
-  //           cat.name === "Mythology" ||
-  //           cat.name === "Party Game" ||
-  //           cat.name === "Puzzle" ||
-  //           cat.name === "RPG" ||
-  //           cat.name === "Sci-Fi" ||
-  //           cat.name === "Strategy" ||
-  //           cat.name === "Wargame" ||
-  //           cat.name === "Western" ||
-  //           cat.name === "Zombies"
-  //         );
-  //       })
-  //     )
-  //     .then(filter => this.setState({ categories: filter }));
-  // };
+  componentDidMount = () => {
+    axios
+      .get(
+        "https://www.boardgameatlas.com/api/game/categories?client_id=FWG6FKSO4N"
+      )
+      .then(response =>
+        response.data.categories.filter(function(cat) {
+          return (
+            cat.name === "Abstract" ||
+            cat.name === "Adventure" ||
+            cat.name === "Animals" ||
+            cat.name === "Bluffing" ||
+            cat.name === "Card Game" ||
+            cat.name === "City Building" ||
+            cat.name === "Cooperative" ||
+            cat.name === "Deduction" ||
+            cat.name === "Dice" ||
+            cat.name === "Educational" ||
+            cat.name === "Family Game" ||
+            cat.name === "Farming" ||
+            cat.name === "Horror" ||
+            cat.name === "Humor" ||
+            cat.name === "Medieval" ||
+            cat.name === "Memory" ||
+            cat.name === "Mythology" ||
+            cat.name === "Party Game" ||
+            cat.name === "Puzzle" ||
+            cat.name === "RPG" ||
+            cat.name === "Sci-Fi" ||
+            cat.name === "Strategy" ||
+            cat.name === "Wargame" ||
+            cat.name === "Western" ||
+            cat.name === "Zombies"
+          );
+        })
+      )
+      .then(filter => this.setState({ categories: filter }));
+  };
 
   // handleQuery = ev => {
   //   this.setState({
@@ -85,6 +86,7 @@ class SearchDetail extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
+    console.log(event.target.name + event.target.value)
     this.setState({ [name]: value });
   };
 
@@ -98,13 +100,12 @@ class SearchDetail extends Component {
         maxage: "",
         players: "",
         time: "",
-        rating: "",
-        categories: []
+        rating: ""
        // collection: []
       });
     }
 
-  render() {
+  render = () => {
     // let games = this.state.games;
     // const query = this.state.query;
 
@@ -119,7 +120,7 @@ class SearchDetail extends Component {
       {this.state.games.length===0?
         <form className="flex-column center" onSubmit={this.handleSubmit}>
 
-        <h3>Less than : {this.state.minage} years </h3>
+        <h3>Minimum age : {this.state.minage} </h3>
 
         <div className="slidecontainer">
           <input
@@ -127,14 +128,13 @@ class SearchDetail extends Component {
             name="minage"
             type="range"
             min="4"
-            max="100"
-            id="myRange"
+            max="21"
             value={this.state.minage}
             onChange={this.handleChange}
           />
         </div>
 
-        <h3>Over : {this.state.maxage} years </h3>
+        <h3> Maximum age : {this.state.maxage} </h3>
 
         <div className="slidecontainer">
           <input
@@ -142,8 +142,7 @@ class SearchDetail extends Component {
             name="maxage"
             type="range"
             min="2"
-            max="100"
-            id="myRange"
+            max="21"
             value={this.state.maxage}
             onChange={this.handleChange}
           />
@@ -157,53 +156,14 @@ class SearchDetail extends Component {
             name="players"
             type="range"
             min="2"
-            max="100"
-            id="myRange"
+            max="15"
             value={this.state.players}
             onChange={this.handleChange}
           />
         </div>
-        {/* <li>
-          <labe>
-            <input
-            className="mr"
-            name="players"
-            type="checkbox"
-            min="1"
-            value={this.state.players}
-            onChange={this.handleChange}
-            />
-            <span>1</span>
-          </labe>
-        </li>
-        <li>
-          <labe>
-            <input
-            className="mr"
-            name="players"
-            type="checkbox"
-            min="2"
-            value={this.state.players}
-            onChange={this.handleChange}
-            />
-            <span>2</span>
-          </labe>
-        </li>
-        <li>
-          <labe>
-            <input
-            className="mr"
-            name="players"
-            type="checkbox"
-            min="3"
-            value={this.state.players}
-            onChange={this.handleChange}
-            />
-            <span>3</span>
-          </labe>
-        </li> */}
+        
 
-        <h3>Play time, less than : {this.state.time} min</h3>
+        <h3> Playtime (minutes) : {this.state.time} </h3>
 
         <div className="slidecontainer">
           <input
@@ -212,7 +172,6 @@ class SearchDetail extends Component {
             type="range"
             min="15"
             max="360"
-            id="myRange"
             value={this.state.time}
             onChange={this.handleChange}
           />
@@ -227,38 +186,19 @@ class SearchDetail extends Component {
             type="range"
             min="0"
             max="4"
-            id="myRange"
             value={this.state.rating}
             onChange={this.handleChange}
           />
         </div>
 
-        {/* <h3>Category :</h3>
-        <input
-          className="mr"
-          name="collection"
-          type="text"
-          value={this.state.collection}
-          onChange={this.handleChange}
-        /> */}
-
-        {/* <p>
-          <select name="categories">
-                        
-
-                        <option value={this.state.categories} > {this.state.categories.map(cat => {return(
-                        <CategorySmall id={cat.id} colTitle={cat.name}/>
-                        )})}</option>
-
-                    </select>
-          <select name="categories" onChange={this.handleChange}>
-            <option value="categories">--Please choose an category--</option>
-            {this.state.categories.map(cat => {
-              return <option value={cat.id}>{cat.name}</option>;
-            })}
+        <h3>Category :</h3>
+          
+          <select className="customselect" name="select_cat" onChange={this.handleChange}>
+            <option >--Please choose an category--</option>
+            { this.state.categories.length>=1? this.state.categories.map(cat => {
+              return <option value={cat.id}>{cat.name}</option> 
+            }) : "categories" }
           </select>
-        </p> */}
-        <p></p>
 
           <button className="btn" onClick={this.handleSubmit.bind(this)}>
             Search games
@@ -272,6 +212,7 @@ class SearchDetail extends Component {
           ? this.state.games.map(game => {
               return (
                 <GameMedium
+                  fav={true}
                   title={game.name}
                   img={game.images.small}
                   id={game.id}
