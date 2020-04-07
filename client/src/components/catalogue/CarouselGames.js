@@ -20,7 +20,7 @@ class CarouselGames extends Component {
            <div className="carousel">
                 <h3 className="center padding-bottom">{this.props.header}</h3>
                 <div className="carousel-container load-more"> 
-                <Loadmore visible={11} increment={11} >
+                <Loadmore visible={8} increment={8} >
                     {this.state.blocks.map(block => {return(
                         <GameSmall title={block.name} img={block.images.small} id={block.id} />
                      )})}

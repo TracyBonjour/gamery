@@ -36,7 +36,7 @@ class SearchDetail extends Component {
       // .catch(err => this.setState({games: false}))
       // ;
 
-    // if (!this.state.game) { // (this.state.game === undefined)
+    // if (!this.state.games.length===0) { // (this.state.games === undefined)
     //     alert("Sorry, your search didn't return any result");
     //     this.props.history.push('/');
     // }
