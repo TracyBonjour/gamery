@@ -636,6 +636,7 @@ display: inline-flex;
 }
 
 .hero-banner {
+	padding-top: initial;
 	height: 300px;
 }
 
@@ -646,12 +647,12 @@ display: inline-flex;
 	height:60px;
 	top: 0; 
 	width: 100%; 
-	padding: 2%;
+	padding: 0;
 }
 
 #root {
 	position: relative;
-	top: 100px;
+	top: 60px;
 	padding-bottom: 100px;
 }
 
