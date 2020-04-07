@@ -607,7 +607,7 @@ display: inline-flex;
 }
 
 .game-medium {
-	width: 30vw;
+	width: 27vw;
 	height: 400px;
 }
 
@@ -617,7 +617,7 @@ display: inline-flex;
 }
 
 .game-medium-row-1, .game-medium-row-2, .game-medium-row-3, .game-medium-row-4 {
-	width: 30vw;
+	width: 27vw;
 }
 
 
@@ -631,13 +631,24 @@ display: inline-flex;
 	display:inline-flex;
 	align-items: stretch;
 	width:auto;
-	margin: 20px;
+	margin: 15px;
 	justify-content: space-around;
+	text-align: center;
+}
+
+.align-games-container {
+	display:block;
+	align-items: stretch;
+	width:100%;
+	justify-content: space-around;
+	text-align: center;
 }
 
 .hero-banner {
-	padding-top: initial;
-	height: 300px;
+	width: 100%;
+	object-fit: cover;
+	height: 350px;
+	background-position: center;
 }
 
 .navbar {

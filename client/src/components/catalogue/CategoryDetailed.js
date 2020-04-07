@@ -30,7 +30,7 @@ class CategoryDetailed extends Component {
                 <div className="hero-banner" style={{backgroundImage:`url(${this.img()})`}}>                
                 </div>
                 <h1>Category: {this.props.colTitle}</h1>
-
+                <div className="align-games-container">
                 <div className="align-games">
                     {this.state.collection.map(game => {return(
                         <GameMedium 
@@ -43,6 +43,7 @@ class CategoryDetailed extends Component {
                         rating={"Rating: " + (game.average_user_rating ? Math.round(game.average_user_rating*100)/100 +"/5":"No rating yet") } 
                         players={game.min_players && game.max_players ? (game.min_players + " - " + game.max_players + " players") : "No players info"}/>
                      )})}
+                </div>
                 </div>
             </div>
 
