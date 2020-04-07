@@ -33,10 +33,17 @@ class SearchDetail extends Component {
       .get(route)
       .then(response => response.data)
       .then(data => this.setState({games:data.games}))
+      // .catch(err => this.setState({games: false}))
+      // ;
+
+    // if (!this.state.games.length===0) { // (this.state.games === undefined)
+    //     alert("Sorry, your search didn't return any result");
+    //     this.props.history.push('/');
+    // }
 
 
   };
-
+  
 
 
   componentDidMount = () => {
