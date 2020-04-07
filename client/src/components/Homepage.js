@@ -4,18 +4,18 @@ import CategorySmall from './catalogue/CategorySmall';
 import Button from './Button';
 import {Link} from 'react-router-dom';
 import {MyContext} from './MyContext';
-import Searchname from '../components/catalogue/Search'
+import Search from '../components/catalogue/Search'
 
 class Homepage extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>
+            <div className="homepage">
                 
                 <img className='logo header' src="../../images/logo.png" alt=""/>
                 {/* <h1 className='header'>Gamery</h1>
                 <h2 className='header'>Find and collect games you love</h2> */}
-                <Searchname/>
+                <Search/>
                 <CarouselGames header='Most popular' route = 'https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&order_by=num_user_rating'/>
                 <CarouselGames header='Latest releases' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&year_published=2020'/>
                 <CarouselGames header='Best rated' route='https://www.boardgameatlas.com/api/search?client_id=FWG6FKSO4N&order_by=average_user_rating'/>

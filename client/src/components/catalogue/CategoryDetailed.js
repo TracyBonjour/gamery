@@ -31,7 +31,7 @@ class CategoryDetailed extends Component {
                 </div>
                 <h1>Category: {this.props.colTitle}</h1>
 
-                <div>
+                <div className="align-games">
                     {this.state.collection.map(game => {return(
                         <GameMedium 
                         fav={true}
