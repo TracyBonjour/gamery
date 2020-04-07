@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GameSmall from './GameSmall'
 import axios from 'axios';
-import Loadmore from 'react-loadmore-list'
+import Loadmore from '../Loadmore'
 
 
 class CarouselGames extends Component {
