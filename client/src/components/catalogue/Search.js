@@ -49,7 +49,7 @@ class Search extends Component {
           value={this.state.query}
           onChange={this.handleQuery}
           />
-          <button className="btn padding-bottom center">Search game</button>
+          <button className="btn padding-bottom center">Find</button>
         </form>
         {this.state.games.length>=1 ? <button className="btn padding-bottom" onClick={this.resetState}>New search</button>  : ""}  
         {this.state.games

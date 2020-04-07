@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GameSmall from './GameSmall'
 import axios from 'axios';
-import Loadmore from 'react-loadmore-list'
+import Loadmore from '../Loadmore'
 
 
 class CarouselGames extends Component {
@@ -19,8 +19,8 @@ class CarouselGames extends Component {
         return ( 
            <div className="carousel">
                 <h3 className="center padding-bottom">{this.props.header}</h3>
-                <div className="carousel-container load-more"> 
-                <Loadmore visible={8} increment={8} >
+                <div className="carousel-container"> 
+                <Loadmore className="flex center load-more-container" visible={8} increment={8} >
                     {this.state.blocks.map(block => {return(
                         <GameSmall title={block.name} img={block.images.small} id={block.id} />
                      )})}
