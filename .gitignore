@@ -1,5 +1,6 @@
 # Dependency directory
-node_modules
+node_modules/*
+!/react-loadmore-list
 
 # Debug log from npm
 npm-debug.log
