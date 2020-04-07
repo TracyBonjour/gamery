@@ -54,13 +54,10 @@ class GameDetailed extends Component {
                     <p>{this.state.game.description_preview}</p>
                 </div>
                 <div className="game-medium-row-4 flex center">
-                <div className="game-medium-column">
-                <p>{rating}</p>
-                </div>
-                <div className="game-medium-column">
+                <div className="game-medium-column-1">
                 <p>{age}</p>
                 </div>
-                <div className="game-medium-column">
+                <div className="game-medium-column-2">
                    <p>{players}</p> 
                 </div>
                 

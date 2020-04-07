@@ -287,14 +287,17 @@ height: 35px;
 height: 60px;
 font-size: 15px;
 }
-.game-medium-column-2 {
-	width: 20%;
+
+.game-medium-column {
+	width: 30%;
 	text-align:center;
 }
-.game-medium-column-1, .game-medium-column-3 {
-	width: 40%;
+
+.game-medium-column {
+	width: 70%;
 	text-align:center;
 }
+
 .btn-pdp {
 	display:"block";
 	width:"60vw"
