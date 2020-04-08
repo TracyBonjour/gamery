@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import GameMedium from './GameMedium'
 import images from '../../images'
+import Header from '../Header'
 import Backtotop from '../Backtotop';
 
 
@@ -31,7 +32,7 @@ class CategoryDetailed extends Component {
             <div>
                 <div className="hero-banner" style={{backgroundImage:`url(${this.img()})`}}>                
                 </div>
-                <h1>Category: {this.props.colTitle}</h1>
+                <Header history={this.props.history}>Category: {this.props.colTitle}</Header>
                 <div className="align-games-container">
                 <div className="align-games">
                     {this.state.collection.map(game => {return(

@@ -103,7 +103,7 @@ router.put("/:id", (req, res, next) => {
     return;
   }
   console.log(req.body)
-Collection.findByIdAndUpdate(req.params.id, { $push: {games: req.body.games} }, {new:true})
+Collection.findByIdAndUpdate(req.params.id, { $push: {games: req.body.games}, colTitle:req.body.colTitle }, {new:true})
 .then((collection)=>{
   res.status(201).json(collection);
 })

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-const starFull="https://img.icons8.com/color/48/000000/filled-star.png"
-const starHalf="https://img.icons8.com/color/48/000000/star-half.png"
-const starEmpty="https://img.icons8.com/color/48/000000/star--v1.png"
+const starFull='../../../images/icons/starfull.png'
+const starHalf='../../../images/icons/starhalf.png'
+const starEmpty='../../../images/icons/starempty.png'
 
 const Rating = (props) => {
     return(

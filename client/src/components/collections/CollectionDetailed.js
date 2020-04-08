@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import GameMedium from '../catalogue/GameMedium';
 import {MyContext} from '../MyContext'
+import Header from '../Header'
+import {Link} from 'react-router-dom'
 
 class CollectionDetailed extends Component {
     
@@ -52,21 +54,29 @@ class CollectionDetailed extends Component {
 
         return ( 
             <div>
-                <h1>My Collection: <br/>{this.props.colTitle}</h1>
-
-                <div>
-                    {this.state.games.map(game => 
-                        <GameMedium
-                        fav={false}
-                        title={game.name} 
-                        img={game.images.small} 
-                        id={game.id} 
-                        description={game.description_preview} 
-                        age={ "Age: " +  (game.min_age ? game.min_age + "+" : "Not mentioned")}
-                        rating={"Rating: " + (game.average_user_rating ? Math.round(game.average_user_rating*100)/100 +"/5":"No rating yet") } 
-                        players={game.min_players && game.max_players ? (game.min_players + " - " + game.max_players + " players") : "No players info"}/>
-                     )}
-                </div>
+                <Header history={this.props.history}>My Collection: <br/>{this.props.colTitle}</Header>
+                {
+                this.state.games.length>=1?
+                <div className="align-games-container">
+                {this.state.games.map(game => 
+                    <GameMedium
+                    fav={false}
+                    title={game.name} 
+                    img={game.images.small} 
+                    id={game.id} 
+                    description={game.description_preview} 
+                    age={ "Age: " +  (game.min_age ? game.min_age + "+" : "Not mentioned")}
+                    rating={game.average_user_rating ? Math.round(game.average_user_rating*100)/100 :"No rating yet"} 
+                    players={game.min_players && game.max_players ? (game.min_players + " - " + game.max_players + " players") : "No players info"}/>
+                 )}
+            </div>
+            : 
+            <div className="flex-column">
+            <h2 className="center margin-bottom">You haven't added any games to this collection yet !</h2>
+            <Link className="link margin-top" to="/"><button className="center margin-top btn">Browse games</button></Link>
+            </div>
+            }
+                
             </div>
             
 

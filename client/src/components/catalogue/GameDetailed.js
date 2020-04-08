@@ -3,6 +3,7 @@ import axios from 'axios';
 import Favorite from './Favorite'
 import Review from './Review'
 import Rating from './Rating'
+import Header from '../Header'
 
 class GameDetailed extends Component {
     
@@ -39,9 +40,7 @@ class GameDetailed extends Component {
 
         return ( 
             <div >
-                <div className='game-header'>
-                <h1 className="game-title">{this.state.game.name}</h1>
-                </div>
+                <Header className="game-title" history={this.props.history}>{this.state.game.name}</Header>
                 <div className="game-detailed-block">
                 <div className='block-container margin-bottom center white game-detailed-img-block'>   
                     <Favorite game_id={this.props.gameId} />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../Header'
 
 import {Link} from 'react-router-dom';
 
@@ -36,7 +37,7 @@ class Signup extends Component {
   render() {
     return (
         <div className="Signup">
-         {this.props.h1!==false? <h1>Sign up</h1> :""}
+         {this.props.h1!==false? <Header history={this.props.history}>Create account</Header> :""}
           
           <form onSubmit={this.handleSubmit}>
 

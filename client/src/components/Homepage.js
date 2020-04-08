@@ -7,6 +7,7 @@ import {MyContext} from './MyContext';
 import Search from '../components/catalogue/Search';
 import Backtotop from '../components/Backtotop';
 
+
 class Homepage extends Component {
     state = {  }
     render() { 

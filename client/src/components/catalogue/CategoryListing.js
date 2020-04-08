@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom'
 import CategorySmall from './CategorySmall'
 import images from '../../images'
+import Header from '../Header'
 import Backtotop from '../Backtotop';
 
 const imgsMap = {
@@ -63,7 +64,7 @@ class CategoryListing extends Component {
     render() { 
         return ( 
             <div className = "clp">
-                <h1>All recommended categories</h1>
+                <Header history={this.props.history}>Explore categories</Header>
                 <div className="listing">
                     {this.state.categories.map(cat => {return(
                         <CategorySmall id={cat.id} colTitle={cat.name} src={cat.image} />
