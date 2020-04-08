@@ -53,9 +53,9 @@ class CollectionDetailed extends Component {
 
         return ( 
             <div>
-                <h1>My Collection: <br/>{this.props.colTitle}</h1>
+                <Header history={this.props.history}>My Collection: <br/>{this.props.colTitle}</Header>
 
-                <div>
+                <div className="align-games-container">
                     {this.state.games.map(game => 
                         <GameMedium
                         fav={false}

@@ -12,6 +12,14 @@ body  {
 	font-size: larger;
 }
 
+.hidden-mobile {
+	display:none;
+}
+
+.btn.hidden-mobile {
+	display:none;
+}
+
 .back {
 	color: white;
 	font-family: 'Rubik', sans-serif;
@@ -24,11 +32,11 @@ body  {
 	}
 
 .back-icon {
-width: 32px;
-height: 32px;
+width: 30px;
+height: 30px;
 position: absolute;
-top:32px;
-left:32px;
+top:33px;
+left:23px;
 }
 
 .absolute {
@@ -364,6 +372,15 @@ font-size: 15px;
 	width: 90vw;
 	text-align:center;
 }
+
+.create-edit {
+	display: flex;
+	justify-content: space-around;
+	margin: 30px !important;
+	align-items: center;
+}
+
+
 .hero-banner {
 	height: 30vh;
 	background-size: cover;
@@ -539,6 +556,40 @@ img.avatar {
 	margin-right: 1em;
 }
 
+/*test bask to top*/
+  
+.scroll {
+	opacity: 0.3;
+	background-color: rgb(230, 190, 59);
+	// width: 40px;
+	// height: 40px;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	border-radius: 5px;
+	border: none;
+
+	&:hover {
+		opacity: 1;
+
+		& span {
+			color: white;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -9px;
+			margin-left: -5px;
+		  
+		}
+	}
+
+
+}
+  
+.full-opacity {
+	opacity: 1;
+}
+
 /* DESKTOP */
 @media (min-width: 900px) { 
 .carousel-container .block-container {
@@ -696,41 +747,30 @@ overflow: hidden;
 		width: 60vw;
 	}
 
- }
-
- /*test bask to top*/
-  
-.scroll {
-	opacity: 0.3;
-	background-color: rgb(230, 190, 59);
-	// width: 40px;
-	// height: 40px;
-	position: fixed;
-	bottom: 10px;
-	right: 10px;
-	border-radius: 5px;
-	border: none;
-
-	&:hover {
-		opacity: 1;
-
-		& span {
-			color: white;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-top: -9px;
-			margin-left: -5px;
-		  
-		}
+	.my-collections {
+		width:60vw;
+		margin: 0 auto;
 	}
 
+	.hidden-desktop {
+		display:none;
+	}
 
-}
- 
-   
-.full-opacity {
-	opacity: 1;
-}
- 
+	.hidden-mobile {
+		display:block;
+	}
+
+	.btn.hidden-mobile {
+		display:block;
+		margin: 10px;
+	}
+
+	.create-edit {
+		// flex-direction: column;
+		justify-content: center;
+
+	}
+
+ }
+
  

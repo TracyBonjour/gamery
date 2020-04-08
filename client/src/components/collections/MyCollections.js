@@ -83,10 +83,11 @@ componentDidMount = () => {
     return (
       
       <div>
+        <Header>My collections</Header>
         {this.state.collections.length>=1 ? (
           <div className="listing">
             {this.state.collections.map(col => {
-              return <ColTitle colTitle={col.colTitle} id={col._id}/>;
+              return <ColTitle colTitle={col.colTitle} id={col._id} edit={false}/>;
             })}
           </div>
         ) : (
@@ -94,19 +95,21 @@ componentDidMount = () => {
             <h2>No collections yet, click below to start a new collection</h2>
           </div>
         )}
-        <div className="flex">
+        <div className="create-edit">
           <img
-            className="icon"
+            className="icon hidden-desktop"
             onClick={this.modalToggle}
             src="/images/icons/plus_icon_white.png"
             alt=""
           />
-          <Link to={`/${this.context.user.username}/collections/edit`}>
+          <button onClick={this.modalToggle} className="hidden-mobile btn margin-bottom">Create new collection</button>
+          <Link className="link" to={`/${this.context.user.username}/collections/edit`}>
             <img
-              className="icon"
+              className="icon hidden-desktop"
               src="/images/icons/edit_icon_white.png"
               alt=""
             />
+            <button className="hidden-mobile btn">Edit collections</button>
           </Link>
         </div>
 
@@ -114,16 +117,16 @@ componentDidMount = () => {
 
         <div className={containerClass}>
           <div className="modal-header dark-text">
-            <p className="">Create collection</p>
+            <p className="modal-title center">Create collection</p>
             <hr />
           </div>
-          <form className="modal-body dark-text center" onSubmit={this.handleSubmit}>
+          <form className="modal-body dark-text flex-column" onSubmit={this.handleSubmit}>
             <label htmlFor="colTitle">Name your new collection</label>
             <input
               name="colTitle"
               value={this.state.colTitle}
               onChange={this.handleChange}
-              className="chp-modal"
+              className="chp-modal center custom-select margin-bottom"
               type="text"
             />
             <Button> Confirm new collection</Button>

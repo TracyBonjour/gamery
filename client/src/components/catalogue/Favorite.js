@@ -121,7 +121,7 @@ class Favorite extends Component {
               name="colTitle"
               value={this.state.colTitle}
               onChange={this.handleChange}
-              className="chp-modal center custom-select "
+              className="chp-modal center custom-select margin-bottom"
               type="text"
             />
             <Button> Add to collection</Button>

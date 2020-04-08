@@ -88,27 +88,25 @@ class App extends Component {
               <Profileedit updateUser={this.updateUser} history={props.history} />
             )} />
 
-            <Route exact path="/categories" component={CategoryListing}/>
-            )} /> 
+            <Route exact path="/categories" render={(props) => (
+              <CategoryListing history={props.history} />
+            )} />
 
-            <Route exact path="/categories/:id/:name" render={props => {
-                return (
-                  <CategoryDetailed collectionId={props.match.params.id} colTitle={props.match.params.name}/>
-                );
-              }} />
+            <Route exact path="/categories/:id/:name" render={props => (
+                  <CategoryDetailed history={props.history} collectionId={props.match.params.id} colTitle={props.match.params.name}/>
+
+            )} />
 
 
-            <Route exact path="/games/:id" render={props => {
-                return (
-                  <GameDetailed gameId={props.match.params.id}/>
-                );
-              }} />
+            <Route exact path="/games/:id" render={props => (
+                  <GameDetailed gameId={props.match.params.id} history={props.history} />
+                )} />
 
-            <Route exact path="/search" component={SearchDetail}/>
-            )} /> 
+            <Route exact path="/search" render={props => (
+              <SearchDetail history={props.history} />
+            )} />
 
             <Route exact path="/searchname" component={Search}/>
-            )} /> 
 
             <Route exact path="/:id/collections" render={(props) => (
               <MyCollections updateUser={this.updateUser} history={props.history} user={this.state.user} />
@@ -119,7 +117,7 @@ class App extends Component {
             )} />
 
             <Route exact path="/:userid/collections/:id/:name" render={(props) => (
-              <CollectionDetailed collectionId={props.match.params.id} colTitle={props.match.params.name} />
+              <CollectionDetailed history={props.history}  collectionId={props.match.params.id} colTitle={props.match.params.name} />
             )} />
 
             <Route exact path="/map" render={(props) => (
@@ -127,8 +125,9 @@ class App extends Component {
             )} />
 
 
-            {/* last route, ie: 404 */}
+            // last route, ie: 404 
             <Route render={() => (<h1>Not Found</h1>)} />
+
           </Switch>
           <Nav></Nav>
         </div>
