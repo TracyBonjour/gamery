@@ -275,7 +275,7 @@ h4 {
 }
 .game-medium {
 	flex-direction: column;
-	margin: 50px 5px 0 10px;
+	margin: 50px 5px 0 5px;
 	scroll-snap-align: center;
 	background-color: white;
 	color:  rgb(27, 24, 68);
@@ -559,15 +559,16 @@ img.avatar {
 /*test bask to top*/
   
 .scroll {
-	opacity: 0.3;
+	opacity: 1;
 	background-color: rgb(230, 190, 59);
 	// width: 40px;
 	// height: 40px;
 	position: fixed;
-	bottom: 10px;
+	bottom: 80px;
 	right: 10px;
 	border-radius: 5px;
 	border: none;
+	z-index: 1110;
 
 	&:hover {
 		opacity: 1;
@@ -771,6 +772,35 @@ overflow: hidden;
 
 	}
 
+	.scroll {
+		opacity: 0.3;
+		background-color: rgb(230, 190, 59);
+		// width: 40px;
+		// height: 40px;
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		border-radius: 5px;
+		border: none;
+		z-index: 1110;
+	
+		&:hover {
+			opacity: 1;
+	
+			& span {
+				color: white;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -9px;
+				margin-left: -5px;
+			  
+			}
+		}
+	
+
  }
+
+}
 
  

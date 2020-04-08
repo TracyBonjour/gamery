@@ -99,7 +99,7 @@ class Profileedit extends Component {
       <div className="profile">
         <Header history={this.props.history}>Edit profile</Header>
 
-      <form onSubmit={this.handleSubmit}>
+      <form className="flex-column" onSubmit={this.handleSubmit}>
       
         <label>
             <img className="avatar" src={this.context.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />

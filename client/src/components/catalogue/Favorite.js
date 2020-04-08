@@ -59,7 +59,7 @@ class Favorite extends Component {
 
       //1b else update existing collection with new game
         updateCol.put(`${process.env.REACT_APP_APIURL || ""}/api/user/collections/${this.state.col_id}`, {
-          games:this.props.game_id
+          games:this.props.game_id, colTitle: this.state.colTitle
         })
         .catch(err => { /* not hit since no 401 */ })}
       //)
