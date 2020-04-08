@@ -4,7 +4,8 @@ import CategorySmall from './catalogue/CategorySmall';
 import Button from './Button';
 import {Link} from 'react-router-dom';
 import {MyContext} from './MyContext';
-import Search from '../components/catalogue/Search'
+import Search from '../components/catalogue/Search';
+import Backtotop from '../components/Backtotop';
 
 
 class Homepage extends Component {
@@ -33,6 +34,7 @@ class Homepage extends Component {
                 <Link className="link-black" to='/categories'>
                 <Button>Browse all categories</Button>
                 </Link>
+                <Backtotop/>
             </div>
          );
     }

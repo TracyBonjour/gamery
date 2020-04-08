@@ -3,6 +3,7 @@ import GameMedium from "./GameMedium.js";
 import axios from "axios";
 import SearchResults from './SearchResults'
 import Header from '../Header'
+import Backtotop from "../Backtotop.js";
 
 // import Button from './Button'
 // import {Link} from 'react-router-dom'
@@ -238,6 +239,7 @@ class SearchDetail extends Component {
             })
           : "Start typing to see results"}
       </div>
+      <Backtotop/>
       </div>
     );
   }

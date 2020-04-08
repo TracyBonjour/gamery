@@ -17,7 +17,7 @@ class Nav extends Component {
             </Link>
             <Link className="picto" to={`/${this.context.user.username}/collections`}>
                 {/* <img className="fav" src="../../images/imagenav/baseline_star_border_black_48dp.png" width="40" height="40" alt="fav" /> */}
-                <img className="picto" src="/images/imagenav/baseline_star_white_48dp.png" alt="fav" />
+                <img className="picto" src="/images/imagenav/outline_favorite_white_48dp.png" alt="fav" />
             </Link>
             <Link className="picto" to="/profile">
                 {/* <img className="profile" src="../../images/imagenav/baseline_account_circle_black_48dp.png" width="40" height="40" alt="profile" /> */}

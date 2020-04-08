@@ -3,6 +3,8 @@ import axios from 'axios';
 import GameMedium from './GameMedium'
 import images from '../../images'
 import Header from '../Header'
+import Backtotop from '../Backtotop';
+
 
 class CategoryDetailed extends Component {
     
@@ -46,6 +48,7 @@ class CategoryDetailed extends Component {
                      )})}
                 </div>
                 </div>
+                <Backtotop/>
             </div>
 
          );
