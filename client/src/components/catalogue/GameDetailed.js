@@ -60,7 +60,7 @@ class GameDetailed extends Component {
                    <p>{players}</p> 
                 </div>
                 
-             </div>
+                </div>
              <div className="padding-bottom">
              <a href={`https://www.google.com/search?tbm=shop&q=${this.state.game.name}`} className="link btn center btn-pdp" >Buy this game</a>
              </div>

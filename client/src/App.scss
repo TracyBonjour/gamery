@@ -159,6 +159,7 @@ button {
 	color:#000000;
 	display: block;
 	margin:auto;
+	margin-top: 1em;
 }
 .btn:hover {
 	background: rgb(27, 24, 68);
@@ -184,6 +185,9 @@ button {
 	font:bold 18px;
 	color:#fff;
 	text-align: center;
+	display: block;
+	margin:auto;
+	margin-top:1em;
 }
 .dark-text {
 	color: rgb(22, 13, 46)
@@ -397,6 +401,11 @@ font-size: 15px;
 	font-size: 300%;
 	padding-bottom: 15px;
 }
+
+.game-medium-row-4 {
+	display: flex;
+	justify-content: space-between;
+}
 /*Profile*/
 img.avatar {
     width:13em;height:13em;border-radius:100%; object-fit:contain; margin:0 auto;
@@ -406,6 +415,10 @@ img.avatar {
 }
 .profile {
 	margin: 0 auto;
+	text-align: center;
+}
+
+p {
 	text-align: center;
 }
 
