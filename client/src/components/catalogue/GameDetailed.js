@@ -40,9 +40,7 @@ class GameDetailed extends Component {
 
         return ( 
             <div >
-                <div className='game-header'>
                 <Header className="game-title" history={this.props.history}>{this.state.game.name}</Header>
-                </div>
                 <div className="game-detailed-block">
                 <div className='block-container margin-bottom center white game-detailed-img-block'>   
                     <Favorite game_id={this.props.gameId} />

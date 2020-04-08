@@ -14,7 +14,7 @@ class Header extends Component {
     render() { 
         return ( 
             <div className="flex margin-top relative" >
-                <img className='back-icon' onClick={this.goBack} src="https://www.iconsdb.com/icons/preview/white/arrow-87-xxl.png" alt="back"/>
+                <img className='back-icon' onClick={this.goBack} src="/images/icons/back-icon.png" alt="back"/>
                 <div className='center relative' ><h1 >{this.props.children}</h1>
             </div>  </div>
          );
