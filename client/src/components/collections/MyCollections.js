@@ -92,7 +92,7 @@ componentDidMount = () => {
           </div>
         ) : (
           <div>
-            <h2>No collections yet, click below to start a new collection</h2>
+            <h2 className="center ">No collections yet, click below to start a new collection</h2>
           </div>
         )}
         <div className="create-edit">

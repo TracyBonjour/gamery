@@ -115,8 +115,8 @@ class Profileedit extends Component {
           <input className="chp" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
         </p> */}
 
-          <select name="dep">
-            <option value="dep">--Please choose an departement--</option>
+          <select name="dep" className="custom-select">
+            <option value="dep">--Please choose a departement--</option>
             <option value="00">(00) Hors France</option>
             <option value="01">(01) Ain </option>
             <option value="02">(02) Aisne </option>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ColTitle from "./ColTitle";
+import EditColTitle from "./EditColTitle";
 import { Link,Redirect } from "react-router-dom";
 import Button from "../Button";
 import axios from 'axios';
@@ -87,7 +87,7 @@ class EditCollections extends Component {
             {this.state.collections.length>=1 ? (
               <div className="listing">
                 {this.state.collections.map(col => {
-                  return <ColTitle colTitle={col.colTitle} id={col._id} edit={true}/>;
+                  return <EditColTitle colTitle={col.colTitle} id={col._id} edit={true}/>;
                 })}
               </div>
             ) : (
@@ -103,14 +103,6 @@ class EditCollections extends Component {
                 alt=""
               />
               <button onClick={this.modalToggle} className="hidden-mobile btn margin-bottom">Create new collection</button>
-              <Link className="link" to={`/${this.context.user.username}/collections/edit`}>
-                <img
-                  className="icon hidden-desktop"
-                  src="/images/icons/edit_icon_white.png"
-                  alt=""
-                />
-                <button className="hidden-mobile btn">Edit collections</button>
-              </Link>
             </div>
     
             {/* modal */}
