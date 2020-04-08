@@ -6,6 +6,7 @@ import axios from 'axios';
 import { MyContext } from '../MyContext'
 import Signup from '../auth/Signup'
 // import authService from "../auth/auth-service.js";
+import Header from '../Header'
 
 class MyCollections extends Component {
   state = {

@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import {MyContext} from './MyContext';
 import Search from '../components/catalogue/Search'
 
+
 class Homepage extends Component {
     state = {  }
     render() { 

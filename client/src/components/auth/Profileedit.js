@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import Loader from '../Loader.js';
 import { MyContext } from '../MyContext'
 import authService from "./auth-service.js";
+import Header from '../Header'
 
 class Profileedit extends Component {
   state = {
@@ -96,9 +97,8 @@ class Profileedit extends Component {
 
     return (
       <div className="profile">
-        <h1>Personal informations</h1>
+        <Header history={this.props.history}>Edit profile</Header>
 
-      <p>
       <form onSubmit={this.handleSubmit}>
       
         <label>
@@ -106,19 +106,15 @@ class Profileedit extends Component {
             <input type="file" name="image" onChange={this.handleUpload} />
         </label>
 
-        <p>
           <input className="chp" type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-        </p>
 
-        <p>
           <input className="chp" type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-        </p>
+
 
         {/* <p>
           <input className="chp" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
         </p> */}
 
-        <p>
           <select name="dep">
             <option value="dep">--Please choose an departement--</option>
             <option value="00">(00) Hors France</option>
@@ -225,19 +221,16 @@ class Profileedit extends Component {
             <option value="975">(975) Saint Pierre et Miquelon </option>
             <option value="976">(976) Mayotte </option>
           </select>
-        </p>
 
-        <p>
         {/* <Button>save my information</Button> */}
         <button className="btn" onClick={this.handleSubmit}>save my information</button>
-        </p>
         
         <div className="cta">
         <button className="btn" onClick={this.deleteUser}>delete my account</button>
         </div>
 
         </form>
-        </p>
+  
 
       </div>
     

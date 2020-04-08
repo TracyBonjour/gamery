@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import GameMedium from '../catalogue/GameMedium';
 import {MyContext} from '../MyContext'
+import Header from '../Header'
 
 class CollectionDetailed extends Component {
     

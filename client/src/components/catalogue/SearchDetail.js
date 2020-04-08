@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import GameMedium from "./GameMedium.js";
 import axios from "axios";
-
+import SearchResults from './SearchResults'
+import Header from '../Header'
 
 // import Button from './Button'
 // import {Link} from 'react-router-dom'
@@ -33,15 +34,9 @@ class SearchDetail extends Component {
       .get(route)
       .then(response => response.data)
       .then(data => this.setState({games:data.games}))
-      // .catch(err => this.setState({games: false}))
-      // ;
-
-    // if (!this.state.games.length===0) { // (this.state.games === undefined)
-    //     alert("Sorry, your search didn't return any result");
-    //     this.props.history.push('/');
-    // }
-
-
+      .then(()=>{if (this.state.games.length===0 && (this.state.maxage || this.state.minage || this.state.players || this.state.select_cat || this.state.time)) {
+        alert("Sorry, your search didn't return any result - Try less restrictive filters.")}
+      })
   };
   
 
@@ -123,7 +118,7 @@ class SearchDetail extends Component {
     return (
       <div className="flex-column block-container search-detailed">
       <div className="searchdetail flex-column">
-        <h1 className="center">Search game</h1>
+       <Header history={this.props.history}>Advanced search</Header>
       {this.state.games.length===0?
         <form className="flex-column center" onSubmit={this.handleSubmit}>
 
