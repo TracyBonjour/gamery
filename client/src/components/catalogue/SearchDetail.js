@@ -210,7 +210,7 @@ class SearchDetail extends Component {
         : <button className="btn" onClick={this.resetState}>Start new search</button> 
       }
       </div>
-      <div className = "searchlist ">
+      <div className = "searchlist align-games align-games-container ">
         {this.state.games
           ? this.state.games.map(game => {
               return (
