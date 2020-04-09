@@ -101,7 +101,7 @@ class Profileedit extends Component {
 
       <form className="flex-column" onSubmit={this.handleSubmit}>
       
-        <label for="image" className="flex-column">
+        <label for="image" className="flex-column center">
             <img className="avatar" src={this.context.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
         <input type="file" name="image" onChange={this.handleUpload}/>
         </label>
