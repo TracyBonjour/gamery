@@ -102,13 +102,19 @@ router.put("/:id", (req, res, next) => {
     res.status(401).json({message: "You need to be logged in to edit your collection"});
     return;
   }
-  console.log(req.body)
-Collection.findByIdAndUpdate(req.params.id, { $push: {games: req.body.games}, colTitle:req.body.colTitle }, {new:true})
+  if (req.body.games){Collection.findByIdAndUpdate(req.params.id, { $push: {games: req.body.games}}, {new:true})  
+ // Collection.findByIdAndUpdate(req.params.id, req.body, {new:true})
 .then((collection)=>{
   res.status(201).json(collection);
 })
 .catch(next);
+}
+if (req.body.colTitle){Collection.findByIdAndUpdate(req.params.id, {colTitle:req.body.colTitle}, {new:true})
+.then((collection)=>{
+  res.status(201).json(collection);
 })
+.catch(next);
+}})
 
 //ajout jeu - on ne fait plus, trop complexe - Jenny
 
