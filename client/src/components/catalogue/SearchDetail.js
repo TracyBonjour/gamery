@@ -196,7 +196,7 @@ class SearchDetail extends Component {
 
         <h3>Category :</h3>
           
-          <select className="customselect" name="select_cat" onChange={this.handleChange}>
+          <select className="custom-select" name="select_cat" onChange={this.handleChange}>
             <option >--Please choose an category--</option>
             { this.state.categories.length>=1? this.state.categories.map(cat => {
               return <option value={cat.id}>{cat.name}</option> 
