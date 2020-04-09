@@ -112,6 +112,7 @@ class Favorite extends Component {
           </div>
           <form className="modal-body dark-text flex-column" onSubmit={this.handleSubmit}>
             <select className="custom-select margin-bottom" name="col_id" id="colList" onChange={this.handleChange}>
+            <option value="">Pick collection...</option>
             {this.context.collections.map(col => {
               return <option value={col._id}>{col.colTitle}</option>;
             })}

@@ -4,6 +4,7 @@ import Favorite from './Favorite'
 import Review from './Review'
 import Rating from './Rating'
 import Header from '../Header'
+import Loadmore from '../Loadmore'
 
 class GameDetailed extends Component {
     
@@ -49,6 +50,8 @@ class GameDetailed extends Component {
                 
                 <div className="game-detailed-text center">
                 <Rating>{this.state.game.average_user_rating}</Rating>
+                <a style={{color: 'white'}} href="#reviews">{this.state.game.num_user_ratings} ratings</a>
+
                 <div className="game-medium-row-3 padding-top center">
                     <p>{this.state.game.description_preview}</p>
                 </div>
@@ -69,7 +72,9 @@ class GameDetailed extends Component {
              <div className="game-medium-row-5 flex-column">
                 {this.state.reviews.length>=1 && this.state.reviews ?
                 <div className = "center reviews">
-                <h3>User Reviews</h3>
+                <h3 id="reviews">User Reviews</h3>                                
+                 <Loadmore className="flex center load-more-container" visible={8} increment={8} >
+
                 {this.state.reviews.map(review => 
                         <Review 
                         key={review.id} 
@@ -78,6 +83,7 @@ class GameDetailed extends Component {
                         review_desc={review.description}
                         />)
                     }
+                    </Loadmore>
                 </div>
 
             : <p>No reviews for this game</p>}
