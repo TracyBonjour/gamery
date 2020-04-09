@@ -4,6 +4,7 @@ import Favorite from './Favorite'
 import Review from './Review'
 import Rating from './Rating'
 import Header from '../Header'
+import Loadmore from '../Loadmore'
 
 class GameDetailed extends Component {
     
