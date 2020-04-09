@@ -23,9 +23,12 @@ class CollectionDetailed extends Component {
          //.then(data => data.map(col => col.colTitle))
              .then(data => 
                 this.setState({collection: data.games.toString()}, function(){
-                    axios.get(`https://www.boardgameatlas.com/api/search?ids=${this.state.collection}&client_id=FWG6FKSO4N `)
+                    if(this.state.collection)
+                    {axios.get(`https://www.boardgameatlas.com/api/search?ids=${this.state.collection}&client_id=FWG6FKSO4N `)
+                
                     .then(response => response.data)
-                    .then(data => this.setState({games:data.games}))
+                    .then(data => this.setState({games:data.games}))}
+                    else this.setState({games:[]})
                     
                 }))
         //         .then(
@@ -57,7 +60,7 @@ class CollectionDetailed extends Component {
                 <Header history={this.props.history}>My Collection: <br/>{this.props.colTitle}</Header>
                 {
                 this.state.games.length>=1?
-                <div className="align-games-container">
+                <div className="align-games align-games-container center">
                 {this.state.games.map(game => 
                     <GameMedium
                     fav={false}
