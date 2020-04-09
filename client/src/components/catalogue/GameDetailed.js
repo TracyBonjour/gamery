@@ -73,7 +73,7 @@ class GameDetailed extends Component {
                 {this.state.reviews.length>=1 && this.state.reviews ?
                 <div className = "center reviews">
                 <h3 id="reviews">User Reviews</h3>                                
-                 <Loadmore className="flex center load-more-container" visible={8} increment={8} >
+                 <Loadmore className="flex center load-more-container" visible={8} increment={8} style={{display:"auto"}} >
 
                 {this.state.reviews.map(review => 
                         <Review 
