@@ -101,9 +101,10 @@ class Profileedit extends Component {
 
       <form className="flex-column" onSubmit={this.handleSubmit}>
       
-        <label>
+        <label for "image">
             <img className="avatar" src={this.context.user.image || "https://material.io/tools/icons/static/icons/baseline-person-24px.svg"} />
-            <input type="file" name="image" onChange={this.handleUpload} />
+            Click on image to change avatar
+        <input type="file" name="image" onChange={this.handleUpload} style={{display:"none"}}/>
         </label>
 
           <input className="chp" type="text" name="username" value={this.state.username} onChange={this.handleChange} />
