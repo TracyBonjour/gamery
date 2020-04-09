@@ -51,11 +51,13 @@ class Search extends Component {
           />
           <button className="btn padding-bottom center">Find</button>
         </form>
-        {this.state.games.length>=1 ? <button className="btn padding-bottom" onClick={this.resetState}>New search</button>  : ""}  
+        {this.state.games.length>=1 ? 
+        <button className="btn padding-bottom" onClick={this.resetState}>New search</button>  : ""}  
         {this.state.games
-          ? this.state.games.map(game => {
+          ? 
+          <div className="align-games align-games-container center">
+          {this.state.games.map(game => {
               return (
-                <div className="search-results">
                 <GameMedium 
                   fav={true}
                   title={game.name}
@@ -77,9 +79,9 @@ class Search extends Component {
                       : "No players info"
                   }
                 />
-          </div>
               );
-            })
+            })}
+            </div>
           : "Start typing to see results"}
 
 
